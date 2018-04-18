@@ -12,25 +12,25 @@ class PeopleController < ApplicationController
     @person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'GovernmentIncumbency', 'OppositionIncumbency')
     @person = @person.first
 
-    render json: Serializers::Person.new(
+    render json: Serializers::PersonShowPage.new(
       @person,
       @seat_incumbencies,
       @committee_memberships,
       @government_incumbencies,
-      @opposition_incumbencies,
-      options = { "top-navigation": false }
-    ).produce_show_json
+      @opposition_incumbencies
+      # options = { "top-navigation": false }
+    ).to_h
   end
 
   def index
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
-    render json: Serializers::List.new(@people, Person, 'people').produce_json
+    render json: Serializers::ListPage.new(@people, Person, 'people').to_h
   end
 
   def letters
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
     p params[:letter]
-    render json: Serializers::List.new(@people, Person, 'people', @letters, params[:letter]).produce_json
+    render json: Serializers::ListPage.new(@people, Person, 'people', @letters, params[:letter]).to_h
   end
 
   private

@@ -7,7 +7,7 @@ module Serializers
     # @param objects_name [String] How list of objects will be referred to in outgoing JSON
     # @param options [Hash] Hash of optional parameters, indicating whether or not feature should be included in outgoing JSON
     # @return [Object] Serializers::List object
-    #
+    
     def initialize(objects, klass, objects_name, letters, active_letter, options = {})
       @objects = objects
       @klass = klass
