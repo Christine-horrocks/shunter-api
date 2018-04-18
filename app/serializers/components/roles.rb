@@ -9,8 +9,12 @@ module Serializers
 
     def content
       {
-        "template": "roles",
-        "role-list": current_roles
+        name: "roles",
+      data:
+        {
+          "template": "roles",
+          "role-list": current_roles
+        }
       }
     end
 

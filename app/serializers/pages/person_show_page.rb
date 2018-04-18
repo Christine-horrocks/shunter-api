@@ -11,38 +11,22 @@ module Serializers
 
         def content
           [
-                {
-                  name:  "heading1",
-                  data: "#{@person.full_name}"
-                },
-                {
-                  name: "subheading",
-                  data: subheading
-                },
-                 {
-                     name: "image",
-                     data: (Serializers::Image.new(@person).to_h if @person.image_id && @person.image_id != 'placeholder')
-                 },
-                 {
-                     name: "when-to-contact",
-                     data: Serializers::WhenToContact.new.to_h
-                 },
-                 {
-                     name: "contact",
-                     data: (Serializers::Contact.new(@person).to_h if @person.contact_points.any?)
-                 },
-                 {
-                     name: "roles",
-                     data: (Serializers::Roles.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?)
-                 },
-                 {
-                     name: "timeline",
-                     data: (Serializers::Timeline.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?)
-                 },
-                 {
-                     name: "related-links",
-                     data: (Serializers::RelatedLinks.new(@person).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder'))
-                 }
+                # {
+                #   name:  "heading1",
+                #   data: "#{@person.full_name}"
+                # },
+                (Serializers::Heading1.new(@person).to_h),
+                # {
+                #   name: "subheading",
+                #   data: subheading
+                # },
+                 (Serializers::Subheading.new(@person).to_h),
+                 (Serializers::Image.new(@person).to_h if @person.image_id && @person.image_id != 'placeholder'),
+                 (Serializers::WhenToContact.new.to_h),
+                 (Serializers::Contact.new(@person).to_h if @person.contact_points.any?),
+                 (Serializers::Roles.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?),
+                 (Serializers::Timeline.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?),
+                 (Serializers::RelatedLinks.new(@person).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder'))
              ]
         end
 
@@ -50,14 +34,5 @@ module Serializers
         "#{@person.display_name} UK Parliament"
       end
 
-        private
-
-            def subheading
-              subheading = "Former MP" if @person.former_mp?
-              subheading = "Former Member of the House of Lords" if @person.former_lord?
-              subheading = "#{@person.current_party_membership.try(&:party).try(&:name)} MP for #{@person.current_seat_incumbency.constituency.name}" if @person.current_mp?
-              subheading = "#{@person.current_party_membership.try(&:party).try(&:name)} - #{@person.statuses[:house_membership_status].join(' and ')}" if @person.current_lord?
-              subheading
-            end
   end
 end

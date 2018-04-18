@@ -5,8 +5,12 @@ module Serializers
 
     def content
       {
-        "template": "when-to-contact",
-        "text": "You may be able to discuss issues with your MP in person or online. Contact them for details."
+        name: "when-to-contact",
+        data:
+          {
+            "template": "when-to-contact",
+            "text": "You may be able to discuss issues with your MP in person or online. Contact them for details."
+          }
       }
     end
   end
