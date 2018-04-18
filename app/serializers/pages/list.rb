@@ -39,7 +39,6 @@ module Serializers
     def produce_letters_array
       ("A".."Z").map do |letter|
         presence = @letters.include?(letter) ? true : nil
-
         { letter: letter, presence: presence, active: active?(letter)}
       end
     end
