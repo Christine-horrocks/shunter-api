@@ -20,18 +20,18 @@ class PeopleController < ApplicationController
   #     @opposition_incumbencies
   #     # options = { "top-navigation": false }
   #   ).to_h
-    render json: PageSerializer::BasePageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h
+    render json: PageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h
   end
 
   def index
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
-    render json: Serializers::ListPage.new(@people, Person, 'people').to_h
+    render json: PageSerializer::ListPageSerializer.new(@people, ComponentSerializer::PersonComponentSerializer, 'people').to_h
   end
 
   def letters
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
     p params[:letter]
-    render json: Serializers::ListPage.new(@people, Person, 'people', @letters, params[:letter]).to_h
+    render json: PageSerializer::ListPageSerializer.new(@people, ComponentSerializer::PersonComponentSerializer, 'people', @letters, params[:letter]).to_h
   end
 
   private
