@@ -11,7 +11,7 @@ module Serializers
 
         def content
           c = []
-          c << Serializers::Heading1.new(@person).to_h
+          c << ComponentSerializer::Heading1ComponentSerializer.new(@person).to_h
           c << Serializers::Subheading.new(@person).to_h
           c << Serializers::Image.new(@person).to_h if @person.image_id && @person.image_id != 'placeholder'
           c << Serializers::WhenToContact.new.to_h
