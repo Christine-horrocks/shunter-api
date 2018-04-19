@@ -5,8 +5,10 @@ module ComponentSerializer
       @object = object
     end
 
+    private
+
     def name
-      name: "contact"
+      "contact"
     end
 
     def data
@@ -15,8 +17,6 @@ module ComponentSerializer
         "contact-points": find_contact_points
       }
     end
-
-    private
 
     def find_contact_points
       contact_points = []

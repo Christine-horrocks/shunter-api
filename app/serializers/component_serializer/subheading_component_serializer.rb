@@ -5,6 +5,8 @@ module ComponentSerializer
       @person = person
     end
 
+    private
+
     def name
       "subheading"
     end
@@ -12,8 +14,6 @@ module ComponentSerializer
     def data
       subheading
     end
-
-    private
 
     def subheading
       subheading = "Former MP" if @person.former_mp?

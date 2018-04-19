@@ -5,6 +5,8 @@ module ComponentSerializer
       @person = person
     end
 
+    private
+    
     def name
       "heading1"
     end

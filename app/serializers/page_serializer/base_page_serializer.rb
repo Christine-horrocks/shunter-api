@@ -32,7 +32,7 @@ module PageSerializer
     end
 
     def title
-      ""
+      raise "You cannot call title from base page serializer, you must call it from a specific page serializer."
     end
 
     def footer

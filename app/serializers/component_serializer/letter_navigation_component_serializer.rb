@@ -6,6 +6,8 @@ module ComponentSerializer
       @active_letter = active_letter
     end
 
+    private
+
     def name
       "letter-navigation"
     end

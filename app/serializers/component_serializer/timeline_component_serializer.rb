@@ -7,6 +7,8 @@ module ComponentSerializer
       @government_incumbencies = government_incumbencies
       @opposition_incumbencies = opposition_incumbencies
     end
+    
+    private
 
     def name
       "timeline"
