@@ -6,17 +6,6 @@ module ComponentSerializer
       @active_letter = active_letter
     end
 
-    # def content
-    #   {
-    #     name: "letter-navigation",
-    #     data: ("A".."Z").map do |letter|
-    #             presence = @letters.include?(letter) ? true : nil
-    #
-    #             { letter: letter, presence: presence, active: active?(letter)}
-    #         end
-    #   }
-    # end
-
     def name
       "letter-navigation"
     end

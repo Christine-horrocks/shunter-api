@@ -11,15 +11,6 @@ class PeopleController < ApplicationController
   def show
     @person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'GovernmentIncumbency', 'OppositionIncumbency')
     @person = @person.first
-
-  #   render json: Serializers::PersonShowPage.new(
-  #     @person,
-  #     @seat_incumbencies,
-  #     @committee_memberships,
-  #     @government_incumbencies,
-  #     @opposition_incumbencies
-  #     # options = { "top-navigation": false }
-  #   ).to_h
     render json: PageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h
   end
 
