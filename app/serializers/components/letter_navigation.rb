@@ -7,14 +7,17 @@ module Serializers
     end
 
     def content
-      ("A".."Z").map do |letter|
-        presence = @letters.include?(letter) ? true : nil
+      {
+        name: "letter-navigation",
+        data: ("A".."Z").map do |letter|
+                presence = @letters.include?(letter) ? true : nil
 
-        { letter: letter, presence: presence, active: active?(letter)}
-      end
+                { letter: letter, presence: presence, active: active?(letter)}
+            end
+      }
     end
 
-    private 
+    private
 
     def active?(letter)
      letter == @active_letter.upcase ? true : nil

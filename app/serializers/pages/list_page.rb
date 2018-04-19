@@ -22,15 +22,12 @@ module Serializers
     end
 
     def content
-      [
-        { name: "letter-navigation",
-          data: Serializers::LetterNavigation.new(@letters, @active_letter).to_h
-        },
-        {
-          name: @objects_name,
-          data: organise_objects
-        }
-      ]
+      c = []
+
+      c << Serializers::LetterNavigation.new(@letters, @active_letter).to_h
+      c <<  { name: @objects_name, data: organise_objects }
+      
+      c
     end
 
     def organise_objects
