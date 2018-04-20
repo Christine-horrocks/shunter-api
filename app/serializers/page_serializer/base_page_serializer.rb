@@ -15,6 +15,8 @@ module PageSerializer
       }
     end
 
+    private
+
     def components
       components_array = []
       components_array << header
