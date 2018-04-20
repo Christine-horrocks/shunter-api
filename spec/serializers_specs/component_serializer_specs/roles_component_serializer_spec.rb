@@ -8,7 +8,7 @@ describe ComponentSerializer::RolesComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data for MPs roles' do
-      expect(rolescomponentserializer.to_h).to eq({ name: "roles", data: { template: "roles", :"role-list"=>"This is your history"}})
+      expect(rolescomponentserializer.to_h).to eq({ name: "roles", data: { template: "roles", "role-list": "This is your history"}})
     end
   end
 
