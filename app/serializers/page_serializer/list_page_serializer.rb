@@ -18,6 +18,8 @@ module PageSerializer
       @active_letter = active_letter
     end
 
+    private
+
     def title
       "#{@objects_name.capitalize} A to Z showing results for #{@active_letter.capitalize}"
     end
