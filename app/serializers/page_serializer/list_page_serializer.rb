@@ -9,7 +9,7 @@ module PageSerializer
     # @param options [Hash] Hash of optional parameters, indicating whether or not feature should be included in outgoing JSON
     # @return [Object] Serializers::List object
 
-    def initialize(objects, klass, objects_name, letters, active_letter, options = {})
+    def initialize(objects, klass, objects_name, letters, active_letter = "all", options = {})
       @objects = objects
       @klass = klass
       @objects_name = objects_name
@@ -21,7 +21,11 @@ module PageSerializer
     private
 
     def title
-      "#{@objects_name.capitalize} A to Z showing results for #{@active_letter.capitalize}"
+      if @active_letter != "all"
+        "#{@objects_name.capitalize} A to Z showing results for #{@active_letter.capitalize}"
+      else
+        "People - UK Parliament"
+      end
     end
 
     def content
