@@ -32,31 +32,32 @@ describe PageSerializer::PersonShowPageSerializer, vcr: false do
   let ( :personshowpageserializer ) { described_class.new(person) }
 
   context '#to_h' do
-    it 'produces a hash containg the data to create a person show page' do
-      expect(personshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Person UK Parliament", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"heading1", :data=>"Parlimentarian"}, {:name=>"subheading", :data=>"Labour MP for Hackney"}, {:name=>"image", :data=>{:template=>"person-image", :"figure-url"=>"/media/121212", :"image-srcset1"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=732&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=1464&quality=80 2x", :"image-srcset2"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=444&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=888&quality=80 2x", :"image-src"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_1:1&width=186&quality=80", :"image-alt"=>"Person"}}, {:name=>"when-to-contact", :data=>{:template=>"when-to-contact", :text=>"You may be able to discuss issues with your MP in person or online. Contact them for details."}}, {:name=>"contact", :data=>{:template=>"contact", :"contact-points"=>[{:email=>"parliament@parliament.com", :phone=>12121212, :addresses=>["1parliament", "2parliament"]}]}}, {:name=>"roles", :data=>{:template=>"roles", :"role-list"=>[]}}, {:name=>"timeline", :data=>{:template=>"timeline", :"timeline-roles"=>[{:"time-period"=>"Held currently", :roles=>[]}]}}, {:name=>"related-links", :data=>{"template"=>"related-links", "name"=>"Parlimentarian", "website"=>["MP.com"], "twitter"=>["MPtwitter.com"], "media-url"=>"/media/121212"}}, {:name=>"footer", :data=>"footer"}]})
-    end
 
-    it 'initializes component serializers' do
-      heading1_component_serializer = class_double('ComponentSerializer::Heading1ComponentSerializer').as_stubbed_const
-      subheading_component_serializer = class_double('ComponentSerializer::SubheadingComponentSerializer').as_stubbed_const
-      image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
-      when_to_contact_component_serializer = class_double('ComponentSerializer::WhenToContactComponentSerializer').as_stubbed_const
-      contact_component_serializer = class_double('ComponentSerializer::ContactComponentSerializer').as_stubbed_const
-      roles_component_serializer = class_double('ComponentSerializer::RolesComponentSerializer').as_stubbed_const
-      timeline_component_serializer = class_double('ComponentSerializer::TimelineComponentSerializer').as_stubbed_const
-      related_links_component_serializer = class_double('ComponentSerializer::RelatedLinksComponentSerializer').as_stubbed_const
+      it 'produces a hash containg the data to create a person show page' do
+        expect(personshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Person UK Parliament", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"heading1", :data=>"Parlimentarian"}, {:name=>"subheading", :data=>"Labour MP for Hackney"}, {:name=>"image", :data=>{:template=>"person-image", :"figure-url"=>"/media/121212", :"image-srcset1"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=732&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=1464&quality=80 2x", :"image-srcset2"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=444&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=888&quality=80 2x", :"image-src"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_1:1&width=186&quality=80", :"image-alt"=>"Person"}}, {:name=>"when-to-contact", :data=>{:template=>"when-to-contact", :text=>"You may be able to discuss issues with your MP in person or online. Contact them for details."}}, {:name=>"contact", :data=>{:template=>"contact", :"contact-points"=>[{:email=>"parliament@parliament.com", :phone=>12121212, :addresses=>["1parliament", "2parliament"]}]}}, {:name=>"roles", :data=>{:template=>"roles", :"role-list"=>[]}}, {:name=>"timeline", :data=>{:template=>"timeline", :"timeline-roles"=>[{:"time-period"=>"Held currently", :roles=>[]}]}}, {:name=>"related-links", :data=>{"template"=>"related-links", "name"=>"Parlimentarian", "website"=>["MP.com"], "twitter"=>["MPtwitter.com"], "media-url"=>"/media/121212"}}, {:name=>"footer", :data=>"footer"}]})
+      end
 
-      expect(heading1_component_serializer).to receive(:new).with(person)
-      expect(subheading_component_serializer).to receive(:new).with(person)
-      expect(image_component_serializer).to receive(:new).with(person)
-      expect(when_to_contact_component_serializer).to receive(:new)
-      expect(contact_component_serializer).to receive(:new).with(person)
-      expect(roles_component_serializer).to receive(:new).with([], [], [], [])
-      expect(timeline_component_serializer).to receive(:new).with([], [], [], [])
-      expect(related_links_component_serializer).to receive(:new).with(person)
+      it 'initializes component serializers' do
+        heading1_component_serializer = class_double('ComponentSerializer::Heading1ComponentSerializer').as_stubbed_const
+        subheading_component_serializer = class_double('ComponentSerializer::SubheadingComponentSerializer').as_stubbed_const
+        image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
+        when_to_contact_component_serializer = class_double('ComponentSerializer::WhenToContactComponentSerializer').as_stubbed_const
+        contact_component_serializer = class_double('ComponentSerializer::ContactComponentSerializer').as_stubbed_const
+        roles_component_serializer = class_double('ComponentSerializer::RolesComponentSerializer').as_stubbed_const
+        timeline_component_serializer = class_double('ComponentSerializer::TimelineComponentSerializer').as_stubbed_const
+        related_links_component_serializer = class_double('ComponentSerializer::RelatedLinksComponentSerializer').as_stubbed_const
 
-      personshowpageserializer.to_h
-    end
+        expect(heading1_component_serializer).to receive(:new).with(person)
+        expect(subheading_component_serializer).to receive(:new).with(person)
+        expect(image_component_serializer).to receive(:new).with(person)
+        expect(when_to_contact_component_serializer).to receive(:new)
+        expect(contact_component_serializer).to receive(:new).with(person)
+        expect(roles_component_serializer).to receive(:new).with([], [], [], [])
+        expect(timeline_component_serializer).to receive(:new).with([], [], [], [])
+        expect(related_links_component_serializer).to receive(:new).with(person)
+
+        personshowpageserializer.to_h
+      end
 
     it 'image does not load when image_id is nil' do
       image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
@@ -69,6 +70,13 @@ describe PageSerializer::PersonShowPageSerializer, vcr: false do
       image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
       allow(person).to receive(:image_id) {"placeholder"}
       expect(image_component_serializer).not_to receive(:new).with(person)
+      personshowpageserializer.to_h
+    end
+
+    it 'does not load unless if current_mp? is not true' do
+      when_to_contact_component_serializer = class_double('ComponentSerializer::WhenToContactComponentSerializer').as_stubbed_const
+      allow(person).to receive(:current_mp?) {false}
+      expect(when_to_contact_component_serializer).not_to receive(:new)
       personshowpageserializer.to_h
     end
 
