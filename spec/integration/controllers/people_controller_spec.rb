@@ -2,9 +2,6 @@
 
   RSpec.describe PeopleController, vcr: true do
     describe 'GET show' do
-      # before(:each) do
-      #   get '/people/43RHonMf'
-      # end
 
       context 'with current MP' do
           before(:each) do
