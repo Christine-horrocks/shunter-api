@@ -1,9 +1,10 @@
 module ComponentSerializer
   class ConstituencyMPComponentSerializer <BaseComponentSerializer
 
-    def initialize(member, constituency)
+    def initialize(constituency, member, party)
       @member = member
       @constituency =constituency
+      @party = party
     end
 
     private
@@ -36,7 +37,7 @@ module ComponentSerializer
       end
 
       def party
-        @member.current_party_membership.party
+        @party.name
       end
 
   end

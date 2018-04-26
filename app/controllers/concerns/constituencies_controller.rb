@@ -33,8 +33,9 @@ class ConstituenciesController < ApplicationController
     @region = @constituency.regions.map do |region|
       region.name
     end
+
     @region = @region.first
-    render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @current_incumbency.member))
+    render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @current_incumbency.member, @party))
   end
 
   # Redirects to a single constituency given an external source and an id that identifies this constituency in that source.

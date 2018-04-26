@@ -1,10 +1,11 @@
 module PageSerializer
   class ConstituencyShowPageSerializer < PageSerializer::BasePageSerializer
 
-    def initialize(constituency, json_location, member)
+    def initialize(constituency, json_location, member, party)
+      @member = member
       @constituency = constituency
       @json_location = json_location
-      @member = member
+      @party = party
 
     end
 
@@ -13,7 +14,7 @@ module PageSerializer
       c << ComponentSerializer::ConstituencyHeadingComponentSerializer.new(@constituency).to_h
       c << ComponentSerializer::ConstituencySubheadingComponentSerializer.new(@constituency).to_h
       c << ComponentSerializer::MapComponentSerializer.new(@constituency, @json_location).to_h
-      c << ComponentSerializer::ConstituencyMPComponentSerializer.new(@member, @constituency).to_h
+      c << ComponentSerializer::ConstituencyMPComponentSerializer.new(@constituency, @member, @party).to_h
       c
     end
 
