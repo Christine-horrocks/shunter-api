@@ -1,8 +1,9 @@
 module ComponentSerializer
   class PersonComponentSerializer <BaseComponentSerializer
 
-    def initialize(person)
+    def initialize(person, options = {})
       @person = person
+      @options = options
     end
 
     private
@@ -29,6 +30,7 @@ module ComponentSerializer
       end
 
       def role
+        role = "MP for #{@options[:constituency_name]}" if @options[:constituency_show_page]
         role = "Former MP" if @person.former_mp?
         role = "Former Member of the House of Lords" if @person.former_lord?
         role = "MP for #{@person.current_seat_incumbency.constituency.name}" if @person.current_mp?
@@ -38,7 +40,7 @@ module ComponentSerializer
 
       def current_party
         current_party = nil if @person.former_mp? || @person.former_lord?
-        current_party = @person.current_party_membership.try(&:party).try(&:name) if @person.current_mp? || @person.current_lord?
+        current_party = @person.current_party_membership.try(&:party).try(&:name) if @person.current_mp? || @person.current_lord? || @options[:constituency_show_page]
         current_party
       end
 
