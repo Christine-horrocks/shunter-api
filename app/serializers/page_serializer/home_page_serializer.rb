@@ -7,7 +7,7 @@ module PageSerializer
 
     def content
       c = []
-      # c << "header with search bar"
+      c << ComponentSerializer::HomePageTitleComponentSerializer.new.to_h
       # c << "welcome message and links to the old website"
       # c << "object to a bill title, example, link to a blog"
       # c << "search title, link and blog"
