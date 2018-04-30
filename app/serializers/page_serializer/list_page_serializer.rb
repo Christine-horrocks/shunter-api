@@ -30,7 +30,7 @@ module PageSerializer
 
     def content
       c = []
-
+      c << ComponentSerializer::ListTitleComponentSerializer.new(@objects_name).to_h
       c << ComponentSerializer::LetterNavigationComponentSerializer.new(@letters, @active_letter, @objects_name).to_h
       c <<  { name: @objects_name, data: organise_objects }
 
