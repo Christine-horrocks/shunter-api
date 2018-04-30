@@ -13,12 +13,25 @@ class ConstituenciesController < ApplicationController
     a_to_z:          proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_a_to_z }
   }.freeze
 
+  def index
+    @constituencies, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'ConstituencyGroup', ::Grom::Node::BLANK)
+    @constituencies = @constituencies.select { |constituency| constituency.current? }.sort_by { |constituency| constituency.name }
+    render_page(PageSerializer::ListPageSerializer.new(@constituencies, ComponentSerializer::ConstituencyComponentSerializer, 'constituencies', @letters))
+  end
+
+  def letters
+    @constituencies, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'ConstituencyGroup', ::Grom::Node::BLANK)
+    @constituencies = @constituencies.select { |constituency| constituency.current? }.sort_by { |constituency| constituency.name }
+    render_page(PageSerializer::ListPageSerializer.new(@constituencies, ComponentSerializer::ConstituencyComponentSerializer, 'constituencies', @letters, params[:letter]))
+  end
+
   # Renders a single constituency given a constituency id.
   # @controller_action_param :constituency_id [String] 8 character identifier that identifies constituency in graph database.
   # @return [Grom::Node] object with type 'https://id.parliament.uk/schema/ConstituencyGroup'.
   def show
     @constituency, @seat_incumbencies, @party = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'ConstituencyGroup', 'SeatIncumbency', 'Party')
     # Instance variable for single MP pages
+    @seat_incumbencies
     @single_mp = true
     @constituency = @constituency.first
     @seat_incumbencies = @seat_incumbencies.reverse_sort_by(:start_date)
@@ -33,9 +46,9 @@ class ConstituenciesController < ApplicationController
     @region = @constituency.regions.map do |region|
       region.name
     end
-
+    @member = @current_incumbency.member
     @region = @region.first
-    render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @current_incumbency.member, @party, @seat_incumbencies))
+    render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @member, @party, @seat_incumbencies))
   end
 
   # Redirects to a single constituency given an external source and an id that identifies this constituency in that source.

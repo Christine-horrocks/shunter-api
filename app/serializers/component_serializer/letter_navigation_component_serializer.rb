@@ -1,9 +1,10 @@
 module ComponentSerializer
   class LetterNavigationComponentSerializer <BaseComponentSerializer
 
-    def initialize(letters, active_letter)
+    def initialize(letters, active_letter, objects_name = {})
       @letters = letters
       @active_letter = active_letter
+      @objects_name = objects_name
     end
 
     private
@@ -13,9 +14,9 @@ module ComponentSerializer
     end
     def data
       ("A".."Z").map do |letter|
-              presence = @letters.include?(letter) ? true : nil
+            presence = @letters.include?(letter) ? true : nil
 
-              { letter: letter, presence: presence, active: active?(letter)}
+            { letter: letter, presence: presence, active: active?(letter), objects_name: @objects_name}
           end
     end
 

@@ -13,9 +13,9 @@ module PageSerializer
       @objects = objects
       @klass = klass
       @objects_name = objects_name
-      @options = options
       @letters = letters
       @active_letter = active_letter
+      @options = options
     end
 
     private
@@ -24,14 +24,14 @@ module PageSerializer
       if @active_letter != "all"
         "#{@objects_name.capitalize} A to Z showing results for #{@active_letter.capitalize}"
       else
-        "People - UK Parliament"
+        "#{@objects_name.capitalize} - UK Parliament"
       end
     end
 
     def content
       c = []
 
-      c << ComponentSerializer::LetterNavigationComponentSerializer.new(@letters, @active_letter).to_h
+      c << ComponentSerializer::LetterNavigationComponentSerializer.new(@letters, @active_letter, @objects_name).to_h
       c <<  { name: @objects_name, data: organise_objects }
 
       c

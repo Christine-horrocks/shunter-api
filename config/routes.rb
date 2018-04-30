@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get '/people/a-z/:letter',              to: 'people#letters'
   get '/constituencies',                  to: 'constituencies#index'
   get '/constituencies/:constituency_id', to: 'constituencies#show'
+  get '/constituencies/a-z/:letter',      to: 'constituencies#letters'
+
 end

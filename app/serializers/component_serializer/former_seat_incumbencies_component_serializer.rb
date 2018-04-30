@@ -5,6 +5,8 @@ module ComponentSerializer
       @seat_incumbencies = seat_incumbencies
     end
 
+    private
+
     def name
       "former-seat-incumbencies"
     end
@@ -17,11 +19,11 @@ module ComponentSerializer
     end
 
     def former_seat_incumbency_list
-      @seat_incumbencies.map do |seat_inbency|
+      @seat_incumbencies.select { |seat_incumbency| seat_incumbency.current? == false }.map do |seat_incumbency|
         {
-          "display_name": seat_inbency.member.display_name,
-          "graph_id": seat_inbency.member.graph_id,
-          "date_range": seat_inbency.date_range
+          "display_name": seat_incumbency.member.display_name,
+          "graph_id": seat_incumbency.member.graph_id,
+          "date_range": seat_incumbency.date_range
         }
       end
     end
