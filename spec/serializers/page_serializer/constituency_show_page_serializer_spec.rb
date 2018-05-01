@@ -3,7 +3,8 @@ require_relative '../../rails_helper'
 describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
   let (:party) { double('party', name: "Labour") }
   let (:seat_incumbency_list){ [1,1,1] }
-  let (:seat_incumbencies) { double('seat_inbencies', map: seat_incumbency_list) }
+  let (:selected_incumbencies) { double('selected_incumbencies', map: seat_incumbency_list)}
+  let (:seat_incumbencies) { double('seat_incumbencies', select: selected_incumbencies) }
   let (:current_seat_incumbency) { double('current_seat_incumbency', constituency: constituency) }
   let (:current_party_membership) { double('current_party_membership', party: party) }
   let (:member) { double('member', display_name: 'MP for this place',

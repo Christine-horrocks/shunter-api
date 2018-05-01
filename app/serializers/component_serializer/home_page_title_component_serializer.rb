@@ -8,7 +8,7 @@ module ComponentSerializer
     def data
       {
         title: "Welcome to the UK Parliament's beta website"
-        
+
       }
 
     end
