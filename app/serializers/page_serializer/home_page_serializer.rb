@@ -13,11 +13,7 @@ module PageSerializer
       c << ComponentSerializer::HomePageSearchComponentSerializer.new.to_h
       c << ComponentSerializer::MpsAndLordsInformationComponentSerializer.new.to_h
       c << ComponentSerializer::GiveFeedbackComponentSerializer.new.to_h
-      
-      # c << "MPs and Lords information, links to MPs, Lords, Constituencies and Parties and groups"
-      # c << "Give feedback title and link"
-      # c << "Follow our progress title and link to blog"
-
+      c << ComponentSerializer::FollowOurProgressComponentSerializer.new.to_h
       c
     end
 

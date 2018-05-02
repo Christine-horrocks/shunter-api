@@ -540,7 +540,7 @@
         1,
         null,
         1,
-        104,
+        106,
         null,
         null,
         1,
@@ -571,7 +571,7 @@
         1,
         null,
         1,
-        96,
+        98,
         null,
         null,
         null,
@@ -765,6 +765,40 @@
         1,
         4,
         1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/horrocksc/Parliament/shunter/shunter-api/spec/serializers/component_serializer/give_feedback_component_serializer_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/horrocksc/Parliament/shunter/shunter-api/app/serializers/component_serializer/give_feedback_component_serializer.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
         null,
         null,
         null,
@@ -2013,6 +2047,7 @@
         1,
         1,
         1,
+        1,
         null,
         null,
         null,
@@ -2343,6 +2378,6 @@
         null
       ]
     },
-    "timestamp": 1525191301
+    "timestamp": 1525255906
   }
 }

@@ -2,7 +2,7 @@ module ComponentSerializer
   class GiveFeedbackComponentSerializer <BaseComponentSerializer
 
     def name
-      "give-feedback"
+      "home-page-non-list-component"
     end
 
     def data
