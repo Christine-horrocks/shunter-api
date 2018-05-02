@@ -1,7 +1,7 @@
 module PageSerializer
   class HomePageSerializer < PageSerializer::BasePageSerializer
 
-    def initialize()
+    def initialize
 
     end
 
