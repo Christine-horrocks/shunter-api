@@ -714,28 +714,42 @@ en:
         title: "What's on beta.parliament.uk"
       object_to_a_bill:
         title: 'Object to a bill'
-        object_to: 'Object to %{link}'
-        object_to_link: 'the Additional Provision to the High Speed Rail (West Midlands to Crew) Bill'
+        object_to_link: 'Object to the Additional Provision to the High Speed Rail (West Midlands to Crew) Bill'
+        additional_text: 'The deadline is 1pm on Friday 27th April 2018'
         blog: 'Read the %{link}.'
         blog_link: 'Object to a bill blog post'
+      search:
+        title: 'Search'
+        additional_text: 'Find results from current parliament.uk websites.'
+        blog: 'Read the %{link}.'
+        blog_link: 'Search blog post'
+      members_info:
+        title: 'MPs and Lords information'
+        mps: 'MPs'
+        lords: 'Lords'
+        constituencies: 'Constituencies'
+        parties_and_groups: 'Parties and Groups'
+        current_mps: 'View all current members of the House of Commons.'
+        current_lords: 'View all current members of the House of Lords.'
+        current_constituencies: 'Find current MPs by the area they represent.'
+        current_parties: 'Find current MPs and Lords by their party or group.'
+        blog: 'Read the %{link}.'
+        blog_link: 'MPs and Lords information blog post'
       feedback:
         title: 'Give feedback'
         provide: 'We want your feedback to %{link} further.'
         provide_link: 'help us improve these pages'
       whats_on:
         title: "What's on beta.parliament.uk"
-      members_info:
-        title: 'MPs and Lords information'
-        current_mps: 'View all current members of the House of Commons.'
-        current_lords: 'View all current members of the House of Lords.'
-        current_constituencies: 'Find current MPs by the area they represent.'
-        current_parties: 'Find current MPs and Lords by their party or group.'
+      # members_info:
+      #   title: 'MPs and Lords information'
+      #   current_mps: 'View all current members of the House of Commons.'
+      #   current_lords: 'View all current members of the House of Lords.'
+      #   current_constituencies: 'Find current MPs by the area they represent.'
+      #   current_parties: 'Find current MPs and Lords by their party or group.'
       latest_members:
         blog: 'Read the %{link}.'
         blog_link: 'MPs and Lords information blog post'
-      search:
-        blog: 'Read the %{link}.'
-        blog_link: 'Search blog post'
       follow_progress:
         title: 'Follow our progress'
         blog: 'Follow all %{link}.'

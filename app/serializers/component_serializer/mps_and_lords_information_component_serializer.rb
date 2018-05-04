@@ -7,31 +7,27 @@ module ComponentSerializer
 
     def data
       {
-        "subheading": "MPs and Lords information",
+        "subheading": t('.home.index.members_info.title'),
         "list-items": [
           {
-          "link-text": "MPs",
-          "link": "/mps",
-          "additional-text": "View all current members of the House of Commons."
+          "link": whole_text_link('.home.index.members_info.mps', "/mps"),
+          "additional-text": t('.home.index.members_info.current_mps')
           },
           {
-          "link-text": "Lords",
-          "link": "/lords",
-          "additional-text": "View all current members of the House of Lords."
+          "link": whole_text_link('.home.index.members_info.lords', "/lords"),
+          "additional-text": t('.home.index.members_info.current_lords')
           },
           {
-            "link-text": "Constituencies",
-            "link": "/constituencies",
-            "additional-text": "Find all current MPs by the are they are represent."
+            "link": whole_text_link('.home.index.members_info.constituencies', "/constituencies"),
+            "additional-text": t('.home.index.members_info.current_constituencies')
           },
           {
-            "link-text": "Parties and groups",
-            "link": "/houses/1AFu55Hs/parties/current",
-            "additional-text": "Find all current MPs and Lords by their party or group."
+            "link": whole_text_link('.home.index.members_info.parties_and_groups', "/houses/1AFu55Hs/parties/current"),
+            "additional-text": t('.home.index.members_info.current_parties')
           }
         ],
-        "blog-link": "https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/",
-        "blog-text": "Read the MPs and Lords information blog post."
+
+        "blog-text-with-link": text_with_link('.home.index.members_info.blog', '.home.index.members_info.blog_link', "https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/")
       }
 
     end
