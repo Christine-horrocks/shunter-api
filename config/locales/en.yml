@@ -706,7 +706,7 @@ en:
   home:
     index:
       title: 'Welcome to the UK Parliament test website'
-      new_website: 'We’re building a %{link}. These pages are being tested and improved – they may be inaccurate or misleading.'
+      new_website: 'We’re building a %{link}. These pages are being tested and improved – They may not work for everyone.'
       new_website_link: 'new website for Parliament'
       old_website: 'Test pages are separate from the current %{link} website.'
       old_website_link: 'parliament.uk'
