@@ -715,7 +715,7 @@ en:
         provide: 'We want your feedback to %{link} further.'
         provide_link: 'help us improve these pages'
       whats_on:
-        title: "What&#8217;s on our test website"
+        title: "What's on beta.parliament.uk"
       members_info:
         title: 'MPs and Lords information'
         current_mps: 'View all current members of the House of Commons.'

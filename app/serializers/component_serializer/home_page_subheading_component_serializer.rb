@@ -7,9 +7,15 @@ module ComponentSerializer
 
     def data
       {
-        "subheading": "What's on beta.parliament.uk"
+        "subheading": subheading
       }
 
+    end
+
+    private
+
+    def subheading
+      t('.home.index.whats_on.title')
     end
 
 
