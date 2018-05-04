@@ -710,6 +710,12 @@ en:
       new_website_link: 'new website for Parliament'
       old_website: 'Test pages are separate from the current %{link} website.'
       old_website_link: 'parliament.uk'
+      whats_on:
+        title: "What's on beta.parliament.uk"
+      object_to_a_bill:
+        title: 'Object to a bill'
+        object_to: 'Object to %{link}'
+        object_to_link: 'the Additional Provision to the High Speed Rail (West Midlands to Crew) Bill'
       feedback:
         title: 'Give feedback'
         provide: 'We want your feedback to %{link} further.'
