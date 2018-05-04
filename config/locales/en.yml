@@ -716,6 +716,8 @@ en:
         title: 'Object to a bill'
         object_to: 'Object to %{link}'
         object_to_link: 'the Additional Provision to the High Speed Rail (West Midlands to Crew) Bill'
+        blog: 'Read the %{link}.'
+        blog_link: 'Object to a bill blog post'
       feedback:
         title: 'Give feedback'
         provide: 'We want your feedback to %{link} further.'

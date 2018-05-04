@@ -10,13 +10,10 @@ module ComponentSerializer
         "subheading": "Object to a bill",
         "list-items": [
           {
-            "link-text": t('.home.index.object_to_a_bill.object_to_link'),
-            "link": "/petition-a-hybrid-bill/2",
-            "additional-text": t('.home.index.object_to_a_bill.object_to')
+            "text-with-link": text_with_link('.home.index.object_to_a_bill.object_to', '.home.index.object_to_a_bill.object_to_link', "/petition-a-hybrid-bill/2")
           }
         ],
-        "blog-link": "https://pds.blog.parliament.uk/2018/02/09/building-a-new-online-service-petitioning-a-hybrid-bill/",
-        "blog-text": "Read the Object to a bill blog post."
+        "blog-text-with-link": text_with_link('.home.index.object_to_a_bill.blog', '.home.index.object_to_a_bill.blog_link', "https://pds.blog.parliament.uk/2018/02/09/building-a-new-online-service-petitioning-a-hybrid-bill/")
       }
 
     end
