@@ -4,16 +4,16 @@ class BaseSerializer
     content
   end
 
-  def t(dictionary_key)
-    I18n.t(dictionary_key)
+  def t(*args)
+    I18n.t(*args)
   end
 
-  def text_with_link(text_dictionary_key, link_text_dictionary_key, link)
-    I18n.t(text_dictionary_key, link: ActionController::Base.helpers.link_to(I18n.t(link_text_dictionary_key), link).html_safe).html_safe
-  end
+  # def text_with_link(text_dictionary_key, link_text_dictionary_key, link)
+  #   t(text_dictionary_key, link: ActionController::Base.helpers.link_to(I18n.t(link_text_dictionary_key), link).html_safe).html_safe
+  # end
 
-  def whole_text_link(link_text_dictionary_key, link)
-    ActionController::Base.helpers.link_to(I18n.t(link_text_dictionary_key), link).html_safe
+  def link_to(body, url, html_options = {})
+    ActionController::Base.helpers.link_to(body, url, html_options).html_safe
   end
 
   def content
