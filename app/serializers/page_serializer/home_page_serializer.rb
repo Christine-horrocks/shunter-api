@@ -15,8 +15,8 @@ module PageSerializer
       c << ComponentSerializer::StatusHighlightComponentSerializer.new(search_blog_post_text).to_h
       c << mps_and_lords_information
       c << ComponentSerializer::StatusHighlightComponentSerializer.new(mps_and_lords_blog_post_text).to_h
-      c << ComponentSerializer::GiveFeedbackComponentSerializer.new.to_h
-      c << ComponentSerializer::FollowOurProgressComponentSerializer.new.to_h
+      c << give_feedback
+      c << follow_our_progress
       c
     end
 
@@ -60,6 +60,20 @@ module PageSerializer
 
     def mps_and_lords_blog_post_text
       t('.home.index.members_info.blog', link: link_to(t('.home.index.members_info.blog_link'), 'https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/'))
+    end
+
+    def give_feedback
+      heading = t('.home.index.feedback.title')
+      additional_text = t('.home.index.feedback.provide', link: link_to(t('.home.index.feedback.provide_link'), 'http://www.smartsurvey.co.uk/s/ukparliament-beta-website-feedback/'))
+
+      ComponentSerializer::ContentComponentSerializer.new(heading, additional_text).to_h
+    end
+
+    def follow_our_progress
+      heading = t(".home.index.follow_progress.title")
+      additional_text = t('.home.index.follow_progress.blog', link: link_to(t('.home.index.follow_progress.blog_link'), 'https://pds.blog.parliament.uk/category/parliament-uk/'))
+
+      ComponentSerializer::ContentComponentSerializer.new(heading, additional_text).to_h
     end
 
   end
