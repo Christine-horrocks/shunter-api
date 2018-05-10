@@ -13,7 +13,7 @@ RSpec.describe HomeController, vcr: true do
     end
 
     it 'calls the HomePageSerializer' do
-          expect(PageSerializer::HomePageSerializer).to have_received(:new)
-      end
+      expect(PageSerializer::HomePageSerializer).to have_received(:new)
+    end
   end
 end
