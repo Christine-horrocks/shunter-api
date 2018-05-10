@@ -19,7 +19,7 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
   let (:json_location) { "here"}
   let (:region) { double('region', first: { name: 'NorthEast' }) }
   let (:regions) { double('regions', map: region) }
-  let (:constituency) { double('constituency', name: "Constituency", regions: regions)}
+  let (:constituency) { double('constituency', name: "Constituency", regions: regions, current?: true)}
   let ( :constituencyshowpageserializer ) { described_class.new(constituency,json_location,member, party,seat_incumbencies) }
 
   context '#to_h' do
@@ -43,8 +43,14 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
         constituencyshowpageserializer.to_h
       end
 
-      it 'produces a hash containg the data to create a constituency show page' do
-        expect(constituencyshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Constituency ", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"constituency-heading", :data=>"Constituency"}, {:name=>"constituency-subheading", :data=>{:name=>"NorthEast"}}, {:name=>"map", :data=>{:json_location=>"here"}}, {:name=>"people", :data=>[{:display_name=>"MP for this place", :graph_id=>"121212", :image_url=>"https://api.parliament.uk/Live/photo/121212.jpeg?crop=CU_1:1&amp;width=186&amp;quality=80", :role=>"MP for Constituency", "current_party"=>"Labour"}]}, {:name=>"former-seat-incumbencies", :data=>{:title=>"Former MPs", :"former-seat-incumbency-list"=>[1, 1, 1]}}, {:name=>"footer", :data=>"footer"}]})
+      it 'produces a hash containg the data to create a constituency show page when current' do
+        expect(constituencyshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Constituency ", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"constituency-heading", :data=>"Constituency"}, {:name=>"constituency-subheading", :data=>{:current=>true, :subheading=>"{:name=>\"NorthEast\"}"}}, {:name=>"map", :data=>{:json_location=>"here"}}, {:name=>"people", :data=>[{:display_name=>"MP for this place", :graph_id=>"121212", :image_url=>"https://api.parliament.uk/Live/photo/121212.jpeg?crop=CU_1:1&amp;width=186&amp;quality=80", :role=>"MP for Constituency", "current_party"=>"Labour"}]}, {:name=>"former-seat-incumbencies", :data=>{:title=>"Former MPs", :"former-seat-incumbency-list"=>[1, 1, 1]}}, {:name=>"footer", :data=>"footer"}]})
+      end
+
+      it 'produces a hash containg limited data to create a constituency show page when former' do
+        allow(constituency).to receive(:current?) {false}
+        allow(constituency).to receive(:date_range) {"12-12"}
+        expect(constituencyshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Constituency ", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"constituency-heading", :data=>"Constituency"}, {:name=>"constituency-subheading", :data=>{:current=>false, :subheading=>"Constituency from 12-12"}}, {:name=>"former-seat-incumbencies", :data=>{:title=>"Former MPs", :"former-seat-incumbency-list"=>[1, 1, 1]}}, {:name=>"footer", :data=>"footer"}]})
       end
 
   end

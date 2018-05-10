@@ -3,12 +3,17 @@ require_relative '../../rails_helper'
 describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
   let (:region) { double('region', name: 'North East', first: 'North East') }
   let (:regions) { double('regions', map: region) }
-  let (:constituency) { double('constituency', regions: regions)}
+  let (:constituency) { double('constituency', regions: regions, current?: true, date_range: "12-12")}
   let (:constituencysubheadingcomponentserializer) { described_class.new(constituency) }
   context '#to_h' do
-    it 'returns a hash containing the name and data' do
-      expect(constituencysubheadingcomponentserializer.to_h).to eq({ :name=>"constituency-subheading", :data=>"North East" })
+    it 'returns a hash containing the name and data if current' do
+      expect(constituencysubheadingcomponentserializer.to_h).to eq({ :name=>"constituency-subheading", :data=>{:current=>true, :subheading=>"North East"} })
     end
-  end
 
+    it 'returns a hash containing the name and date if former' do
+      allow(constituency).to receive(:current?) {false}
+      expect(constituencysubheadingcomponentserializer.to_h).to eq({ :name=>"constituency-subheading", :data=>{:current=>false, :subheading=>"Constituency from 12-12"} })
+    end
+
+  end
 end
