@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-05-10T17:04:44+01:00">2018-05-10T17:04:44+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-05-10T17:36:13+01:00">2018-05-10T17:36:13+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.89%</span></span>
+    (<span class="covered_percent"><span class="green">98.9%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         13.69
+         13.74
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>73</b> files in total.
-    <b>1085</b> relevant lines. 
-    <span class="green"><b>1073</b> lines covered</span> and
+    <b>1089</b> relevant lines. 
+    <span class="green"><b>1077</b> lines covered</span> and
     <span class="red"><b>12</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -117,7 +117,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>29.7</td>
+        <td>35.8</td>
       </tr>
       
       <tr>
@@ -293,11 +293,11 @@
       <tr>
         <td class="strong"><a href="#6cd8e9438eb98aea7327a2c98cfcbe833cc65c7b" class="src_link" title="app/serializers/component_serializer/related_links_component_serializer.rb">app/serializers/component_serializer/related_links_component_serializer.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>24</td>
-        <td>14</td>
-        <td>14</td>
+        <td>28</td>
+        <td>18</td>
+        <td>18</td>
         <td>0</td>
-        <td>6.7</td>
+        <td>7.7</td>
       </tr>
       
       <tr>
@@ -3168,8 +3168,8 @@
           <code class="ruby">  def t(*args)</code>
         </li>
       
-        <li class="covered" data-hits="147" data-linenumber="8">
-          <span class="hits">147</span>
+        <li class="covered" data-hits="202" data-linenumber="8">
+          <span class="hits">202</span>
           
           <code class="ruby">    I18n.t(*args)</code>
         </li>
@@ -6075,8 +6075,8 @@
     <h3>app/serializers/component_serializer/related_links_component_serializer.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>14</b> relevant lines. 
-      <span class="green"><b>14</b> lines covered</span> and
+      <b>18</b> relevant lines. 
+      <span class="green"><b>18</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6129,7 +6129,7 @@
         <li class="never" data-hits="" data-linenumber="8">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="9">
@@ -6171,58 +6171,82 @@
         <li class="covered" data-hits="11" data-linenumber="15">
           <span class="hits">11</span>
           
-          <code class="ruby">        hash[&quot;template&quot;] = &quot;related-links&quot;</code>
+          <code class="ruby">        hash[&quot;title&quot;] = t(&#39;.people.related_links.title&#39;)</code>
         </li>
       
         <li class="covered" data-hits="11" data-linenumber="16">
           <span class="hits">11</span>
           
-          <code class="ruby">        hash[&quot;name&quot;] = @person.full_name if @person.image_id</code>
+          <code class="ruby">        hash[&quot;website&quot;] = t(&#39;.people.related_links.website&#39;)</code>
         </li>
       
         <li class="covered" data-hits="11" data-linenumber="17">
           <span class="hits">11</span>
           
-          <code class="ruby">        hash[&quot;website&quot;] = @person.personal_weblinks if @person.personal_weblinks.any?</code>
+          <code class="ruby">        hash[&quot;twitter&quot;] = t(&#39;.people.related_links.twitter&#39;)</code>
         </li>
       
         <li class="covered" data-hits="11" data-linenumber="18">
           <span class="hits">11</span>
           
-          <code class="ruby">        hash[&quot;twitter&quot;] = @person.twitter_weblinks if @person.twitter_weblinks.any?</code>
+          <code class="ruby">        hash[&quot;portrait&quot;] = t(&#39;.people.related_links.portrait&#39;)</code>
         </li>
       
         <li class="covered" data-hits="11" data-linenumber="19">
           <span class="hits">11</span>
           
+          <code class="ruby">        hash[&quot;portrait-link&quot;]= t(&#39;.people.related_links.portrait_link&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="20">
+          <span class="hits">11</span>
+          
+          <code class="ruby">        hash[&quot;name&quot;] = @person.full_name if @person.image_id</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="21">
+          <span class="hits">11</span>
+          
+          <code class="ruby">        hash[&quot;website-link&quot;] = @person.personal_weblinks if @person.personal_weblinks.any?</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="22">
+          <span class="hits">11</span>
+          
+          <code class="ruby">        hash[&quot;twitter-link&quot;] = @person.twitter_weblinks if @person.twitter_weblinks.any?</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="23">
+          <span class="hits">11</span>
+          
           <code class="ruby">        hash[&quot;media-url&quot;] = &quot;/media/#{@person.image_id}&quot; if @person.image_id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby">end</code>
@@ -13342,7 +13366,7 @@
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;template&quot;=&gt;&quot;related-links&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;website&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;twitter&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
+          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;title&quot;=&gt;&quot;Related links&quot;, &quot;website&quot;=&gt;&quot;Website: &quot;, &quot;twitter&quot;=&gt;&quot;Twitter: &quot;, &quot;portrait&quot;=&gt;&quot;&#39;s official portrait is &quot;, &quot;portrait-link&quot;=&gt;&quot;available to download&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;website-link&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;twitter-link&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
@@ -13390,7 +13414,7 @@
         <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;template&quot;=&gt;&quot;related-links&quot;, &quot;website&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;twitter&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;]}})</code>
+          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt; {&quot;title&quot;=&gt;&quot;Related links&quot;, &quot;website&quot;=&gt;&quot;Website: &quot;, &quot;twitter&quot;=&gt;&quot;Twitter: &quot;, &quot;portrait&quot;=&gt;&quot;&#39;s official portrait is &quot;, &quot;portrait-link&quot;=&gt;&quot;available to download&quot;, &quot;website-link&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;twitter-link&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;]}})</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
@@ -13438,7 +13462,7 @@
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;template&quot;=&gt;&quot;related-links&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;twitter&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
+          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;title&quot;=&gt;&quot;Related links&quot;, &quot;website&quot;=&gt;&quot;Website: &quot;, &quot;twitter&quot;=&gt;&quot;Twitter: &quot;, &quot;portrait&quot;=&gt;&quot;&#39;s official portrait is &quot;, &quot;portrait-link&quot;=&gt;&quot;available to download&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;twitter-link&quot;=&gt;[&quot;DianneAbbottonTwitter.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
@@ -13486,7 +13510,7 @@
         <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;template&quot;=&gt;&quot;related-links&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;website&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
+          <code class="ruby">      expect(relatedlinkscomponentserializer.to_h).to eq({:name=&gt;&quot;related-links&quot;, :data=&gt;{&quot;title&quot;=&gt;&quot;Related links&quot;, &quot;website&quot;=&gt;&quot;Website: &quot;, &quot;twitter&quot;=&gt;&quot;Twitter: &quot;, &quot;portrait&quot;=&gt;&quot;&#39;s official portrait is &quot;, &quot;portrait-link&quot;=&gt;&quot;available to download&quot;, &quot;name&quot;=&gt;&quot;Dianne Abbott&quot;, &quot;website-link&quot;=&gt;[&quot;DianneAbbott.com&quot;], &quot;media-url&quot;=&gt;&quot;/media/43RHonMf&quot;}})</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">

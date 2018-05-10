@@ -478,8 +478,11 @@ en:
       government_role: 'government role'
       opposition_role: 'opposition role'
     related_links:
-      title: 'related links'
-      portrait: "%{name}&#8217;s official portrait is %{link}."
+      title: 'Related links'
+      website: 'Website: '
+      twitter: 'Twitter: '
+      portrait: "'s official portrait is "
+      portrait_link: available to download
     constituencies:
       index:
         title: '%{current_and_former} %{constituency_plural}'
