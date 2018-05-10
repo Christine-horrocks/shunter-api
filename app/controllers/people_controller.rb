@@ -11,26 +11,17 @@ class PeopleController < ApplicationController
   def show
     @person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'GovernmentIncumbency', 'OppositionIncumbency')
     @person = @person.first
-
-    render json: Serializers::PersonShowPage.new(
-      @person,
-      @seat_incumbencies,
-      @committee_memberships,
-      @government_incumbencies,
-      @opposition_incumbencies
-      # options = { "top-navigation": false }
-    ).to_h
+    render_page(PageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies))
   end
 
   def index
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
-    render json: Serializers::ListPage.new(@people, Person, 'people').to_h
+    render_page(PageSerializer::ListPageSerializer.new(@people, ComponentSerializer::PersonComponentSerializer, 'people', @letters))
   end
 
   def letters
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
-    p params[:letter]
-    render json: Serializers::ListPage.new(@people, Person, 'people', @letters, params[:letter]).to_h
+    render_page(PageSerializer::ListPageSerializer.new(@people, ComponentSerializer::PersonComponentSerializer, 'people', @letters, params[:letter]))
   end
 
   private

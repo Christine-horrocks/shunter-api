@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
   include Pugin::Helpers::ControllerHelpers
   include Parliament::Utils::Helpers::ApplicationHelper
   include Parliament::Utils::Helpers::VCardHelper
-  include Serializers
+  include ActionController::MimeResponds
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
@@ -27,4 +27,14 @@ class ApplicationController < ActionController::API
   rescue_from Parliament::NoContentResponseError do |error|
     raise ActionController::RoutingError, error.message
   end
+
+  def render_page(serializer)
+   response.headers['Content-Type'] = 'application/x-shunter+json'
+   response.headers['Access-Control-Allow-Origin'] = '*'
+   response.headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+   response.headers['Access-Control-Request-Method'] = '*'
+   response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+   render json: serializer.to_h
+  end
+
 end

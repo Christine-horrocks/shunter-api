@@ -1,0 +1,15 @@
+module ComponentSerializer
+  class WhenToContactComponentSerializer < BaseComponentSerializer
+
+    def name
+       "when-to-contact"
+    end
+    def data
+      {
+        "template": "when-to-contact",
+        "text": "You may be able to discuss issues with your MP in person or online. Contact them for details."
+      }
+    end
+
+  end
+end

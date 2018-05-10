@@ -325,7 +325,7 @@ DEPENDENCIES
   rails-controller-testing
   rake
   redcarpet (~> 3.0)
-  rspec-rails
+  rspec-rails (~> 3.7)
   rubocop
   simplecov (~> 0.14)
   spring
