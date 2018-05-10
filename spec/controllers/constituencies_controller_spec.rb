@@ -33,7 +33,6 @@ RSpec.describe ConstituenciesController, vcr: true do
     end
 
     it 'calls the ConstituencyShowPageSerializer with the correct arguments' do
-      # expect(PageSerializer::ConstituencyShowPageSerializer).to have_received(:new)
       expect(PageSerializer::ConstituencyShowPageSerializer).to have_received(:new).with(
         assigns(:constituency),
         assigns(:json_location),

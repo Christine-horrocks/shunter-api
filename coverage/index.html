@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-05-10T11:57:18+01:00">2018-05-10T11:57:18+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-05-10T12:02:10+01:00">2018-05-10T12:02:10+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">70.86%</span></span>
+    (<span class="covered_percent"><span class="red">70.55%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         539.45
+         545.3
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>18</b> files in total.
-    <b>278</b> relevant lines. 
-    <span class="green"><b>197</b> lines covered</span> and
+    <b>275</b> relevant lines. 
+    <span class="green"><b>194</b> lines covered</span> and
     <span class="red"><b>81</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#1d06b664a1daab7e41abe3b20851a17ff4bac175" class="src_link" title="app/controllers/constituencies_controller.rb">app/controllers/constituencies_controller.rb</a></td>
-        <td class="red strong">63.27 %</td>
+        <td class="red strong">60.87 %</td>
         <td>105</td>
-        <td>49</td>
-        <td>31</td>
+        <td>46</td>
+        <td>28</td>
         <td>18</td>
-        <td>2892.7</td>
+        <td>3081.2</td>
       </tr>
       
       <tr>
@@ -203,7 +203,7 @@
       <tr>
         <td class="strong"><a href="#5ff7d8e607d44d2335f7bcbf8f9e93a4f7e843e9" class="src_link" title="spec/controllers/constituencies_controller_spec.rb">spec/controllers/constituencies_controller_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>109</td>
+        <td>108</td>
         <td>51</td>
         <td>51</td>
         <td>0</td>
@@ -490,10 +490,10 @@
         <div class="source_table" id="1d06b664a1daab7e41abe3b20851a17ff4bac175">
   <div class="header">
     <h3>app/controllers/constituencies_controller.rb</h3>
-    <h4><span class="red">63.27 %</span> covered</h4>
+    <h4><span class="red">60.87 %</span> covered</h4>
     <div>
-      <b>49</b> relevant lines. 
-      <span class="green"><b>31</b> lines covered</span> and
+      <b>46</b> relevant lines. 
+      <span class="green"><b>28</b> lines covered</span> and
       <span class="red"><b>18</b> lines missed.</span>
     </div>
   </div>
@@ -765,34 +765,34 @@
           <code class="ruby">    @party = @current_party ? @current_party : @party.first</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="45">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="45">
           
-          <code class="ruby">    @region = @constituency.regions.map do |region|</code>
+          
+          <code class="ruby">    # @region = @constituency.regions.map do |region|</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="46">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="46">
           
-          <code class="ruby">      region.name</code>
+          
+          <code class="ruby">    #   region.name</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    # end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="48">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="48">
           
-          <code class="ruby">    @member = @current_incumbency.member if @constituency.current?</code>
+          
+          <code class="ruby">    # @region = @region.first</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="49">
           <span class="hits">3</span>
           
-          <code class="ruby">    @region = @region.first</code>
+          <code class="ruby">    @member = @current_incumbency.member if @constituency.current?</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="50">
@@ -3671,445 +3671,439 @@
           <code class="ruby">    it &#39;calls the ConstituencyShowPageSerializer with the correct arguments&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby">      # expect(PageSerializer::ConstituencyShowPageSerializer).to have_received(:new)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(PageSerializer::ConstituencyShowPageSerializer).to have_received(:new).with(</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">        assigns(:constituency),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">        assigns(:json_location),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">        assigns(:member),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">        assigns(:party),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">        assigns(:seat_incumbencies)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">      )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="46">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
           <code class="ruby">  describe &#39;GET index&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
           <code class="ruby">    before(:each) do</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="48">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      allow(PageSerializer::ListPageSerializer).to receive(:new)</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="49">
           <span class="hits">3</span>
           
-          <code class="ruby">      allow(PageSerializer::ListPageSerializer).to receive(:new)</code>
+          <code class="ruby">      get :index</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="50">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="50">
           
-          <code class="ruby">      get :index</code>
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    it &#39;should have a response with status 200&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
-          <code class="ruby">    it &#39;should have a response with status 200&#39; do</code>
+          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="54">
           
-          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    it &#39;assigns @constituencies and @letters&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">    it &#39;assigns @constituencies and @letters&#39; do</code>
+          <code class="ruby">      assigns(:constituencies).each do |constituency|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="58">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3877" data-linenumber="58">
+          <span class="hits">3877</span>
           
-          <code class="ruby">      assigns(:constituencies).each do |constituency|</code>
+          <code class="ruby">        expect(constituency).to be_a(Grom::Node)</code>
         </li>
       
         <li class="covered" data-hits="3877" data-linenumber="59">
           <span class="hits">3877</span>
           
-          <code class="ruby">        expect(constituency).to be_a(Grom::Node)</code>
+          <code class="ruby">        expect(constituency.type).to eq(&#39;https://id.parliament.uk/schema/ConstituencyGroup&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="3877" data-linenumber="60">
-          <span class="hits">3877</span>
+        <li class="never" data-hits="" data-linenumber="60">
           
-          <code class="ruby">        expect(constituency.type).to eq(&#39;https://id.parliament.uk/schema/ConstituencyGroup&#39;)</code>
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="62">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="63">
+        <li class="covered" data-hits="1" data-linenumber="62">
           <span class="hits">1</span>
           
           <code class="ruby">      assigns(:letters).each do |letter|</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="64">
+        <li class="covered" data-hits="24" data-linenumber="63">
           <span class="hits">24</span>
           
           <code class="ruby">        expect(letter).to be_a(String)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="covered" data-hits="1" data-linenumber="67">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    it &#39;calls the ListPageSerializer with the correct arguments&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="68">
           <span class="hits">1</span>
           
-          <code class="ruby">    it &#39;calls the ListPageSerializer with the correct arguments&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="69">
-          <span class="hits">1</span>
-          
           <code class="ruby">      expect(PageSerializer::ListPageSerializer).to have_received(:new).with(</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby">          assigns[:constituencies],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">          ComponentSerializer::ConstituencyComponentSerializer,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby">          &#39;constituencies&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby">          assigns[:letters]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">      )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="78">
+        <li class="covered" data-hits="1" data-linenumber="77">
           <span class="hits">1</span>
           
           <code class="ruby">  describe &#39;GET letters&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
+        <li class="covered" data-hits="1" data-linenumber="78">
           <span class="hits">1</span>
           
           <code class="ruby">    before(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="80">
+        <li class="covered" data-hits="3" data-linenumber="79">
           <span class="hits">3</span>
           
           <code class="ruby">      allow(PageSerializer::ListPageSerializer).to receive(:new)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="81">
+        <li class="covered" data-hits="3" data-linenumber="80">
           <span class="hits">3</span>
           
           <code class="ruby">      get :letters, params: { letter: &#39;a&#39; }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="84">
+        <li class="covered" data-hits="1" data-linenumber="83">
           <span class="hits">1</span>
           
           <code class="ruby">    it &#39;should have a response with status 200&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="85">
+        <li class="covered" data-hits="1" data-linenumber="84">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(response).to have_http_status(:ok)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="88">
+        <li class="covered" data-hits="1" data-linenumber="87">
           <span class="hits">1</span>
           
           <code class="ruby">    it &#39;assigns @constituencies and @letters&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="89">
+        <li class="covered" data-hits="1" data-linenumber="88">
           <span class="hits">1</span>
           
           <code class="ruby">      assigns(:constituencies).each do |constituency|</code>
         </li>
       
-        <li class="covered" data-hits="113" data-linenumber="90">
+        <li class="covered" data-hits="113" data-linenumber="89">
           <span class="hits">113</span>
           
           <code class="ruby">        expect(constituency).to be_a(Grom::Node)</code>
         </li>
       
-        <li class="covered" data-hits="113" data-linenumber="91">
+        <li class="covered" data-hits="113" data-linenumber="90">
           <span class="hits">113</span>
           
           <code class="ruby">        expect(constituency.type).to eq(&#39;https://id.parliament.uk/schema/ConstituencyGroup&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="92">
+        <li class="never" data-hits="" data-linenumber="91">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="92">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="94">
+        <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
           <code class="ruby">      assigns(:letters).each do |letter|</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="95">
+        <li class="covered" data-hits="24" data-linenumber="94">
           <span class="hits">24</span>
           
           <code class="ruby">        expect(letter).to be_a(String)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="96">
+        <li class="never" data-hits="" data-linenumber="95">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="98">
+        <li class="never" data-hits="" data-linenumber="97">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="99">
+        <li class="covered" data-hits="1" data-linenumber="98">
           <span class="hits">1</span>
           
           <code class="ruby">    it &#39;calls the ListPageSerializer with the correct arguments&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="100">
+        <li class="covered" data-hits="1" data-linenumber="99">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(PageSerializer::ListPageSerializer).to have_received(:new).with(</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="never" data-hits="" data-linenumber="100">
           
           
           <code class="ruby">        assigns[:constituencies],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="102">
+        <li class="never" data-hits="" data-linenumber="101">
           
           
           <code class="ruby">        ComponentSerializer::ConstituencyComponentSerializer,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="103">
+        <li class="never" data-hits="" data-linenumber="102">
           
           
           <code class="ruby">        &#39;constituencies&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="104">
+        <li class="never" data-hits="" data-linenumber="103">
           
           
           <code class="ruby">        assigns[:letters],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="105">
+        <li class="never" data-hits="" data-linenumber="104">
           
           
           <code class="ruby">        &#39;a&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="106">
+        <li class="never" data-hits="" data-linenumber="105">
           
           
           <code class="ruby">      )</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="107">
+        <li class="never" data-hits="" data-linenumber="106">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="108">
+        <li class="never" data-hits="" data-linenumber="107">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="109">
+        <li class="never" data-hits="" data-linenumber="108">
           
           
           <code class="ruby">end</code>

@@ -42,11 +42,8 @@ class ConstituenciesController < ApplicationController
     @current_party = @current_incumbency.member.current_party if @current_incumbency
 
     @party = @current_party ? @current_party : @party.first
-    @region = @constituency.regions.map do |region|
-      region.name
-    end
+
     @member = @current_incumbency.member if @constituency.current?
-    @region = @region.first
     render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @member, @party, @seat_incumbencies))
   end
 
