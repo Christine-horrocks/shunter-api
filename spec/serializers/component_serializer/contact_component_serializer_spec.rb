@@ -11,7 +11,7 @@ describe ComponentSerializer::ContactComponentSerializer do
   let (:contactcomponentserializer) { described_class.new(object) }
   context '#to_h' do
     it 'returns a hash containing the name and data for when to contact MPs' do
-      expect(contactcomponentserializer.to_h).to eq({:name=>"contact", :data=>{:template=>"contact", :"contact-points"=>[{:email=>"parliament@parliament.com", :phone=>12121212, :addresses=>["1parliament", "2parliament"]}]}})
+      expect(contactcomponentserializer.to_h).to eq({:name=>"contact", :data=>{:title=>"Contact", :email=>"Email: ", :phone=>"Phone: ", :address=>"Address: ", :"contact-points"=>[{:email=>"parliament@parliament.com", :phone=>12121212, :addresses=>["1parliament", "2parliament"]}]}})
     end
   end
 end

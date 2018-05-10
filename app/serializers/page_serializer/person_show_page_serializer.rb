@@ -24,7 +24,7 @@ module PageSerializer
     end
 
   def title
-    "#{@person.display_name} UK Parliament"
+    "#{@person.display_name} #{t('.uk_parliament')}"
   end
 
   end
