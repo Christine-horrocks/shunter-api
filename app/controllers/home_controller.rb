@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
     render_page(PageSerializer::HomePageSerializer.new)
 
-   end
+  end
 
   # def mps
   #   @parliaments, @parties, @speaker = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'ParliamentPeriod', 'Party', 'Person')
