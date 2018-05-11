@@ -590,14 +590,16 @@ en:
     shared_translations:
       vacant: 'Vacant'
       former_constituency: 'Former constituency'
+      constituency_from: 'Constituency from '
     constituency:
       title: # title does not require translation
       correct_constituency: "this is the constituency for your postcode"
       incorrect_constituency: 'this is not your constituency.'
       constituency_for_postcode: 'is the constituency for'
       check_constituency: 'check if this is your constituency'
-      former_constituency: 'This is a former constituency. %{current_constituencies_link}.'
-      current_constituencies_link: 'view current constituencies'
+      former_constituency: 'This is a former constituency BOOP!.'
+      constituency_in: 'Constituency in '
+      current_constituencies_link: 'View current constituencies'
       constituency_map_fallback: 'A map of the constituency is available. To view it JavaScript must enabled.'
   # parties translations
   parties:
