@@ -462,21 +462,29 @@ en:
       who_else_can_help: 'Who else can help with my issue?'
       discuss_with: 'You may be able to discuss issues with your MP in person or online. Contact them for details'
       contact_postcode: 'Please include your postcode when contacting your MP.'
-    timeline_roles:
+    roles:
+      roles: 'roles'
       mp_for: 'MP for'
-      parliamentary_role: 'parliamentary role'
-      committee_role: 'committee role'
-      government_role: 'government role'
-      opposition_role: 'opposition role'
+      parliamentary_role: 'Parliamentary role'
+      committee_role: 'Committee role'
+      government_role: 'Government role'
+      opposition_role: 'Opposition role'
       held_currently: 'Held currently'
+      lords_role: 'Member of the House of Lords'
+      member_of_the: 'Member of the '
     previous_roles:
-      held_in: "Held in the last %{years} years"
-    current_roles:
-      mp_for: 'MP for'
-      parliamentary_role: 'parliamentary role'
-      committee_role: 'committee role'
-      government_role: 'government role'
-      opposition_role: 'opposition role'
+      held_in: 'Held in the last '
+      year_s: ' years'
+      elected: 'Elected '
+      times:  ' times'
+    timeline:
+      timeline: 'timeline'
+    # current_roles:
+    #   mp_for: 'MP for'
+    #   parliamentary_role: 'parliamentary role'
+    #   committee_role: 'committee role'
+    #   government_role: 'government role'
+    #   opposition_role: 'opposition role'
     related_links:
       title: 'Related links'
       website: 'Website: '

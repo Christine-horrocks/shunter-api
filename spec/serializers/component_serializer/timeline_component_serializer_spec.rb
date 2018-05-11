@@ -9,7 +9,7 @@ describe ComponentSerializer::TimelineComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data for MPs roles' do
-      expect(timelinecomponentserializer.to_h).to eq({:name=>"timeline", :data=>{:template=>"timeline", :"timeline-roles"=>"This is your timeline"}})
+      expect(timelinecomponentserializer.to_h).to eq({:name=>"timeline", :data=>{:"timeline-roles"=>"This is your timeline"}})
     end
 
     it 'is called with create_role_history and current_roles' do

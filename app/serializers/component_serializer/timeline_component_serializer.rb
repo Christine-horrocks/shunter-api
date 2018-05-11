@@ -13,12 +13,11 @@ module ComponentSerializer
     private
 
     def name
-      "timeline"
+      t('.people.timeline.timeline')
     end
 
     def data
       {
-        "template": "timeline",
         "timeline-roles": timeline_roles
       }
     end
