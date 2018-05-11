@@ -30,7 +30,7 @@ module ComponentSerializer
       {
           'constituency_name': former_constituency_name,
           'graph_id': "#{@constituency.graph_id}",
-          'subtitle': 'Former constituency'
+          'subtitle': t('.constituencies.shared_translations.former_constituency')
       }
     end
 

@@ -372,6 +372,7 @@ en:
   parliament: 'parliament'
   parliament_plural: 'parliaments'
   uk_parliament: 'UK Parliament'
+  uk_parliament_with_dash: '- UK Parliament'
   # global places translations
   place: 'place'
   place_plural: 'places'
@@ -396,11 +397,12 @@ en:
   open_new_window: "website opens in a new window"
   # global a-z navigation translations
   a_to_z:
-    a_to_z: 'A to Z'
+    a_to_z: 'A to Z showing results for'
     select_letter: 'select a letter'
     showing_results: 'showing results for'
     showing_all: 'showing all'
     aria_label: 'Paged navigation'
+    all: 'all'
   # global time format translations
   time:
     formats:
@@ -413,25 +415,25 @@ en:
     no_mp: "We couldn't find an MP for that postcode.  Your constituency is"
   # people translations
   people:
-    index:
-      title: '%{current_and_former} %{mps_and_lords}'
+    # index:
+    #   title: '%{current_and_former} %{mps_and_lords}'
     a_to_z:
       title: # needs title
-    letters:
-      title: '%{current_and_former} %{mps_and_lords}'
-    lookup_by_letters:
-      title: '%{current_and_former} %{mps_and_lords}'
-    members:
-      index:
-        title: '%{current_and_former} %{mps_and_lords}'
-      a_to_z:
-        title: # needs title
-      letters:
-        title: '%{current_and_former} %{mps_and_lords}'
-      current:
-        title: '%{current} %{mps_and_lords}'
-      current_letters:
-        title: '%{current} %{mps_and_lords}'
+    # letters:
+    #   title: '%{current_and_former} %{mps_and_lords}'
+    # lookup_by_letters:
+    #   title: '%{current_and_former} %{mps_and_lords}'
+    # members:
+    #   index:
+    #     title: '%{current_and_former} %{mps_and_lords}'
+    #   a_to_z:
+    #     title: # needs title
+    #   letters:
+    #     title: '%{current_and_former} %{mps_and_lords}'
+    #   current:
+    #     title: '%{current} %{mps_and_lords}'
+    #   current_letters:
+    #     title: '%{current} %{mps_and_lords}'
     show:
       mp_for: 'MP for'
       contact: 'contact'
@@ -587,6 +589,7 @@ en:
         title: # title does not require translation
     shared_translations:
       vacant: 'Vacant'
+      former_constituency: 'Former constituency'
     constituency:
       title: # title does not require translation
       correct_constituency: "this is the constituency for your postcode"

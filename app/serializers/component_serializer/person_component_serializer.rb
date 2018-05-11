@@ -30,11 +30,11 @@ module ComponentSerializer
       end
 
       def role
-        role = "MP for #{@options[:constituency_name]}" if @options[:constituency_show_page]
-        role = "Former MP" if @person.former_mp?
-        role = "Former Member of the House of Lords" if @person.former_lord?
-        role = "MP for #{@person.current_seat_incumbency.constituency.name}" if @person.current_mp?
-        role = "#{@person.statuses[:house_membership_status].join(' and ')}" if @person.current_lord?
+        role = "#{t('.people.show.mp_for')} #{@options[:constituency_name]}" if @options[:constituency_show_page]
+        role = t('former_mp') if @person.former_mp?
+        role = t('.former_lord') if @person.former_lord?
+        role = "#{t('.people.show.mp_for')} #{@person.current_seat_incumbency.constituency.name}" if @person.current_mp?
+        role = "#{@person.statuses[:house_membership_status].join(t('.and'))}" if @person.current_lord?
         role
       end
 
