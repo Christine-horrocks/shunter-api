@@ -43,7 +43,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Configure metadata for custom serializers directory
+  config.define_derived_metadata(:file_path => Regexp.new('/spec/serializers/')) do |metadata|
+    metadata[:type] = :serializer
+  end
+
   # Load support files
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
   config.include(IntegrationFixtureHelper, type: :request)
+  config.include(SerializerFixtureHelper, type: :serializer)
 end

@@ -13,9 +13,7 @@ class HomeController < ApplicationController
 
 
   def index
-
     render_page(PageSerializer::HomePageSerializer.new)
-
   end
 
   # def mps

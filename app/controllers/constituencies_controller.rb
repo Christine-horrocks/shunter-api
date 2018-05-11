@@ -44,6 +44,7 @@ class ConstituenciesController < ApplicationController
     @party = @current_party ? @current_party : @party.first
 
     @member = @current_incumbency.member if @constituency.current?
+
     render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @member, @party, @seat_incumbencies))
   end
 

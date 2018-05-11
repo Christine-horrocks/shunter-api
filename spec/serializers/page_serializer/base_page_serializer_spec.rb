@@ -7,5 +7,4 @@ describe PageSerializer::BasePageSerializer do
       expect { base_page_serializer.to_h }.to raise_error('You must implment #title')
     end
   end
-
 end
