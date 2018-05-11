@@ -7,6 +7,4 @@ describe BaseSerializer do
       expect { subject.to_h }.to raise_error("You must call content through a specific class, you cannot cal lit through BaseSerializer.")
     end
   end
-
-
 end
