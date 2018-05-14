@@ -22,7 +22,7 @@ module ComponentSerializer
 
     def data
       {
-        "template": "roles",
+        "template": t('.people.roles.roles'),
         "role-list": current_roles
       }
     end

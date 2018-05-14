@@ -341,6 +341,9 @@ en:
   lord: 'Lord'
   lord_plural: 'Lords'
   mps_and_lords: 'MPs and Lords'
+  former_mp: 'Former MP'
+  former_mp_plural: 'Former MPs'
+  former_lord: 'Former Member of the House of Lords'
   mp_count:
     zero: 'MPs'
     one: 'MP'
@@ -369,6 +372,8 @@ en:
   # global parliaments translations
   parliament: 'parliament'
   parliament_plural: 'parliaments'
+  uk_parliament: 'UK Parliament'
+  uk_parliament_with_dash: '- UK Parliament'
   # global places translations
   place: 'place'
   place_plural: 'places'
@@ -384,6 +389,7 @@ en:
   to_present: 'to present'
   to: 'to'
   from: 'from'
+  and: ' and '
   of_the: 'of the'
   in_the: 'in the'
   search: 'search'
@@ -392,11 +398,12 @@ en:
   open_new_window: "website opens in a new window"
   # global a-z navigation translations
   a_to_z:
-    a_to_z: 'A to Z'
+    a_to_z: 'A to Z showing results for'
     select_letter: 'select a letter'
     showing_results: 'showing results for'
     showing_all: 'showing all'
     aria_label: 'Paged navigation'
+    all: 'all'
   # global time format translations
   time:
     formats:
@@ -409,25 +416,25 @@ en:
     no_mp: "We couldn't find an MP for that postcode.  Your constituency is"
   # people translations
   people:
-    index:
-      title: '%{current_and_former} %{mps_and_lords}'
+    # index:
+    #   title: '%{current_and_former} %{mps_and_lords}'
     a_to_z:
       title: # needs title
-    letters:
-      title: '%{current_and_former} %{mps_and_lords}'
-    lookup_by_letters:
-      title: '%{current_and_former} %{mps_and_lords}'
-    members:
-      index:
-        title: '%{current_and_former} %{mps_and_lords}'
-      a_to_z:
-        title: # needs title
-      letters:
-        title: '%{current_and_former} %{mps_and_lords}'
-      current:
-        title: '%{current} %{mps_and_lords}'
-      current_letters:
-        title: '%{current} %{mps_and_lords}'
+    # letters:
+    #   title: '%{current_and_former} %{mps_and_lords}'
+    # lookup_by_letters:
+    #   title: '%{current_and_former} %{mps_and_lords}'
+    # members:
+    #   index:
+    #     title: '%{current_and_former} %{mps_and_lords}'
+    #   a_to_z:
+    #     title: # needs title
+    #   letters:
+    #     title: '%{current_and_former} %{mps_and_lords}'
+    #   current:
+    #     title: '%{current} %{mps_and_lords}'
+    #   current_letters:
+    #     title: '%{current} %{mps_and_lords}'
     show:
       mp_for: 'MP for'
       contact: 'contact'
@@ -456,25 +463,37 @@ en:
       school_closures: 'school closures and funding'
       transport: 'transport facilities'
       who_else_can_help: 'Who else can help with my issue?'
+      discuss_with: 'You may be able to discuss issues with your MP in person or online. Contact them for details'
       contact_postcode: 'Please include your postcode when contacting your MP.'
-    timeline_roles:
+    roles:
+      roles: 'roles'
       mp_for: 'MP for'
-      parliamentary_role: 'parliamentary role'
-      committee_role: 'committee role'
-      government_role: 'government role'
-      opposition_role: 'opposition role'
+      parliamentary_role: 'Parliamentary role'
+      committee_role: 'Committee role'
+      government_role: 'Government role'
+      opposition_role: 'Opposition role'
       held_currently: 'Held currently'
+      lords_role: 'Member of the House of Lords'
+      member_of_the: 'Member of the '
     previous_roles:
-      held_in: "Held in the last %{years} years"
-    current_roles:
-      mp_for: 'MP for'
-      parliamentary_role: 'parliamentary role'
-      committee_role: 'committee role'
-      government_role: 'government role'
-      opposition_role: 'opposition role'
+      held_in: 'Held in the last '
+      year_s: ' years'
+      elected: 'Elected '
+      times:  ' times'
+    timeline:
+      timeline: 'timeline'
+    # current_roles:
+    #   mp_for: 'MP for'
+    #   parliamentary_role: 'parliamentary role'
+    #   committee_role: 'committee role'
+    #   government_role: 'government role'
+    #   opposition_role: 'opposition role'
     related_links:
-      title: 'related links'
-      portrait: "%{name}&#8217;s official portrait is %{link}."
+      title: 'Related links'
+      website: 'Website: '
+      twitter: 'Twitter: '
+      portrait: "'s official portrait is "
+      portrait_link: available to download
     constituencies:
       index:
         title: '%{current_and_former} %{constituency_plural}'
@@ -522,10 +541,14 @@ en:
     index:
       web-title: 'contact points'
       page-title: 'contact details'
+    contact_caps: 'Contact'
     email: 'email'
+    email_caps: 'Email: '
     phone: 'phone'
+    phone_caps: 'Phone: '
     fax: 'fax'
     address: 'address'
+    address_caps: 'Address: '
     download: 'download'
     add_address_book: 'add to address book'
     website: 'website'
@@ -561,20 +584,24 @@ en:
       title: '%{current} %{constituency_plural}'
     map:
       title: # title does not require translation
-      accessibility_title: "Interactive map of "
+      accessibility_title: 'Interactive map of '
+      enable_javascript: 'A map of the constituency is available. To view it JavaScript must enabled.'
     contact_points:
       index:
         title: # title does not require translation
     shared_translations:
       vacant: 'Vacant'
+      former_constituency: 'Former constituency'
+      constituency_from: 'Constituency from '
     constituency:
       title: # title does not require translation
       correct_constituency: "this is the constituency for your postcode"
       incorrect_constituency: 'this is not your constituency.'
       constituency_for_postcode: 'is the constituency for'
       check_constituency: 'check if this is your constituency'
-      former_constituency: 'This is a former constituency. %{current_constituencies_link}.'
-      current_constituencies_link: 'view current constituencies'
+      former_constituency: 'This is a former constituency. %{link}.'
+      constituency_in: 'Constituency in '
+      current_constituencies_link: 'View current constituencies'
       constituency_map_fallback: 'A map of the constituency is available. To view it JavaScript must enabled.'
   # parties translations
   parties:

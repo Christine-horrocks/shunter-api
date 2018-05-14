@@ -13,7 +13,7 @@ module ComponentSerializer
 
     def data
         {
-          "title": "Former MPs",
+          "title": t('.former_mp_plural'),
           "former-seat-incumbency-list": former_seat_incumbency_list
         }
     end

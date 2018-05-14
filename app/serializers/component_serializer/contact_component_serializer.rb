@@ -13,7 +13,10 @@ module ComponentSerializer
 
     def data
       {
-        "template": "contact",
+        "title": t('.contact_points.contact_caps'),
+        "email": t('.contact_points.email_caps'),
+        "phone": t('contact_points.phone_caps'),
+        "address": t('contact_points.address_caps'),
         "contact-points": find_contact_points
       }
     end
