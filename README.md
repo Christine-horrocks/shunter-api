@@ -1,24 +1,26 @@
-# README
+# SHUNTER API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone both repos
 
-Things you may want to cover:
+```
+$ git clone https://github.com/Christine-horrocks/shunter-api.git
+$ git clone https://github.com/Christine-horrocks/shunter-prototype.git
+```
 
-* Ruby version
+Change into them in separate terminal windows or tabs, change to the `development` branch, install dependencies and run the apps
 
-* System dependencies
+```
+$ cd shunter-api
+$ git checkout development
+$ bundle install
+$ bundle exec rails s
+```
+```
+$ cd shunter-prototype
+$ git checkout development
+$ npm install
+$ npm cache clean --force && node app.js
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For the backend, visit [localhost:3000](localhost:3000).
+For the frontend, visit [localhost:5400](localhost:5400).
