@@ -14,7 +14,9 @@ module ComponentSerializer
 
     def data
        {
-            "json_location": @json_location
+            "constituency-name": t('.constituencies.map.accessibility_title') + @constituency.name,
+            "json-location": @json_location,
+            "enable-javascript": t('.constituencies.map.enable_javascript')
           }
     end
 

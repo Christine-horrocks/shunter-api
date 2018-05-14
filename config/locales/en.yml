@@ -342,6 +342,7 @@ en:
   lord_plural: 'Lords'
   mps_and_lords: 'MPs and Lords'
   former_mp: 'Former MP'
+  former_mp_plural: 'Former MPs'
   former_lord: 'Former Member of the House of Lords'
   mp_count:
     zero: 'MPs'
@@ -583,7 +584,8 @@ en:
       title: '%{current} %{constituency_plural}'
     map:
       title: # title does not require translation
-      accessibility_title: "Interactive map of "
+      accessibility_title: 'Interactive map of '
+      enable_javascript: 'A map of the constituency is available. To view it JavaScript must enabled.'
     contact_points:
       index:
         title: # title does not require translation
@@ -597,7 +599,7 @@ en:
       incorrect_constituency: 'this is not your constituency.'
       constituency_for_postcode: 'is the constituency for'
       check_constituency: 'check if this is your constituency'
-      former_constituency: 'This is a former constituency BOOP!.'
+      former_constituency: 'This is a former constituency. %{link}.'
       constituency_in: 'Constituency in '
       current_constituencies_link: 'View current constituencies'
       constituency_map_fallback: 'A map of the constituency is available. To view it JavaScript must enabled.'
