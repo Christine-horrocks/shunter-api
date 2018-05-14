@@ -4,4 +4,8 @@ module SerializerFixtureHelper
 
     File.open(file_path, 'r') { |f| f.read }
   end
+
+  def create_fixture(hash, *path)
+    File.open(File.join(path), 'w') { |f| p f.write hash.to_yaml }
+  end
 end
