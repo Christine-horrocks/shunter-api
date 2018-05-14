@@ -23,6 +23,4 @@ describe BaseSerializer do
       expect(subject.link_to(body, url, html_options = {})).to eq("<a href=\"//link\">text or link</a>")
     end
   end
-
-
 end

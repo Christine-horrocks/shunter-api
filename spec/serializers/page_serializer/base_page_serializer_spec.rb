@@ -1,11 +1,10 @@
 require_relative '../../rails_helper'
 
 describe PageSerializer::BasePageSerializer do
-  let ( :basepageserializer ) { described_class.new(123) }
+  let ( :base_page_serializer ) { described_class.new }
   context '#to_h' do
     it 'raises an error' do
-      expect { basepageserializer.to_h }.to raise_error("You cannot call title from base page serializer, you must call it from a specific page serializer.")
+      expect { base_page_serializer.to_h }.to raise_error('You must implment #title')
     end
   end
-
 end

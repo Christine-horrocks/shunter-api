@@ -1,14 +1,9 @@
 module PageSerializer
   class BasePageSerializer < BaseSerializer
-
-    def initialize(person)
-      @person = person
-    end
-
     def to_h
       {
         layout: {
-            "template": "layout",
+            'template': 'layout',
         },
         title: title,
         components: components
@@ -26,20 +21,20 @@ module PageSerializer
     end
 
     def header
-      [
-        { name: "cookie-banner", data: "cookie-banner" },
-        { name: "banner", data: "banner" },
-        { name: "header", data: "header" }
-      ]
+      header = []
+      header << { name: 'cookie-banner', data: 'cookie-banner' }
+      header << { name: 'banner', data: 'banner' }
+      header << { name: 'header', data: 'header' }
+
+      header
     end
 
     def title
-      raise "You cannot call title from base page serializer, you must call it from a specific page serializer."
+      raise 'You must implment #title'
     end
 
     def footer
-      { name: "footer" ,data: "footer" }
+      { name: 'footer', data: 'footer' }
     end
-
   end
 end

@@ -1,5 +1,5 @@
 module ComponentSerializer
-  class LetterNavigationComponentSerializer <BaseComponentSerializer
+  class LetterNavigationComponentSerializer < BaseComponentSerializer
 
     def initialize(letters, active_letter, objects_name = {})
       @letters = letters

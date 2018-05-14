@@ -1,48 +1,31 @@
 require_relative '../../rails_helper'
 
 describe PageSerializer::ListPageSerializer, vcr: false do
-  let (:objects) { double('objects', each: [1, 2])}
-  let (:klass) { double('klass')}
-  let (:objects_name) { 'object' }
-  let (:letters) { double('letters', include?: true)}
-  let (:active_letter) { 'a'}
-  let ( :listpageserializer ) { described_class.new(objects, klass, objects_name, letters, active_letter) }
+
+  let(:active_letter) { 'C' }
+  let(:letters) { %w{A C} }
+  let(:object_name) { 'object name' }
+  let(:klass_instance) { double('klass_instance', to_h: 'method') }
+  let(:klass) { double('klass', new: klass_instance) }
+  let(:objects) { [1, 2, 3] }
+
+  let(:serializer) { described_class.new(objects, klass, object_name, letters, active_letter) }
 
   context '#to_h' do
-    it 'produces a hash containg a list of objects' do
+    it 'creates a hash for the list page' do
+      expected_hash = get_fixture('page_serializer/list_page_serializer/hash.yml')
 
-      expect(listpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Object A to Z showing results for A", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"heading1", :data=>"Object"}, {:name=>"letter-navigation", :data=>
-        [
-          {:letter=>"A", :presence=>true, :active=>true, :objects_name=>"object"},
-          {:letter=>"B", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"C", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"D", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"E", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"F", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"G", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"H", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"I", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"J", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"K", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"L", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"M", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"N", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"O", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"P", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"Q", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"R", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"S", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"T", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"U", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"V", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"W", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"X", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"Y", :presence=>true, :active=>nil, :objects_name=>"object"},
-          {:letter=>"Z", :presence=>true, :active=>nil, :objects_name=>"object"}
-        ]},
-        {:name=>"object", :data=>[]}, {:name=>"footer", :data=>"footer"}]
-        })
+      expect(serializer.to_h.to_yaml).to eq(expected_hash)
     end
 
+    it 'calls the correct component serializers' do
+      allow(ComponentSerializer::ListTitleComponentSerializer).to receive(:new)
+      allow(ComponentSerializer::LetterNavigationComponentSerializer).to receive(:new)
+
+      serializer.to_h
+
+      expect(ComponentSerializer::ListTitleComponentSerializer).to have_received(:new).with(object_name)
+      expect(ComponentSerializer::LetterNavigationComponentSerializer).to have_received(:new).with(letters, active_letter, object_name)
+    end
   end
 end

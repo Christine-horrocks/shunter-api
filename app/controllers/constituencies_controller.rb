@@ -15,14 +15,12 @@ class ConstituenciesController < ApplicationController
 
   def index
     @constituencies, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'ConstituencyGroup', ::Grom::Node::BLANK)
-    # @constituencies = @constituencies.sort_by { |constituency| constituency.name }
     @constituencies = @constituencies.sort { |a, b| [a.name, b.start_date] <=> [b.name, a.start_date] }
     render_page(PageSerializer::ListPageSerializer.new(@constituencies, ComponentSerializer::ConstituencyComponentSerializer, 'constituencies', @letters))
   end
 
   def letters
     @constituencies, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'ConstituencyGroup', ::Grom::Node::BLANK)
-    # @constituencies = @constituencies.select { |constituency| constituency.current? }.sort_by { |constituency| constituency.name }
     @constituencies = @constituencies.sort { |a, b| [a.name, b.start_date] <=> [b.name, a.start_date] }
     render_page(PageSerializer::ListPageSerializer.new(@constituencies, ComponentSerializer::ConstituencyComponentSerializer, 'constituencies', @letters, params[:letter]))
   end
@@ -33,7 +31,6 @@ class ConstituenciesController < ApplicationController
   def show
     @constituency, @seat_incumbencies, @party = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'ConstituencyGroup', 'SeatIncumbency', 'Party')
     # Instance variable for single MP pages
-    @seat_incumbencies
     @single_mp = true
     @constituency = @constituency.first
     @seat_incumbencies = @seat_incumbencies.reverse_sort_by(:start_date)
@@ -45,11 +42,9 @@ class ConstituenciesController < ApplicationController
     @current_party = @current_incumbency.member.current_party if @current_incumbency
 
     @party = @current_party ? @current_party : @party.first
-    @region = @constituency.regions.map do |region|
-      region.name
-    end
+
     @member = @current_incumbency.member if @constituency.current?
-    @region = @region.first
+
     render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @member, @party, @seat_incumbencies))
   end
 

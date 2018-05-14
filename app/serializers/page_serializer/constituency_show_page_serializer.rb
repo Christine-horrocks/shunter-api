@@ -15,7 +15,7 @@ module PageSerializer
       c << ComponentSerializer::ConstituencyHeadingComponentSerializer.new(@constituency).to_h
       c << ComponentSerializer::ConstituencySubheadingComponentSerializer.new(@constituency).to_h
       c << ComponentSerializer::MapComponentSerializer.new(@constituency, @json_location).to_h if @constituency.current?
-      c << person_component_initalizser if @constituency.current?
+      c << person_component_initalizer if @constituency.current?
       c << ComponentSerializer::FormerSeatIncumbenciesComponentSerializer.new(@seat_incumbencies).to_h
       c
     end
@@ -24,7 +24,7 @@ module PageSerializer
     "#{@constituency.name} "
   end
 
-  def person_component_initalizser
+  def person_component_initalizer
     {
       name: "people",
       data: [

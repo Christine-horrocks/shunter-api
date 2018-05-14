@@ -7,6 +7,7 @@ RSpec.describe HomeController, vcr: true do
         before(:each) do
           get '/'
         end
+
       context 'with all the information present' do
         it 'renders expected JSON output' do
           expected_json = get_fixture('home_controller/index/home_page.json')
@@ -15,6 +16,5 @@ RSpec.describe HomeController, vcr: true do
           end
         end
       end
-
     end
 end
