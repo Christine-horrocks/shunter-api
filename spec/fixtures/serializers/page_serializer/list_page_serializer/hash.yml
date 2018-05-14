@@ -1,0 +1,126 @@
+---
+:layout:
+  :template: layout
+:title: Object name A to Z showing results for C
+:components:
+- :name: cookie-banner
+  :data: cookie-banner
+- :name: banner
+  :data: banner
+- :name: header
+  :data: header
+- :name: heading1
+  :data: Object name
+- :name: letter-navigation
+  :data:
+  - :letter: A
+    :presence: true
+    :active: 
+    :objects_name: object name
+  - :letter: B
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: C
+    :presence: true
+    :active: true
+    :objects_name: object name
+  - :letter: D
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: E
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: F
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: G
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: H
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: I
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: J
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: K
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: L
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: M
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: N
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: O
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: P
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: Q
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: R
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: S
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: T
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: U
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: V
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: W
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: X
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: Y
+    :presence: 
+    :active: 
+    :objects_name: object name
+  - :letter: Z
+    :presence: 
+    :active: 
+    :objects_name: object name
+- :name: object name
+  :data:
+  - method
+  - method
+  - method
+- :name: footer
+  :data: footer

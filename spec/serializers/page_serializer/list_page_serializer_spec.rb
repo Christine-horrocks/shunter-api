@@ -1,19 +1,31 @@
 require_relative '../../rails_helper'
 
 describe PageSerializer::ListPageSerializer, vcr: false do
-  let (:objects) { double('objects', each: [1, 2])}
-  let (:klass) { double('klass')}
-  let (:objects_name) { 'object' }
-  let (:letters) { double('letters', include?: true)}
-  let (:active_letter) { 'a'}
-  let ( :list_page_serializer ) { described_class.new(objects, klass, objects_name, letters, active_letter) }
+
+  let(:active_letter) { 'C' }
+  let(:letters) { %w{A C} }
+  let(:object_name) { 'object name' }
+  let(:klass_instance) { double('klass_instance', to_h: 'method') }
+  let(:klass) { double('klass', new: klass_instance) }
+  let(:objects) { [1, 2, 3] }
+
+  let(:serializer) { described_class.new(objects, klass, object_name, letters, active_letter) }
 
   context '#to_h' do
-    it 'produces a hash containg a list of objects' do
+    it 'creates a hash for the list page' do
       expected_hash = get_fixture('page_serializer/list_page_serializer/hash.yml')
 
-      expect(list_page_serializer.to_h.to_yaml).to eq(expected_hash)
+      expect(serializer.to_h.to_yaml).to eq(expected_hash)
     end
 
+    it 'calls the correct component serializers' do
+      allow(ComponentSerializer::ListTitleComponentSerializer).to receive(:new)
+      allow(ComponentSerializer::LetterNavigationComponentSerializer).to receive(:new)
+
+      serializer.to_h
+
+      expect(ComponentSerializer::ListTitleComponentSerializer).to have_received(:new).with(object_name)
+      expect(ComponentSerializer::LetterNavigationComponentSerializer).to have_received(:new).with(letters, active_letter, object_name)
+    end
   end
 end

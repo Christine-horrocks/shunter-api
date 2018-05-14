@@ -30,6 +30,7 @@ module PageSerializer
 
     def content
       c = []
+
       c << ComponentSerializer::ListTitleComponentSerializer.new(@objects_name).to_h
       c << ComponentSerializer::LetterNavigationComponentSerializer.new(@letters, @active_letter, @objects_name).to_h
       c <<  { name: @objects_name, data: organise_objects }
@@ -38,11 +39,9 @@ module PageSerializer
     end
 
     def organise_objects
-      objects_to_json = []
-      @objects.each do |object|
-        objects_to_json << @klass.new(object).to_h
+      @objects.map do |object|
+        @klass.new(object).to_h
       end
-      objects_to_json
     end
 
   end
