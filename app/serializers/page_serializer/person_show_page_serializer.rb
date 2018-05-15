@@ -11,7 +11,7 @@ module PageSerializer
 
     def content
       c = []
-      c << ComponentSerializer::Heading1ComponentSerializer.new(@person).to_h
+      c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, 1).to_h
       c << ComponentSerializer::SubheadingComponentSerializer.new(@person).to_h
       c << ComponentSerializer::ImageComponentSerializer.new(@person).to_h if @person.image_id && @person.image_id != 'placeholder'
       c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
