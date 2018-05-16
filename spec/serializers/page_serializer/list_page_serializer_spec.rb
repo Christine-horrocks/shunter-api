@@ -13,9 +13,9 @@ describe PageSerializer::ListPageSerializer, vcr: false do
 
   context '#to_h' do
     it 'creates a hash for the list page' do
-      expected_hash = get_fixture('page_serializer/list_page_serializer/hash.yml')
+      expected = get_fixture('page_serializer/list_page_serializer/hash.yml')
 
-      expect(serializer.to_h.to_yaml).to eq(expected_hash)
+      expect(serializer.to_h.to_yaml).to eq(expected)
     end
 
     it 'calls the correct component serializers' do

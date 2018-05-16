@@ -30,7 +30,7 @@ module PageSerializer
     end
 
     def title
-      raise 'You must implment #title'
+      raise 'You must implement #title'
     end
 
     def footer
