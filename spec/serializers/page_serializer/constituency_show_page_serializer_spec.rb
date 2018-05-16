@@ -44,7 +44,7 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
     it 'produces the correct hash for a current constituency show page' do
       expected = get_fixture('page_serializer/constituency_show_page_serializer/current_constituency_hash.yml')
 
-      expect(constituency_show_page_serializer.to_h.to_yaml).to eq expected
+      expect(constituency_show_page_serializer.to_yaml).to eq expected
     end
 
     it 'produces the correct hash for a former constituency show page' do
@@ -53,7 +53,7 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
 
       expected = get_fixture('page_serializer/constituency_show_page_serializer/former_constituency_hash.yml')
 
-      expect(constituency_show_page_serializer.to_h.to_yaml).to eq(expected)
+      expect(constituency_show_page_serializer.to_yaml).to eq expected
     end
   end
 end

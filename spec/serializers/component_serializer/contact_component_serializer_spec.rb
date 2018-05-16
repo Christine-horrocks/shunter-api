@@ -36,7 +36,6 @@ RSpec.describe ComponentSerializer::ContactComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash with the name and contact points data' do
-      # create_fixture(serializer.to_h, 'spec/fixtures/serializers/component_serializer/contact_component_serializer/fixture.yml')
       expected = get_fixture('component_serializer/contact_component_serializer/fixture.yml')
 
       expect(serializer.to_h.to_yaml).to eq expected

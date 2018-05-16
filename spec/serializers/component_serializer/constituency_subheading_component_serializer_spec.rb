@@ -10,7 +10,7 @@ RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
     it 'returns a hash containing the name and data if current' do
       expected = get_fixture('component_serializer/constituency_subheading_component_serializer/current.yml')
 
-      expect(constituency_subheading_component_serializer.to_h.to_yaml).to eq(expected)
+      expect(constituency_subheading_component_serializer.to_yaml).to eq expected
     end
 
     it 'returns a hash containing the name and date if former' do
@@ -18,7 +18,7 @@ RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
 
       expected = get_fixture('component_serializer/constituency_subheading_component_serializer/former.yml')
 
-      expect(constituency_subheading_component_serializer.to_h.to_yaml).to eq(expected)
+      expect(constituency_subheading_component_serializer.to_yaml).to eq expected
     end
   end
 end

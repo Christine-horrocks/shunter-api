@@ -8,14 +8,6 @@ SimpleCov.start
 
 require 'vcr'
 
-RSpec::Matchers.define :be_the_same_in_yaml_as do |expected|
-  match do |actual|
-    actual.to_yaml == expected
-  end
-
-  diffable
-end
-
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock # or :fakeweb

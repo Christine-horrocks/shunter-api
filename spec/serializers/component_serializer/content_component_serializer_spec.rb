@@ -10,7 +10,7 @@ describe ComponentSerializer::ContentComponentSerializer do
     it 'returns a hash containing the name and data' do
       expected = get_fixture('component_serializer/content_component_serializer/fixture.yml')
 
-      expect(content_component_serializer.to_h).to be_the_same_in_yaml_as expected
+      expect(content_component_serializer.to_yaml).to eq expected
     end
   end
 end

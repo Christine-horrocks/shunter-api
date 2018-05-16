@@ -5,7 +5,7 @@ describe PageSerializer::HomePageSerializer, vcr: false do
     it 'returns a hash with the home page components' do
       expected = get_fixture('page_serializer/home_page_serializer/hash.yml')
 
-      expect(subject.to_h.to_yaml).to eq expected
+      expect(subject.to_yaml).to eq expected
     end
 
     it 'calls the correct component serializers' do

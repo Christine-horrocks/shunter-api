@@ -36,12 +36,15 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'when all person information is available' do
         expected = get_fixture('page_serializer/person_show_page_serializer/with_all_data.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if person does not have image_id' do
         allow(person_double).to receive(:image_id) { nil }
 
+        expected = get_fixture('page_serializer/person_show_page_serializer/no_image_id.yml')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if person has image_id that is placeholder' do
@@ -49,7 +52,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/placeholder_image_id.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if person is not a current mp' do
@@ -57,7 +60,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/not_current_mp.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if contact points is an empty array' do
@@ -65,7 +68,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/contact_points_empty_array.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if incumbencies and committee_memberships are empty arrays' do
@@ -73,7 +76,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/incumbencies_committee_memberships_empty_arrays.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if person has no weblinks and they have no image_id' do
@@ -82,7 +85,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/no_weblinks_or_image_id.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
       it 'if person has no weblinks and image_id is placeholder' do
@@ -91,7 +94,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
         expected = get_fixture('page_serializer/person_show_page_serializer/no_weblinks_placeholder_image_id.yml')
 
-        expect(person_show_page_serializer.to_h.to_yaml).to eq expected
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
     end
 
