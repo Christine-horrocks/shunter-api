@@ -1,6 +1,6 @@
 require_relative '../../rails_helper'
 
-describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
+RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
   let (:region) { double('region', name: 'North East', first: 'North East') }
   let (:regions) { double('regions', map: region) }
   let (:constituency) { double('constituency', regions: regions, current?: true, date_range: '12-12')}
