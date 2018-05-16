@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class ContentComponentSerializer <BaseComponentSerializer
-
+  class ContentComponentSerializer < BaseComponentSerializer
     def initialize(heading, *additional_text)
       @heading = heading
       @additional_text = *additional_text
@@ -16,7 +15,5 @@ module ComponentSerializer
         }
       }
     end
-
-
   end
 end

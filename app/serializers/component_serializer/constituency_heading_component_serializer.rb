@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class ConstituencyHeadingComponentSerializer <BaseComponentSerializer
-
+  class ConstituencyHeadingComponentSerializer < BaseComponentSerializer
     def initialize(constituency)
       @constituency = constituency
     end
@@ -14,7 +13,5 @@ module ComponentSerializer
     def data
       @constituency.name
     end
-
-
   end
 end

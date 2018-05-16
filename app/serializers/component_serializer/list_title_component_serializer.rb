@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class ListTitleComponentSerializer <BaseComponentSerializer
-
+  class ListTitleComponentSerializer < BaseComponentSerializer
     def initialize(objects_name)
       @objects_name = objects_name
     end
@@ -14,7 +13,5 @@ module ComponentSerializer
     def data
       @objects_name.capitalize
     end
-
-
   end
 end

@@ -29,6 +29,5 @@ module ComponentSerializer
     def additional_text
       @constituency.current? ? t('constituencies.constituency.constituency_in') : t('.constituencies.constituency.former_constituency', link: link_to(t('.constituencies.constituency.current_constituencies_link'), '/constituencies/current'))
     end
-
   end
 end
