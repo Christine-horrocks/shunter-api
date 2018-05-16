@@ -1,18 +1,18 @@
 require 'fileutils'
 
 module SerializerFixtureHelper
-  def get_fixture(path)
-    file_path = File.join(File.dirname(__FILE__), '../', 'fixtures', 'serializers', path)
+  def get_fixture(filename, path)
+    directory_name = path.chomp('.rb').split('/').insert(6, 'fixtures').join('/')
+    # file_path = File.join(File.dirname(__FILE__), '../', 'fixtures', 'serializers', path)
 
-    File.open(file_path, 'r') { |f| f.read }
+    File.open("#{directory_name}/#{filename}", 'r') { |f| f.read }
   end
 
-  def create_fixture(serializer, *path)
-    file_path = File.join(path)
-    directory_name = File.dirname(file_path)
+  def create_fixture(serializer, filename, path)
+    directory_name = path.chomp('.rb').split('/').insert(6, 'fixtures').join('/')
 
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
 
-    File.open(File.join(path), 'w') { |f| p f.write serializer.to_yaml }
+    File.open("#{directory_name}/#{filename}", 'w') { |f| p f.write serializer.to_yaml }
   end
 end
