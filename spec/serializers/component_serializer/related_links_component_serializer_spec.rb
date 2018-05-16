@@ -1,41 +1,45 @@
 require_relative '../../rails_helper'
 
-describe ComponentSerializer::RelatedLinksComponentSerializer do
-  let (:person) { double('person')}
-  let (:relatedlinkscomponentserializer) { described_class.new(person) }
+RSpec.describe ComponentSerializer::RelatedLinksComponentSerializer do
+  let (:person_double) {
+    double('person_double',
+           full_name: 'Diane Abbott',
+           image_id: 123,
+           personal_weblinks: [1],
+           twitter_weblinks: [1])
+  }
+
+  let (:serializer) { described_class.new(person_double) }
+
   context '#to_h' do
+    it 'returns a hash with the name and related links data if all data is available' do
+      expected = get_fixture('component_serializer/related_links_component_serializer/with_all_data.yml')
 
-    it 'returns a hash with the all data if image_id, personal_weblinks, twitter_weblinksand image_idare present' do
-      allow(person).to receive(:full_name) {"Dianne Abbott"}
-      allow(person).to receive(:image_id) {"43RHonMf"}
-      allow(person).to receive(:personal_weblinks) {["DianneAbbott.com"]}
-      allow(person).to receive(:twitter_weblinks) {["DianneAbbottonTwitter.com"]}
-      expect(relatedlinkscomponentserializer.to_h).to eq({:name=>"related-links", :data=>{"title"=>"Related links", "website"=>"Website: ", "twitter"=>"Twitter: ", "portrait"=>"'s official portrait is ", "portrait-link"=>"available to download", "name"=>"Dianne Abbott", "website-link"=>["DianneAbbott.com"], "twitter-link"=>["DianneAbbottonTwitter.com"], "media-url"=>"/media/43RHonMf"}})
+      expect(serializer.to_yaml).to eq expected
     end
 
-    it 'returns a hash without the name or media-url if no image_id is present' do
-      allow(person).to receive(:full_name) {"Dianne Abbott"}
-      allow(person).to receive(:image_id) {nil}
-      allow(person).to receive(:personal_weblinks) {["DianneAbbott.com"]}
-      allow(person).to receive(:twitter_weblinks) {["DianneAbbottonTwitter.com"]}
-      expect(relatedlinkscomponentserializer.to_h).to eq({:name=>"related-links", :data=> {"title"=>"Related links", "website"=>"Website: ", "twitter"=>"Twitter: ", "portrait"=>"'s official portrait is ", "portrait-link"=>"available to download", "website-link"=>["DianneAbbott.com"], "twitter-link"=>["DianneAbbottonTwitter.com"]}})
+    it 'leaves out name and media-url if image_id is falsey' do
+      allow(person_double).to receive(:image_id) { false }
+
+      expected = get_fixture('component_serializer/related_links_component_serializer/image_id_falsey.yml')
+
+      expect(serializer.to_yaml).to eq expected
     end
 
-    it 'returns a hash without the personal_weblinks if they are not present' do
-      allow(person).to receive(:full_name) {"Dianne Abbott"}
-      allow(person).to receive(:image_id) {"43RHonMf"}
-      allow(person).to receive(:personal_weblinks) {[]}
-      allow(person).to receive(:twitter_weblinks) {["DianneAbbottonTwitter.com"]}
-      expect(relatedlinkscomponentserializer.to_h).to eq({:name=>"related-links", :data=>{"title"=>"Related links", "website"=>"Website: ", "twitter"=>"Twitter: ", "portrait"=>"'s official portrait is ", "portrait-link"=>"available to download", "name"=>"Dianne Abbott", "twitter-link"=>["DianneAbbottonTwitter.com"], "media-url"=>"/media/43RHonMf"}})
+    it 'leaves out website if personal_weblinks is an empty array' do
+      allow(person_double).to receive(:personal_weblinks) { [] }
+
+      expected = get_fixture('component_serializer/related_links_component_serializer/personal_weblinks_empty.yml')
+
+      expect(serializer.to_yaml).to eq expected
     end
 
-    it 'returns a hash without the twitter_weblinks if they are not present' do
-      allow(person).to receive(:full_name) {"Dianne Abbott"}
-      allow(person).to receive(:image_id) {"43RHonMf"}
-      allow(person).to receive(:personal_weblinks) {["DianneAbbott.com"]}
-      allow(person).to receive(:twitter_weblinks) {[]}
-      expect(relatedlinkscomponentserializer.to_h).to eq({:name=>"related-links", :data=>{"title"=>"Related links", "website"=>"Website: ", "twitter"=>"Twitter: ", "portrait"=>"'s official portrait is ", "portrait-link"=>"available to download", "name"=>"Dianne Abbott", "website-link"=>["DianneAbbott.com"], "media-url"=>"/media/43RHonMf"}})
-    end
+    it 'leaves out twitter if twitter_weblinks is an empty array' do
+      allow(person_double).to receive(:twitter_weblinks) { [] }
 
+      expected = get_fixture('component_serializer/related_links_component_serializer/twitter_weblinks_empty.yml')
+
+      expect(serializer.to_yaml).to eq expected
+    end
   end
 end
