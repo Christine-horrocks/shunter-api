@@ -10,5 +10,4 @@ describe ComponentSerializer::HeroComponentSerializer do
       expect(herocomponentserializer.to_h).to eq({:name=>"hero", :data=>{:title=>"Welcome to Parliament", :"additional-text"=>["Even more interesting information"]}})
     end
   end
-
 end

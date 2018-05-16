@@ -9,7 +9,6 @@ describe ComponentSerializer::FormerSeatIncumbenciesComponentSerializer do
   let(:former_seat_incumbencies_component_serializer) { described_class.new(seat_incumbencies) }
 
   context '#to_h' do
-
     it 'returns a hash containing the name and data for the former seat incumbencies' do
       expected = get_fixture('component_serializer/former_seat_incumbencies_component_serializer/fixture.yml')
 
