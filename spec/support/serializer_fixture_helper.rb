@@ -5,7 +5,7 @@ module SerializerFixtureHelper
     directory_name = path.chomp('.rb').split('/').insert(6, 'fixtures').join('/')
     # file_path = File.join(File.dirname(__FILE__), '../', 'fixtures', 'serializers', path)
 
-    File.open("#{directory_name}/#{filename}", 'r') { |f| f.read }
+    File.open("#{directory_name}/#{filename}.yml", 'r') { |f| f.read }
   end
 
   def create_fixture(serializer, filename, path)
@@ -13,6 +13,6 @@ module SerializerFixtureHelper
 
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
 
-    File.open("#{directory_name}/#{filename}", 'w') { |f| p f.write serializer.to_yaml }
+    File.open("#{directory_name}/#{filename}.yml", 'w') { |f| p f.write serializer.to_yaml }
   end
 end
