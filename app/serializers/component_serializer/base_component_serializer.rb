@@ -1,6 +1,5 @@
 module ComponentSerializer
   class BaseComponentSerializer < BaseSerializer
-
     def content
       {
         name: name,
@@ -9,12 +8,11 @@ module ComponentSerializer
     end
 
     def name
-      raise "Name can only be called through a specific component serializer, not through the generic base component serializer"
+      raise 'You must implement #name'
     end
 
     def data
-      raise "Data can only be called through a specific component serializer, not thtough the generic base component serializer."
+      raise 'You must implement #data'
     end
-
   end
 end

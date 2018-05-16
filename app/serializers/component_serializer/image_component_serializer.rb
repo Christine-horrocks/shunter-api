@@ -1,6 +1,5 @@
 module ComponentSerializer
   class ImageComponentSerializer < BaseComponentSerializer
-
     def initialize(object)
       @object = object
     end
@@ -21,6 +20,5 @@ module ComponentSerializer
         "image-alt": "#{@object.display_name}"
       }
     end
-
   end
 end

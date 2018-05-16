@@ -1,0 +1,8 @@
+---
+:name: former-seat-incumbencies
+:data:
+  :title: Former MPs
+  :former-seat-incumbency-list:
+  - :display_name: Former MP
+    :graph_id: '121212'
+    :date_range: '121212'

@@ -1,0 +1,62 @@
+---
+:layout:
+  :template: layout
+:title: Diane Abbott UK Parliament
+:components:
+- :name: cookie-banner
+  :data: cookie-banner
+- :name: banner
+  :data: banner
+- :name: header
+  :data: header
+- :name: heading1
+  :data: Diane Abbott
+- :name: subheading
+  :data: 
+- :name: image
+  :data:
+    :template: person-image
+    :figure-url: "/media/321"
+    :image-srcset1: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=732&quality=80,
+      https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=1464&quality=80
+      2x
+    :image-srcset2: https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=444&quality=80,
+      https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=888&quality=80
+      2x
+    :image-src: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_1:1&width=186&quality=80
+    :image-alt: Diane Abbott
+- :name: contact
+  :data:
+    :title: Contact
+    :email: 'Email: '
+    :phone: 'Phone: '
+    :address: 'Address: '
+    :contact-points:
+    - :email: email
+      :phone: 123
+      :addresses:
+      - Full Address
+- :name: roles
+  :data:
+    :template: roles
+    :role-list: []
+- :name: timeline
+  :data:
+    :timeline-roles:
+    - :time-period: Held currently
+      :roles: []
+- :name: related-links
+  :data:
+    title: Related links
+    website: 'Website: '
+    twitter: 'Twitter: '
+    portrait: "'s official portrait is "
+    portrait-link: available to download
+    name: Diane Abbott
+    website-link:
+    - 1
+    twitter-link:
+    - 1
+    media-url: "/media/123"
+- :name: footer
+  :data: footer

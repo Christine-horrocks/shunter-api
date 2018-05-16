@@ -1,0 +1,28 @@
+---
+:layout:
+  :template: layout
+:title: 'Constituency '
+:components:
+- :name: cookie-banner
+  :data: cookie-banner
+- :name: banner
+  :data: banner
+- :name: header
+  :data: header
+- :name: constituency-heading
+  :data: Constituency
+- :name: constituency-subheading
+  :data:
+    :current: false
+    :subheading: Constituency from  12-12
+    :additional_text: This is a former constituency. <a href="/constituencies/current">View
+      current constituencies</a>.
+- :name: former-seat-incumbencies
+  :data:
+    :title: Former MPs
+    :former-seat-incumbency-list:
+    - 1
+    - 1
+    - 1
+- :name: footer
+  :data: footer

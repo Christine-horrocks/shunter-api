@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class StatusHighlightComponentSerializer <BaseComponentSerializer
-
+  class StatusHighlightComponentSerializer < BaseComponentSerializer
     def initialize(content)
       @content = content
     end
@@ -14,6 +13,5 @@ module ComponentSerializer
         "content": @content
       }
     end
-
   end
 end

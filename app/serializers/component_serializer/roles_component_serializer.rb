@@ -1,6 +1,5 @@
 module ComponentSerializer
   class RolesComponentSerializer < BaseComponentSerializer
-
     def initialize(seat_incumbencies, committee_memberships, government_incumbencies, opposition_incumbencies, role_helper = RoleHelper)
       @seat_incumbencies = seat_incumbencies
       @committee_memberships = committee_memberships
@@ -26,6 +25,5 @@ module ComponentSerializer
         "role-list": current_roles
       }
     end
-
   end
 end

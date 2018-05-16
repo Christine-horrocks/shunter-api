@@ -1,0 +1,8 @@
+---
+:name: list-component
+:data:
+  :heading: "/mps"
+  :list-items:
+  - 1
+  - 2
+  - 3

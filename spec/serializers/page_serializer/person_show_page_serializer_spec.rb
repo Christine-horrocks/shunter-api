@@ -1,127 +1,205 @@
 require_relative '../../rails_helper'
 
-describe PageSerializer::PersonShowPageSerializer, vcr: false do
+RSpec.describe PageSerializer::PersonShowPageSerializer do
+  let(:postal_address) { double('postal_address', full_address: 'Full Address') }
+  let(:contact_point) { double('contact_point', email: 'email', phone_number: 123, postal_addresses: [postal_address]) }
+  let(:constituency) { double('constituency', name: 'Constituency Name') }
+  let(:current_seat_incumbency) { double('current_seat_incumbency', contact_points: [contact_point], constituency: constituency) }
+  let(:party) { double('party', name: 'Party Name') }
+  let(:current_party_membership) { double('current_party_membership', party: party) }
 
-  let (:postal_address2) { double('postal_address2', :full_address => "2parliament") }
-  let (:postal_address1) { double('postal_address1', :full_address => "1parliament") }
-  let (:postal_addresses) { [postal_address1, postal_address2] }
-  let (:contact_point) { double('contact_point1', :email => "parliament@parliament.com", :phone_number => 12121212, :postal_addresses => postal_addresses) }
-  let (:contact_points) { [contact_point] }
-  let (:current_seat_incumbency) { double('current_seat_incumbency', constituency: constituency, contact_points: contact_points) }
-  let (:constituency) { double('constituency', name: "Hackney") }
-  let (:party) { double('party', name: "Labour") }
-  let (:current_party_membership) { double('current_party_membership', party: party) }
-  let (:committee_memberships) { double('committee_memberships')}
-  let (:person) { double('person',
-                                   current_party_membership: current_party_membership,
-                                   current_seat_incumbency: current_seat_incumbency,
-                                   statuses: { house_membership_status: ["Lord", "Lady"] },
-                                   display_name: "Person",
-                                   full_name: "Parlimentarian",
-                                   graph_id: "121212",
-                                   former_mp?: false,
-                                   former_lord?: false,
-                                   current_mp?: true,
-                                   current_lord?: false,
-                                   image_id: "121212",
-                                   incumbencies: ["yes"],
-                                   weblinks?: true,
-                                   personal_weblinks: ["MP.com"],
-                                   twitter_weblinks: ["MPtwitter.com"]
-                                     )}
-  let ( :personshowpageserializer ) { described_class.new(person) }
+  let(:person_double) {
+    double(
+        'person_double',
+        full_name: 'Diane Abbott',
+        display_name: 'Diane Abbott',
+        former_mp?: false,
+        former_lord?: false,
+        current_mp?: true,
+        current_lord?: false,
+        image_id: 123,
+        graph_id: 321,
+        current_seat_incumbency: current_seat_incumbency,
+        current_party_membership: current_party_membership,
+        committee_memberships: [1],
+        incumbencies: [1],
+        weblinks?: true,
+        personal_weblinks: [1],
+        twitter_weblinks: [1]
+    )
+  }
+
+  subject(:person_show_page_serializer) { described_class.new(person_double) }
 
   context '#to_h' do
+    describe 'correct hashes' do
+      it 'when all person information is available' do
+        expected = get_fixture('with_all_data')
 
-      it 'produces a hash containg the data to create a person show page' do
-        expect(personshowpageserializer.to_h).to eq({:layout=>{:template=>"layout"}, :title=>"Person UK Parliament", :components=>[{:name=>"cookie-banner", :data=>"cookie-banner"}, {:name=>"banner", :data=>"banner"}, {:name=>"header", :data=>"header"}, {:name=>"heading1", :data=>"Parlimentarian"}, {:name=>"subheading", :data=>"Labour MP for Hackney"}, {:name=>"image", :data=>{:template=>"person-image", :"figure-url"=>"/media/121212", :"image-srcset1"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=732&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_5:2&width=1464&quality=80 2x", :"image-srcset2"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=444&quality=80, https://api.parliament.uk/Staging/photo/121212.jpeg?crop=MCU_3:2&width=888&quality=80 2x", :"image-src"=>"https://api.parliament.uk/Staging/photo/121212.jpeg?crop=CU_1:1&width=186&quality=80", :"image-alt"=>"Person"}}, {:name=>"when-to-contact", :data=>{:title=>"When to contact an MP", :"mps-can-help-with"=>"MPs can help with issues that are the responsibility of UK Parliament. They represent their constituents and can help with issues such as:", :list=>["hospitals and the NHS", "problems with benefits, pensions and national insurance", "immigration", "school closures and funding", "transport facilities"], :"who-else-can-help"=>"Who else can help with my issue?", :link=>"/who-should-i-contact-with-my-issue", :"discuss-with"=>"You may be able to discuss issues with your MP in person or online. Contact them for details", :"contact-postcode"=>"Please include your postcode when contacting your MP."}}, {:name=>"contact", :data=>{:title=>"Contact", :email=>"Email: ", :phone=>"Phone: ", :address=>"Address: ", :"contact-points"=>[{:email=>"parliament@parliament.com", :phone=>12121212, :addresses=>["1parliament", "2parliament"]}]}}, {:name=>"roles", :data=>{:template=>"roles", :"role-list"=>[]}}, {:name=>"timeline", :data=>{:"timeline-roles"=>[{:"time-period"=>"Held currently", :roles=>[]}]}}, {:name=>"related-links", :data=>{"title"=>"Related links", "website"=>"Website: ", "twitter"=>"Twitter: ", "portrait"=>"'s official portrait is ", "portrait-link"=>"available to download", "name"=>"Parlimentarian", "website-link"=>["MP.com"], "twitter-link"=>["MPtwitter.com"], "media-url"=>"/media/121212"}}, {:name=>"footer", :data=>"footer"}]})
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
-      it 'initializes component serializers' do
-        heading1_component_serializer = class_double('ComponentSerializer::Heading1ComponentSerializer').as_stubbed_const
-        subheading_component_serializer = class_double('ComponentSerializer::SubheadingComponentSerializer').as_stubbed_const
-        image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
-        when_to_contact_component_serializer = class_double('ComponentSerializer::WhenToContactComponentSerializer').as_stubbed_const
-        contact_component_serializer = class_double('ComponentSerializer::ContactComponentSerializer').as_stubbed_const
-        roles_component_serializer = class_double('ComponentSerializer::RolesComponentSerializer').as_stubbed_const
-        timeline_component_serializer = class_double('ComponentSerializer::TimelineComponentSerializer').as_stubbed_const
-        related_links_component_serializer = class_double('ComponentSerializer::RelatedLinksComponentSerializer').as_stubbed_const
+      it 'if person does not have image_id' do
+        allow(person_double).to receive(:image_id) { nil }
 
-        expect(heading1_component_serializer).to receive(:new).with(person)
-        expect(subheading_component_serializer).to receive(:new).with(person)
-        expect(image_component_serializer).to receive(:new).with(person)
-        expect(when_to_contact_component_serializer).to receive(:new)
-        expect(contact_component_serializer).to receive(:new).with(person)
-        expect(roles_component_serializer).to receive(:new).with([], [], [], [])
-        expect(timeline_component_serializer).to receive(:new).with([], [], [], [])
-        expect(related_links_component_serializer).to receive(:new).with(person)
+        expected = get_fixture('no_image_id')
 
-        personshowpageserializer.to_h
+        expect(person_show_page_serializer.to_yaml).to eq expected
       end
 
-    it 'image does not load when image_id is nil' do
-      image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
-      allow(person).to receive(:image_id) { nil }
-      expect(image_component_serializer).not_to receive(:new).with(person)
-      personshowpageserializer.to_h
+      it 'if person has image_id that is placeholder' do
+        allow(person_double).to receive(:image_id) { 'placeholder' }
+
+        expected = get_fixture('placeholder_image_id')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
+
+      it 'if person is not a current mp' do
+        allow(person_double).to receive(:current_mp?) { false }
+
+        expected = get_fixture('not_current_mp')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
+
+      it 'if contact points is an empty array' do
+        allow(current_seat_incumbency).to receive(:contact_points) { [] }
+
+        expected = get_fixture('contact_points_empty_array')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
+
+      it 'if incumbencies and committee_memberships are empty arrays' do
+        allow(person_double).to receive(:incumbencies) { [] }
+
+        expected = get_fixture('incumbencies_committee_memberships_empty_arrays')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
+
+      it 'if person has no weblinks and they have no image_id' do
+        allow(person_double).to receive(:weblinks?) { nil }
+        allow(person_double).to receive(:image_id) { nil }
+
+        expected = get_fixture('no_weblinks_or_image_id')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
+
+      it 'if person has no weblinks and image_id is placeholder' do
+        allow(person_double).to receive(:weblinks?) { nil }
+        allow(person_double).to receive(:image_id) { 'placeholder' }
+
+        expected = get_fixture('no_weblinks_placeholder_image_id')
+
+        expect(person_show_page_serializer.to_yaml).to eq expected
+      end
     end
 
-    it 'does not load image when image_id is placeholder' do
-      image_component_serializer = class_double('ComponentSerializer::ImageComponentSerializer').as_stubbed_const
-      allow(person).to receive(:image_id) {"placeholder"}
-      expect(image_component_serializer).not_to receive(:new).with(person)
-      personshowpageserializer.to_h
-    end
+    describe 'serializer initializations' do
+      describe 'when all person information is available' do
+        it 'initializes serializers' do
+          allow(ComponentSerializer::Heading1ComponentSerializer).to receive(:new).with(person_double)
+          allow(ComponentSerializer::SubheadingComponentSerializer).to receive(:new).with(person_double)
+          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with(person_double)
+          allow(ComponentSerializer::WhenToContactComponentSerializer).to receive(:new)
+          allow(ComponentSerializer::ContactComponentSerializer).to receive(:new).with(person_double)
+          allow(ComponentSerializer::RolesComponentSerializer).to receive(:new).with([], [], [], [])
+          allow(ComponentSerializer::TimelineComponentSerializer).to receive(:new).with([], [], [], [])
+          allow(ComponentSerializer::RelatedLinksComponentSerializer).to receive(:new).with(person_double)
 
-    it 'does not load unless if current_mp? is not true' do
-      when_to_contact_component_serializer = class_double('ComponentSerializer::WhenToContactComponentSerializer').as_stubbed_const
-      allow(person).to receive(:current_mp?) {false}
-      expect(when_to_contact_component_serializer).not_to receive(:new)
-      personshowpageserializer.to_h
-    end
+          person_show_page_serializer.to_h
 
-    it 'does not load contact points if contact_points is nil' do
-      contact_component_serializer = class_double('ComponentSerializer::ContactComponentSerializer').as_stubbed_const
-      allow(contact_points).to receive(:any?) { nil }
-      expect(contact_component_serializer).not_to receive(:new).with(person)
-      personshowpageserializer.to_h
-    end
+          expect(ComponentSerializer::Heading1ComponentSerializer).to have_received(:new).with(person_double)
+          expect(ComponentSerializer::SubheadingComponentSerializer).to have_received(:new).with(person_double)
+          expect(ComponentSerializer::ImageComponentSerializer).to have_received(:new).with(person_double)
+          expect(ComponentSerializer::WhenToContactComponentSerializer).to have_received(:new)
+          expect(ComponentSerializer::ContactComponentSerializer).to have_received(:new).with(person_double)
+          expect(ComponentSerializer::RolesComponentSerializer).to have_received(:new).with([], [], [], [])
+          expect(ComponentSerializer::TimelineComponentSerializer).to have_received(:new).with([], [], [], [])
+          expect(ComponentSerializer::RelatedLinksComponentSerializer).to have_received(:new).with(person_double)
+        end
+      end
 
-    it 'does not load roles if incumbencies is nil' do
-      roles_component_serializer = class_double('ComponentSerializer::RolesComponentSerializer').as_stubbed_const
-      allow(person.incumbencies).to receive(:any?) { nil }
-      expect(roles_component_serializer).not_to receive(:new).with([], [], [], [])
-    end
+      describe 'image component serializer is not initialized' do
+        it 'if person does not have image_id' do
+          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with(person_double)
+          allow(person_double).to receive(:image_id) { nil }
 
-    it 'does not load roles if committee_memberships is nil' do
-      roles_component_serializer = class_double('ComponentSerializer::RolesComponentSerializer').as_stubbed_const
-      allow(committee_memberships).to receive(:any?) { nil }
-      expect(roles_component_serializer).not_to receive(:new).with([], [], [], [])
-    end
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with(person_double)
+        end
 
-    it 'does not load timeline if incumbencies is nil' do
-      timeline_component_serializer = class_double('ComponentSerializer::TimelineComponentSerializer').as_stubbed_const
-      allow(person.incumbencies).to receive(:any?) { nil }
-      expect(timeline_component_serializer).not_to receive(:new).with([], [], [], [])
-    end
+        it 'if person has image_id that is placeholder' do
+          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with(person_double)
+          allow(person_double).to receive(:image_id) { 'placeholder' }
 
-    it 'does not load timeline if committee_memberships is nil' do
-      timeline_component_serializer = class_double('ComponentSerializer::TimelineComponentSerializer').as_stubbed_const
-      allow(committee_memberships).to receive(:any?) { nil }
-      expect(timeline_component_serializer).not_to receive(:new).with([], [], [], [])
-    end
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with(person_double)
+        end
+      end
 
-    it 'does not load related links if weblinks? is nil' do
-      related_links_component_serializer = class_double('ComponentSerializer::RelatedLinksComponentSerializer').as_stubbed_const
-      allow(person).to receive(:weblinks?) { nil }
-      expect(related_links_component_serializer).not_to receive(:new).with(person)
-    end
+      describe 'when-to-contact component serializer is not initialized' do
+        it 'if person is not a current mp' do
+          allow(ComponentSerializer::WhenToContactComponentSerializer).to receive(:new)
+          allow(person_double).to receive(:current_mp?) { false }
 
-    it 'does not load related links if image_id is nil' do
-      related_links_component_serializer = class_double('ComponentSerializer::RelatedLinksComponentSerializer').as_stubbed_const
-      allow(person).to receive(:image_id) { nil }
-      expect(related_links_component_serializer).not_to receive(:new).with(person)
-    end
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::WhenToContactComponentSerializer).not_to have_received(:new)
+        end
+      end
 
+      describe 'contact component serializer is not initialized' do
+        it 'if contact points is an empty array' do
+          allow(ComponentSerializer::ContactComponentSerializer).to receive(:new).with(person_double)
+          allow(current_seat_incumbency).to receive(:contact_points) { [] }
+
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::ContactComponentSerializer).not_to have_received(:new).with(person_double)
+        end
+      end
+
+      describe 'roles component serializer is not initialized' do
+        it 'if incumbencies and committee_memberships are empty arrays' do
+          allow(ComponentSerializer::RolesComponentSerializer).to receive(:new).with([], [], [], [])
+          allow(person_double).to receive(:incumbencies) { [] }
+
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::RolesComponentSerializer).not_to have_received(:new).with([], [], [], [])
+        end
+      end
+
+      describe 'timeline component serializer is not initialized' do
+        it 'if incumbencies and committee memberships are empty arrays' do
+          allow(ComponentSerializer::TimelineComponentSerializer).to receive(:new).with([], [], [], [])
+          allow(person_double).to receive(:incumbencies) { [] }
+
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::TimelineComponentSerializer).not_to have_received(:new).with([], [], [], [])
+        end
+      end
+
+      describe 'related links component serializer is not initialized' do
+        it 'if person has no weblinks and they have no image_id' do
+          allow(ComponentSerializer::RelatedLinksComponentSerializer).to receive(:new).with(person_double)
+          allow(person_double).to receive(:weblinks?) { nil }
+          allow(person_double).to receive(:image_id) { nil }
+
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::RelatedLinksComponentSerializer).not_to have_received(:new).with(person_double)
+        end
+
+        it 'if person has no weblinks and image_id is placeholder' do
+          allow(ComponentSerializer::RelatedLinksComponentSerializer).to receive(:new).with(person_double)
+          allow(person_double).to receive(:weblinks?) { nil }
+          allow(person_double).to receive(:image_id) { 'placeholder' }
+
+          person_show_page_serializer.to_h
+          expect(ComponentSerializer::RelatedLinksComponentSerializer).not_to have_received(:new).with(person_double)
+        end
+      end
+    end
   end
 end

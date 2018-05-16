@@ -4,6 +4,10 @@ class BaseSerializer
     content
   end
 
+  def to_yaml
+    to_h.to_yaml
+  end
+
   def t(*args)
     I18n.t(*args)
   end

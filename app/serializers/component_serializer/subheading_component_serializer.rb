@@ -1,6 +1,5 @@
 module ComponentSerializer
   class SubheadingComponentSerializer < BaseComponentSerializer
-
     def initialize(person)
       @person = person
     end
@@ -22,6 +21,5 @@ module ComponentSerializer
       subheading = "#{@person.current_party_membership.try(&:party).try(&:name)} - #{@person.statuses[:house_membership_status].join( t('.and') )}" if @person.current_lord?
       subheading
     end
-
   end
 end

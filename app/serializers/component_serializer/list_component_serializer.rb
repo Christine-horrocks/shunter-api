@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class ListComponentSerializer <BaseSerializer
-
+  class ListComponentSerializer < BaseSerializer
     def initialize(heading, list_items)
       @heading = heading
       @list_items = list_items
@@ -16,6 +15,5 @@ module ComponentSerializer
         }
       }
     end
-
   end
 end

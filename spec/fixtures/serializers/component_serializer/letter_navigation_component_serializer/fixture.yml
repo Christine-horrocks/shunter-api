@@ -1,0 +1,107 @@
+---
+:name: letter-navigation
+:data:
+- :letter: A
+  :presence: true
+  :active: 
+  :objects_name: &1 {}
+- :letter: B
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: C
+  :presence: true
+  :active: true
+  :objects_name: *1
+- :letter: D
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: E
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: F
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: G
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: H
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: I
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: J
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: K
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: L
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: M
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: N
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: O
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: P
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: Q
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: R
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: S
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: T
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: U
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: V
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: W
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: X
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: Y
+  :presence: 
+  :active: 
+  :objects_name: *1
+- :letter: Z
+  :presence: 
+  :active: 
+  :objects_name: *1

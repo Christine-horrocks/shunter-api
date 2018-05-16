@@ -23,6 +23,5 @@ module ComponentSerializer
         hash["media-url"] = "/media/#{@person.image_id}" if @person.image_id
       end
     end
-
   end
 end

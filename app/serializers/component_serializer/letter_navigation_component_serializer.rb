@@ -1,6 +1,5 @@
 module ComponentSerializer
   class LetterNavigationComponentSerializer < BaseComponentSerializer
-
     def initialize(letters, active_letter, objects_name = {})
       @letters = letters
       @active_letter = active_letter
@@ -20,11 +19,8 @@ module ComponentSerializer
           end
     end
 
-    private
-
     def active?(letter)
      letter == @active_letter.upcase ? true : nil
     end
-
   end
 end
