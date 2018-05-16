@@ -13,7 +13,7 @@ describe PageSerializer::ListPageSerializer, vcr: false do
 
   context '#to_h' do
     it 'creates a hash for the list page' do
-      expected = get_fixture('page_serializer/list_page_serializer/hash.yml')
+      expected = get_fixture('hash', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end

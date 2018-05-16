@@ -24,7 +24,7 @@ RSpec.describe ComponentSerializer::SubheadingComponentSerializer do
       allow(person).to receive(:current_mp?) { false }
       allow(person).to receive(:current_lord?) { false }
 
-      expected = get_fixture('former_mp.yml', __FILE__)
+      expected = get_fixture('former_mp', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -35,7 +35,7 @@ RSpec.describe ComponentSerializer::SubheadingComponentSerializer do
       allow(person).to receive(:current_mp?) { false }
       allow(person).to receive(:current_lord?) { false }
 
-      expected = get_fixture('former_lord.yml', __FILE__)
+      expected = get_fixture('former_lord', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -46,7 +46,7 @@ RSpec.describe ComponentSerializer::SubheadingComponentSerializer do
       allow(person).to receive(:current_mp?) { true }
       allow(person).to receive(:current_lord?) { false }
 
-      expected = get_fixture('current_mp.yml', __FILE__)
+      expected = get_fixture('current_mp', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -57,7 +57,7 @@ RSpec.describe ComponentSerializer::SubheadingComponentSerializer do
       allow(person).to receive(:current_mp?) { false }
       allow(person).to receive(:current_lord?) { true }
 
-      expected = get_fixture('current_lord.yml', __FILE__)
+      expected = get_fixture('current_lord', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end

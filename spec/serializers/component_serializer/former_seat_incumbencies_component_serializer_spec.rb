@@ -10,7 +10,7 @@ describe ComponentSerializer::FormerSeatIncumbenciesComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data for the former seat incumbencies' do
-      expected = get_fixture('component_serializer/former_seat_incumbencies_component_serializer/fixture.yml')
+      expected = get_fixture('fixture', __FILE__)
 
       expect(former_seat_incumbencies_component_serializer.to_yaml).to eq expected
   end

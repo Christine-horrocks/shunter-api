@@ -8,7 +8,7 @@ describe ComponentSerializer::ListComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data' do
-      expected = get_fixture('component_serializer/ListComponentSerializer/fixture.yml')
+      expected = get_fixture('fixture', __FILE__)
 
       expect(list_component_serializer.to_yaml).to eq expected
     end

@@ -6,7 +6,7 @@ describe ComponentSerializer::ConstituencyHeadingComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data' do
-      expected = get_fixture('component_serializer/constituency_heading_component_serializer/fixture.yml')
+      expected = get_fixture('fixture', __FILE__)
 
       expect(constituency_heading_component_serializer.to_yaml).to eq expected
     end

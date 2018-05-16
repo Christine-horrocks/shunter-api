@@ -22,7 +22,7 @@ describe ComponentSerializer::PersonComponentSerializer do
   context '#to_h' do
     it 'returns a hash for a complete current MP' do
       allow(person).to receive(:current_mp?) { true }
-      expected = get_fixture('component_serializer/person_component_serializer/complete_current_mp.yml')
+      expected = get_fixture('complete_current_mp', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end
@@ -30,7 +30,7 @@ describe ComponentSerializer::PersonComponentSerializer do
     it 'returns a hash for a complete former MP' do
       allow(person).to receive(:former_mp?) { true }
 
-      expected = get_fixture('component_serializer/person_component_serializer/complete_former_mp.yml')
+      expected = get_fixture('complete_former_mp', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end
@@ -38,7 +38,7 @@ describe ComponentSerializer::PersonComponentSerializer do
     it 'returns a hash for a complete current Lord' do
       allow(person).to receive(:current_lord?) { true }
 
-      expected = get_fixture('component_serializer/person_component_serializer/complete_current_lord.yml')
+      expected = get_fixture('complete_current_lord', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end
@@ -46,7 +46,7 @@ describe ComponentSerializer::PersonComponentSerializer do
     it 'returns a hash for a complete former Lord' do
       allow(person).to receive(:former_lord?) { true }
 
-      expected = get_fixture('component_serializer/person_component_serializer/complete_former_lord.yml')
+      expected = get_fixture('complete_former_lord', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end
@@ -55,7 +55,7 @@ describe ComponentSerializer::PersonComponentSerializer do
       allow(person).to receive(:current_mp?) { true }
       allow(person).to receive(:current_party_membership) { nil }
 
-      expected = get_fixture('component_serializer/person_component_serializer/current_mp_without_membership.yml')
+      expected = get_fixture('current_mp_without_membership', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end
@@ -64,7 +64,7 @@ describe ComponentSerializer::PersonComponentSerializer do
       allow(person).to receive(:current_mp?) { true }
       allow(person).to receive(:image_id) { nil }
 
-      expected = get_fixture('component_serializer/person_component_serializer/current_mp_without_image_id.yml')
+      expected = get_fixture('current_mp_without_image_id', __FILE__)
 
       expect(person_component_serializer.to_yaml).to eq expected
     end

@@ -9,7 +9,7 @@ RSpec.describe ComponentSerializer::TimelineComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash with the name and timeline data' do
-      expected = get_fixture('fixture.yml', __FILE__)
+      expected = get_fixture('fixture', __FILE__)
 
       expect(serializer.to_yaml).to eq expected
     end
