@@ -29,7 +29,7 @@ describe ComponentSerializer::PersonComponentSerializer do
 
     it 'returns a hash for a complete former MP' do
       allow(person).to receive(:former_mp?) { true }
-      
+
       expected = get_fixture('component_serializer/person_component_serializer/complete_former_mp.yml')
 
       expect(person_component_serializer.to_yaml).to eq expected

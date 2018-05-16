@@ -7,12 +7,12 @@ module SerializerFixtureHelper
     File.open(file_path, 'r') { |f| f.read }
   end
 
-  def create_fixture(hash, *path)
+  def create_fixture(serializer, *path)
     file_path = File.join(path)
     directory_name = File.dirname(file_path)
 
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
 
-    File.open(File.join(path), 'w') { |f| p f.write hash.to_yaml }
+    File.open(File.join(path), 'w') { |f| p f.write serializer.to_yaml }
   end
 end
