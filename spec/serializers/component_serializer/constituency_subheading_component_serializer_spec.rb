@@ -8,7 +8,7 @@ RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash containing the name and data if current' do
-      expected = get_fixture('current', __FILE__)
+      expected = get_fixture('current')
 
       expect(constituency_subheading_component_serializer.to_yaml).to eq expected
     end
@@ -16,7 +16,7 @@ RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
     it 'returns a hash containing the name and date if former' do
       allow(constituency).to receive(:current?) { false }
 
-      expected = get_fixture('former', __FILE__)
+      expected = get_fixture('former')
 
       expect(constituency_subheading_component_serializer.to_yaml).to eq expected
     end

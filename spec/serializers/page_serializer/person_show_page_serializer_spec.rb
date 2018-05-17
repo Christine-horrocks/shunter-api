@@ -34,7 +34,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
   context '#to_h' do
     describe 'correct hashes' do
       it 'when all person information is available' do
-        expected = get_fixture('with_all_data', __FILE__)
+        expected = get_fixture('with_all_data')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -42,7 +42,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'if person does not have image_id' do
         allow(person_double).to receive(:image_id) { nil }
 
-        expected = get_fixture('no_image_id', __FILE__)
+        expected = get_fixture('no_image_id')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -50,7 +50,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'if person has image_id that is placeholder' do
         allow(person_double).to receive(:image_id) { 'placeholder' }
 
-        expected = get_fixture('placeholder_image_id', __FILE__)
+        expected = get_fixture('placeholder_image_id')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -58,7 +58,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'if person is not a current mp' do
         allow(person_double).to receive(:current_mp?) { false }
 
-        expected = get_fixture('not_current_mp', __FILE__)
+        expected = get_fixture('not_current_mp')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -66,7 +66,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'if contact points is an empty array' do
         allow(current_seat_incumbency).to receive(:contact_points) { [] }
 
-        expected = get_fixture('contact_points_empty_array', __FILE__)
+        expected = get_fixture('contact_points_empty_array')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -74,7 +74,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       it 'if incumbencies and committee_memberships are empty arrays' do
         allow(person_double).to receive(:incumbencies) { [] }
 
-        expected = get_fixture('incumbencies_committee_memberships_empty_arrays', __FILE__)
+        expected = get_fixture('incumbencies_committee_memberships_empty_arrays')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -83,7 +83,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
         allow(person_double).to receive(:weblinks?) { nil }
         allow(person_double).to receive(:image_id) { nil }
 
-        expected = get_fixture('no_weblinks_or_image_id', __FILE__)
+        expected = get_fixture('no_weblinks_or_image_id')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end
@@ -92,7 +92,7 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
         allow(person_double).to receive(:weblinks?) { nil }
         allow(person_double).to receive(:image_id) { 'placeholder' }
 
-        expected = get_fixture('no_weblinks_placeholder_image_id', __FILE__)
+        expected = get_fixture('no_weblinks_placeholder_image_id')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
       end

@@ -14,7 +14,7 @@ RSpec.describe ComponentSerializer::RolesComponentSerializer do
       end
 
       it 'returns the roles data' do
-        expected = get_fixture('fixture', __FILE__)
+        expected = get_fixture('fixture')
 
         expect(serializer.to_yaml).to eq expected
       end

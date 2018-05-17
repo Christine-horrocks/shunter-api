@@ -42,7 +42,7 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
     end
 
     it 'produces the correct hash for a current constituency show page' do
-      expected = get_fixture('current_constituency_hash', __FILE__)
+      expected = get_fixture('current_constituency_hash')
 
       expect(constituency_show_page_serializer.to_yaml).to eq expected
     end
@@ -51,7 +51,7 @@ describe PageSerializer::ConstituencyShowPageSerializer, vcr: false do
       allow(constituency).to receive(:current?) {false}
       allow(constituency).to receive(:date_range) {"12-12"}
 
-      expected = get_fixture('former_constituency_hash', __FILE__)
+      expected = get_fixture('former_constituency_hash')
 
       expect(constituency_show_page_serializer.to_yaml).to eq expected
     end

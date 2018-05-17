@@ -13,7 +13,7 @@ RSpec.describe ComponentSerializer::RelatedLinksComponentSerializer do
 
   context '#to_h' do
     it 'returns a hash with the name and related links data if all data is available' do
-      expected = get_fixture('with_all_data', __FILE__)
+      expected = get_fixture('with_all_data')
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -21,7 +21,7 @@ RSpec.describe ComponentSerializer::RelatedLinksComponentSerializer do
     it 'leaves out name and media-url if image_id is falsey' do
       allow(person_double).to receive(:image_id) { false }
 
-      expected = get_fixture('image_id_falsey', __FILE__)
+      expected = get_fixture('image_id_falsey')
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -29,7 +29,7 @@ RSpec.describe ComponentSerializer::RelatedLinksComponentSerializer do
     it 'leaves out website if personal_weblinks is an empty array' do
       allow(person_double).to receive(:personal_weblinks) { [] }
 
-      expected = get_fixture('personal_weblinks_empty', __FILE__)
+      expected = get_fixture('personal_weblinks_empty')
 
       expect(serializer.to_yaml).to eq expected
     end
@@ -37,7 +37,7 @@ RSpec.describe ComponentSerializer::RelatedLinksComponentSerializer do
     it 'leaves out twitter if twitter_weblinks is an empty array' do
       allow(person_double).to receive(:twitter_weblinks) { [] }
 
-      expected = get_fixture('twitter_weblinks_empty', __FILE__)
+      expected = get_fixture('twitter_weblinks_empty')
 
       expect(serializer.to_yaml).to eq expected
     end

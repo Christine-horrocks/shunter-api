@@ -3,7 +3,7 @@ require_relative '../../rails_helper'
 describe PageSerializer::HomePageSerializer, vcr: false do
   context '#to_h' do
     it 'returns a hash with the home page components' do
-      expected = get_fixture('hash', __FILE__)
+      expected = get_fixture('hash')
 
       expect(subject.to_yaml).to eq expected
     end
