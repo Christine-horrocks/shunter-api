@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module SerializerFixtureHelper
   def get_fixture(filename)
     File.open("#{directory_name(caller_locations.first.path)}/#{filename}.yml", 'r') { |f| f.read }
