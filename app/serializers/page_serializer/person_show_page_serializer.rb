@@ -11,23 +11,25 @@ module PageSerializer
 
     def content
       c = []
-      c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, 1).to_h
-      c << ComponentSerializer::ParagraphComponentSerializer.new(mp_constituency_information).to_h
-      c << ComponentSerializer::ImageComponentSerializer.new(figure_url, image_srcset1, image_srcset2, image_src, image_alt).to_h if @person.image_id && @person.image_id != 'placeholder'
+      c << ComponentSerializer::SectionPrimaryComponentSerializer.new(section_primary_components).to_h
       c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
-      c << ComponentSerializer::CardComponentSerializer.new(contact_components).to_h
-
-      # c << ComponentSerializer::ContactComponentSerializer.new(@person).to_h if @person.current_seat_incumbency && @person.current_seat_incumbency.contact_points.any?
+      c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h
       c << ComponentSerializer::RolesComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
       c << ComponentSerializer::TimelineComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.related_links.title'), 2).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder')
-      c << ComponentSerializer::DescriptionListComponentSerializer.new(related_links).to_h if @person.weblinks?
-      c << ComponentSerializer::ParagraphComponentSerializer.new(image_download_link).to_h if @person.image_id && @person.image_id != 'placeholder'
+      c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
       c
     end
 
   def title
     "#{@person.display_name} #{t('.uk_parliament')}"
+  end
+
+  def section_primary_components
+    c = []
+    c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, 1).to_h
+    c << ComponentSerializer::ParagraphComponentSerializer.new(mp_constituency_information).to_h
+    c << ComponentSerializer::ImageComponentSerializer.new(figure_url, image_srcset1, image_srcset2, image_src, image_alt).to_h if @person.image_id && @person.image_id != 'placeholder'
+    c
   end
 
   def mp_constituency_information
@@ -60,6 +62,14 @@ module PageSerializer
     "#{@person.display_name}"
   end
 
+  def related_links_components
+    c = []
+    c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.related_links.title'), 2).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder')
+    c << ComponentSerializer::DescriptionListComponentSerializer.new(related_links).to_h if @person.weblinks?
+    c << ComponentSerializer::ParagraphComponentSerializer.new(image_download_link).to_h if @person.image_id && @person.image_id != 'placeholder'
+    c
+  end
+
   def related_links
     weblinks = @person.personal_weblinks.map { |weblink| link_to(weblink.to_s, weblink) }
     twitter_weblinks = @person.twitter_weblinks.map { |weblink| link_to(weblink.to_s, weblink) }
@@ -79,10 +89,10 @@ module PageSerializer
   end
 
   def contact_components
-    components = []
-    components << ComponentSerializer::HeadingComponentSerializer.new(t('.contact_points.contact_caps'), 2).to_h
-    components << ComponentSerializer::DescriptionListComponentSerializer.new(contact_links).to_h
-    p components
+    c = []
+    c << ComponentSerializer::HeadingComponentSerializer.new(t('.contact_points.contact_caps'), 2).to_h
+    c << ComponentSerializer::DescriptionListComponentSerializer.new(contact_links).to_h
+    c
   end
 
   def contact_links

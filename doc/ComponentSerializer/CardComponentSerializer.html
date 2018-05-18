@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: ComponentSerializer::ListItemComponentSerializer
+  Class: ComponentSerializer::CardComponentSerializer
   
     &mdash; Documentation by YARD 0.9.12
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "ComponentSerializer::ListItemComponentSerializer";
+  pathId = "ComponentSerializer::CardComponentSerializer";
   relpath = '../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../_index.html">Index (L)</a> &raquo;
+    <a href="../_index.html">Index (C)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../ComponentSerializer.html" title="ComponentSerializer (module)">ComponentSerializer</a></span></span>
      &raquo; 
-    <span class="title">ListItemComponentSerializer</span>
+    <span class="title">CardComponentSerializer</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: ComponentSerializer::ListItemComponentSerializer
+      <div id="content"><h1>Class: ComponentSerializer::CardComponentSerializer
   
   
   
@@ -69,16 +69,14 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="BaseComponentSerializer.html" title="ComponentSerializer::BaseComponentSerializer (class)">BaseComponentSerializer</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="../BaseSerializer.html" title="BaseSerializer (class)">BaseSerializer</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
             <li class="next"><span class='object_link'><a href="../BaseSerializer.html" title="BaseSerializer (class)">BaseSerializer</a></span></li>
           
-            <li class="next"><span class='object_link'><a href="BaseComponentSerializer.html" title="ComponentSerializer::BaseComponentSerializer (class)">BaseComponentSerializer</a></span></li>
-          
-            <li class="next">ComponentSerializer::ListItemComponentSerializer</li>
+            <li class="next">ComponentSerializer::CardComponentSerializer</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -98,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>app/serializers/component_serializer/list_item_component_serializer.rb</dd>
+    <dd>app/serializers/component_serializer/card_component_serializer.rb</dd>
   </dl>
   
 </div>
@@ -121,7 +119,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(link, link_text, *additional_text)  &#x21d2; ListItemComponentSerializer </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(components)  &#x21d2; CardComponentSerializer </a>
     
 
     
@@ -138,7 +136,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of ListItemComponentSerializer.</p>
+<p>A new instance of CardComponentSerializer.</p>
 </div></span>
   
 </li>
@@ -178,17 +176,6 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="BaseComponentSerializer.html" title="ComponentSerializer::BaseComponentSerializer (class)">BaseComponentSerializer</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="BaseComponentSerializer.html#content-instance_method" title="ComponentSerializer::BaseComponentSerializer#content (method)">#content</a></span>, <span class='object_link'><a href="BaseComponentSerializer.html#data-instance_method" title="ComponentSerializer::BaseComponentSerializer#data (method)">#data</a></span>, <span class='object_link'><a href="BaseComponentSerializer.html#name-instance_method" title="ComponentSerializer::BaseComponentSerializer#name (method)">#name</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseSerializer.html" title="BaseSerializer (class)">BaseSerializer</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../BaseSerializer.html#content-instance_method" title="BaseSerializer#content (method)">#content</a></span>, <span class='object_link'><a href="../BaseSerializer.html#link_to-instance_method" title="BaseSerializer#link_to (method)">#link_to</a></span>, <span class='object_link'><a href="../BaseSerializer.html#t-instance_method" title="BaseSerializer#t (method)">#t</a></span></p>
 <div id="constructor_details" class="method_details_list">
@@ -197,7 +184,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(link, link_text, *additional_text)  &#x21d2; <tt><span class='object_link'><a href="" title="ComponentSerializer::ListItemComponentSerializer (class)">ListItemComponentSerializer</a></span></tt> 
+    #<strong>initialize</strong>(components)  &#x21d2; <tt><span class='object_link'><a href="" title="ComponentSerializer::CardComponentSerializer (class)">CardComponentSerializer</a></span></tt> 
   
 
   
@@ -206,7 +193,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of ListItemComponentSerializer</p>
+<p>Returns a new instance of CardComponentSerializer</p>
 
 
   </div>
@@ -222,17 +209,13 @@
 
 4
 5
-6
-7
-8</pre>
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/serializers/component_serializer/list_item_component_serializer.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'app/serializers/component_serializer/card_component_serializer.rb', line 4</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_link'>link</span><span class='comma'>,</span> <span class='id identifier rubyid_link_text'>link_text</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_additional_text'>additional_text</span><span class='rparen'>)</span>
-  <span class='ivar'>@link</span> <span class='op'>=</span> <span class='id identifier rubyid_link'>link</span>
-  <span class='ivar'>@link_text</span> <span class='op'>=</span> <span class='id identifier rubyid_link_text'>link_text</span>
-  <span class='ivar'>@additional_text</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_additional_text'>additional_text</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_components'>components</span><span class='rparen'>)</span>
+  <span class='ivar'>@components</span> <span class='op'>=</span> <span class='id identifier rubyid_components'>components</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -261,6 +244,8 @@
       <pre class="lines">
 
 
+8
+9
 10
 11
 12
@@ -270,14 +255,16 @@
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/serializers/component_serializer/list_item_component_serializer.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/serializers/component_serializer/card_component_serializer.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
-      <span class='lbrace'>{</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>link</span><span class='label_end'>&quot;:</span> <span class='ivar'>@link</span><span class='comma'>,</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>link-text</span><span class='label_end'>&quot;:</span> <span class='ivar'>@link_text</span><span class='comma'>,</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>additional-text</span><span class='label_end'>&quot;:</span> <span class='ivar'>@additional_text</span>
-      <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='label_end'>&quot;:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>data</span><span class='label_end'>&quot;:</span>
+    <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>components</span><span class='label_end'>&quot;:</span> <span class='ivar'>@components</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
