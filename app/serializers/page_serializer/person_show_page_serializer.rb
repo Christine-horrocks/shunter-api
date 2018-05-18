@@ -7,6 +7,7 @@ module PageSerializer
       @committee_memberships = committee_memberships
       @government_incumbencies = government_incumbencies
       @opposition_incumbencies = opposition_incumbencies
+      @role_helper = RoleHelper
     end
 
     def content
@@ -14,8 +15,8 @@ module PageSerializer
       c << ComponentSerializer::SectionPrimaryComponentSerializer.new(section_primary_components).to_h
       c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
       c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h
-      c << ComponentSerializer::RolesComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::TimelineComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      c << ComponentSerializer::RolesListComponentSerializer.new(current_roles).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      # c << ComponentSerializer::TimelineComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
       c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
       c
     end
@@ -60,6 +61,11 @@ module PageSerializer
 
   def image_alt
     "#{@person.display_name}"
+  end
+
+  def current_roles
+    history = @role_helper.create_role_history(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies)
+    @role_helper.organise_roles(history[:current]) if history[:current]
   end
 
   def related_links_components

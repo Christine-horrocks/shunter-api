@@ -1,6 +1,12 @@
 module ComponentSerializer
   class SectionPrimaryComponentSerializer <BaseSerializer
 
+    # Initialise a section primary component with an array of objects.
+    #
+    # @param [Array<Hash>] an array of objects, each object is a component or atom.
+  
+
+
     def initialize(components)
       @components = components
     end
