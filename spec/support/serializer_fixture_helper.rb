@@ -6,7 +6,7 @@ module SerializerFixtureHelper
   end
 
   def create_fixture(serializer, filename)
-    Dir.mkdir(directory_name(caller_locations.first.path)) unless File.exists?(directory_name(caller_locations.first.path))
+    FileUtils::mkdir_p(directory_name(caller_locations.first.path))
 
     File.open("#{directory_name(caller_locations.first.path)}/#{filename}.yml", 'w') { |f| p f.write serializer.to_yaml }
   end
