@@ -1,4 +1,3 @@
-
 require_relative '../../rails_helper'
 
 RSpec.describe ConstituenciesController, vcr: true do
@@ -6,9 +5,10 @@ RSpec.describe ConstituenciesController, vcr: true do
     context 'with a constituency that exists' do
       it 'renders expected JSON output' do
         get '/constituencies/yyocmekJ'
-        expected_json = get_fixture('constituencies_controller/show/with_all_data.json')
 
-        expect(response.body).to eq(expected_json)
+        expected = get_fixture('show', 'with_all_data')
+
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
   end
@@ -17,9 +17,10 @@ RSpec.describe ConstituenciesController, vcr: true do
     context 'with a constituency that exists' do
       it 'renders expected JSON output' do
         get '/constituencies/yyocmekJ/map.json'
-        expected_json = get_fixture('constituencies_controller/map/map.json')
 
-        expect(response.body).to eq(expected_json)
+        expected = get_fixture('map', 'map')
+
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
   end
@@ -28,9 +29,10 @@ RSpec.describe ConstituenciesController, vcr: true do
     context 'for all constituencies' do
       it 'renders expected JSON output' do
         get '/constituencies'
-        expected_json = get_fixture('constituencies_controller/index/index.json')
 
-        expect(response.body).to eq(expected_json)
+        expected = get_fixture('index', 'index')
+
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
   end
@@ -39,9 +41,10 @@ RSpec.describe ConstituenciesController, vcr: true do
     context 'for constituencies beginning with A' do
       it 'renders expected JSON output' do
         get '/constituencies/a-z/y'
-        expected_json = get_fixture('constituencies_controller/letters/y.json')
 
-        expect(response.body).to eq(expected_json)
+        expected = get_fixture('letters', 'y')
+
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
   end

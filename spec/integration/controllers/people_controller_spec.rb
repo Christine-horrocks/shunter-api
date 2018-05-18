@@ -6,9 +6,9 @@ RSpec.describe PeopleController, vcr: true do
       it 'renders expected JSON output' do
         get '/people/43RHonMf'
 
-        expected_json = get_fixture('show', 'with_all_data')
+        expected = get_fixture('show', 'with_all_data')
 
-        expect(JSON.parse(response.body).to_yaml).to eq(expected_json)
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
 
@@ -16,9 +16,9 @@ RSpec.describe PeopleController, vcr: true do
       it 'renders expected JSON output' do
         get '/people/qkVSY7jb'
 
-        expected_json = get_fixture('show', 'former_mp')
+        expected = get_fixture('show', 'former_mp')
 
-        expect(JSON.parse(response.body).to_yaml).to eq(expected_json)
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
 
@@ -26,9 +26,9 @@ RSpec.describe PeopleController, vcr: true do
       it 'renders expected JSON output' do
         get '/people/0G6VnY9o'
 
-        expected_json = get_fixture('show', 'current_lord')
+        expected = get_fixture('show', 'current_lord')
 
-        expect(JSON.parse(response.body).to_yaml).to eq(expected_json)
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
 
@@ -36,9 +36,9 @@ RSpec.describe PeopleController, vcr: true do
       it 'renders expected JSON output' do
         get '/people/c2Q5Jyop'
 
-        expected_json = get_fixture('show', 'former_lord')
+        expected = get_fixture('show', 'former_lord')
 
-        expect(JSON.parse(response.body).to_yaml).to eq(expected_json)
+        expect(JSON.parse(response.body).to_yaml).to eq(expected)
       end
     end
   end
