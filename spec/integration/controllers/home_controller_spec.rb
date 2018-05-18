@@ -10,9 +10,10 @@ RSpec.describe HomeController, vcr: true do
 
       context 'with all the information present' do
         it 'renders expected JSON output' do
-          expected_json = get_fixture('home_controller/index/home_page.json')
+          create_fixture(JSON.parse(response.body), 'index', 'home_page')
+          expected_json = get_fixture('index', 'home_page')
 
-          expect(JSON.parse(response.body)).to eq(JSON.parse(expected_json))
+          expect(JSON.parse(response.body).to_yaml).to eq(expected_json)
           end
         end
       end
