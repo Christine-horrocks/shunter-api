@@ -3,9 +3,9 @@ require_relative '../../rails_helper'
 describe PageSerializer::HomePageSerializer, vcr: false do
   context '#to_h' do
     it 'returns a hash with the home page components' do
-      expected_hash = get_fixture('page_serializer/home_page_serializer/hash.yml')
+      expected = get_fixture('hash')
 
-      expect(subject.to_h.to_yaml).to eq expected_hash
+      expect(subject.to_yaml).to eq expected
     end
 
     it 'calls the correct component serializers' do

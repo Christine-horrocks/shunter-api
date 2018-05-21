@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class MapComponentSerializer <BaseComponentSerializer
-
+  class MapComponentSerializer < BaseComponentSerializer
     def initialize(constituency, json_location)
       @constituency = constituency
       @json_location = json_location
@@ -19,7 +18,5 @@ module ComponentSerializer
             "enable-javascript": t('.constituencies.map.enable_javascript')
           }
     end
-
-
   end
 end

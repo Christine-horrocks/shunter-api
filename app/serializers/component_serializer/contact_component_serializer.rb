@@ -22,15 +22,13 @@ module ComponentSerializer
     end
 
     def find_contact_points
-      contact_points = []
-      @object.try(&:current_seat_incumbency).try(&:contact_points).each do |contact_point|
-        contact_points << {
+      @object.try(&:current_seat_incumbency).try(&:contact_points).map do |contact_point|
+        {
           "email": contact_point.email,
           "phone": contact_point.phone_number,
           "addresses": contact_point.postal_addresses.map(&:full_address)
         }
       end
-      contact_points
     end
   end
 end

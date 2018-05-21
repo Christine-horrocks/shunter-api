@@ -1,11 +1,19 @@
 module SerializerFixtureHelper
-  def get_fixture(path)
-    file_path = File.join(File.dirname(__FILE__), '../', 'fixtures', 'serializers', path)
-
-    File.open(file_path, 'r') { |f| f.read }
+  def get_fixture(filename)
+    File.open("#{infer_fixture_directory(caller_locations.first.path)}/#{filename}.yml", 'r') { |f| f.read }
   end
 
-  def create_fixture(hash, *path)
-    File.open(File.join(path), 'w') { |f| p f.write hash.to_yaml }
+  def create_fixture(serializer, filename)
+    FileUtils::mkdir_p(infer_fixture_directory(caller_locations.first.path))
+
+    File.open("#{infer_fixture_directory(caller_locations.first.path)}/#{filename}.yml", 'w') { |f| p f.write serializer.to_yaml }
+  end
+
+  private
+
+  def infer_fixture_directory(path)
+    path = path.chomp('_spec.rb').split('/')
+    path = path.insert(path.length - 3, 'fixtures').join('/')
+    path
   end
 end

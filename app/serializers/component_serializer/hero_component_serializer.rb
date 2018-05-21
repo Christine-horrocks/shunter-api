@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class HeroComponentSerializer <BaseComponentSerializer
-
+  class HeroComponentSerializer < BaseComponentSerializer
     def initialize(title, *additional_text)
       @title = title
       @additional_text = *additional_text
@@ -16,6 +15,5 @@ module ComponentSerializer
         "additional-text": @additional_text
       }
     end
-    
   end
 end

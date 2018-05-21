@@ -1,19 +1,24 @@
 require_relative '../../rails_helper'
 
-describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
+RSpec.describe ComponentSerializer::ConstituencySubheadingComponentSerializer do
   let (:region) { double('region', name: 'North East', first: 'North East') }
   let (:regions) { double('regions', map: region) }
-  let (:constituency) { double('constituency', regions: regions, current?: true, date_range: "12-12")}
-  let (:constituencysubheadingcomponentserializer) { described_class.new(constituency) }
+  let (:constituency) { double('constituency', regions: regions, current?: true, date_range: '12-12')}
+  let (:constituency_subheading_component_serializer) { described_class.new(constituency) }
+
   context '#to_h' do
     it 'returns a hash containing the name and data if current' do
-      expect(constituencysubheadingcomponentserializer.to_h).to eq({ :name=>"constituency-subheading", :data=>{:current=>true, :subheading=>"North East", :additional_text=>"Constituency in "} })
+      expected = get_fixture('current')
+
+      expect(constituency_subheading_component_serializer.to_yaml).to eq expected
     end
 
     it 'returns a hash containing the name and date if former' do
-      allow(constituency).to receive(:current?) {false}
-      expect(constituencysubheadingcomponentserializer.to_h).to eq({ :name=>"constituency-subheading", :data=>{:current=>false, :subheading=>"Constituency from  12-12", :additional_text=>"This is a former constituency. <a href=\"/constituencies/current\">View current constituencies</a>."} })
-    end
+      allow(constituency).to receive(:current?) { false }
 
+      expected = get_fixture('former')
+
+      expect(constituency_subheading_component_serializer.to_yaml).to eq expected
+    end
   end
 end

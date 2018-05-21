@@ -1,9 +1,9 @@
 module ComponentSerializer
   class WhenToContactComponentSerializer < BaseComponentSerializer
-
     def name
        "when-to-contact"
     end
+
     def data
       {
         "title": t('.people.when_to_contact.title'),
@@ -21,6 +21,5 @@ module ComponentSerializer
         "contact-postcode": t('.people.when_to_contact.contact_postcode')
       }
     end
-
   end
 end

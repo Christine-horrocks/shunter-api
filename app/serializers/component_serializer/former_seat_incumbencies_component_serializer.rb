@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class FormerSeatIncumbenciesComponentSerializer <BaseComponentSerializer
-
+  class FormerSeatIncumbenciesComponentSerializer < BaseComponentSerializer
     def initialize(seat_incumbencies)
       @seat_incumbencies = seat_incumbencies
     end
@@ -27,7 +26,5 @@ module ComponentSerializer
         }
       end
     end
-
-
   end
 end

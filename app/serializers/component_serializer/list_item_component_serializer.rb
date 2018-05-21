@@ -1,6 +1,5 @@
 module ComponentSerializer
-  class ListItemComponentSerializer <BaseComponentSerializer
-
+  class ListItemComponentSerializer < BaseComponentSerializer
     def initialize(link, link_text, *additional_text)
       @link = link
       @link_text = link_text
@@ -14,7 +13,5 @@ module ComponentSerializer
             "additional-text": @additional_text
           }
     end
-
-
   end
 end
