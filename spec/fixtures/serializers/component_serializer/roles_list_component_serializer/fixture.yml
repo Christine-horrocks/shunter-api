@@ -1,0 +1,11 @@
+---
+:name: roles-list
+:data:
+  :title: Roles
+  :type: role
+  :list-type: ul
+  :class-type: list--pipe
+  :list-items:
+  - role1
+  - role2
+  - role3

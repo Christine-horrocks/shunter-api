@@ -30,10 +30,6 @@ RSpec.describe PeopleController, vcr: true do
         expect(committee_membership.type).to eq('https://id.parliament.uk/schema/FormalBodyMembership')
       end
 
-      assigns(:government_incumbencies).each do |government_incumbency|
-        expect(government_incumbency).to be_a(Grom::Node)
-        expect(government_incumbency.type).to eq('https://id.parliament.uk/schema/GovernmentIncumbency')
-      end
 
       assigns(:opposition_incumbencies).each do |opposition_incumbency|
         expect(opposition_incumbency).to be_a(Grom::Node)
@@ -46,7 +42,7 @@ RSpec.describe PeopleController, vcr: true do
               assigns(:person),
               assigns(:seat_incumbencies),
               assigns(:committee_memberships),
-              assigns(:government_incumbencies),
+              [],
               assigns(:opposition_incumbencies)
           )
       end

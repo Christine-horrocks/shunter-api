@@ -50,7 +50,7 @@ module PageSerializer
       heading = t('.home.index.members_info.title')
       list_items = [
         ComponentSerializer::ListItemComponentSerializer.new('/mps', t('.home.index.members_info.mps'), t('.home.index.members_info.current_mps')).to_h,
-        ComponentSerializer::ListItemComponentSerializer.new('/lords',t('.home.index.members_info.mps'), t('.home.index.members_info.current_mps')).to_h,
+        ComponentSerializer::ListItemComponentSerializer.new('/lords',t('.home.index.members_info.lords'), t('.home.index.members_info.current_lords')).to_h,
         ComponentSerializer::ListItemComponentSerializer.new('/constituencies', t('.home.index.members_info.constituencies'), t('.home.index.members_info.current_constituencies')).to_h,
         ComponentSerializer::ListItemComponentSerializer.new('/houses/1AFu55Hs/parties/current', t('.home.index.members_info.parties_and_groups'), t('.home.index.members_info.current_parties')).to_h
       ]

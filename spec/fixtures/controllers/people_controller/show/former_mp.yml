@@ -9,29 +9,27 @@ components:
   data: banner
 - name: header
   data: header
-- name: heading1
-  data: James Berry
-- name: subheading
-  data: Former MP
-- name: roles
+- name: section-primary
   data:
-    template: roles
-    role-list: []
-- name: timeline
+    components:
+    - name: heading
+      data:
+        heading: James Berry
+        weight: 1
+    - name: paragraph
+      data:
+        text:
+        - Former MP
+- name: roles-list
   data:
-    timeline-roles:
-    - time-period: Held currently
-      roles: []
-    - time-period: Held in the last 10 years
-      roles:
-      - role-type: Parliamentary role
-        role-title: MP for Kingston and Surbiton
-        role-dates:
-        - 7 May 2015 to 3 May 2017
-      - role-type: Committee role
-        role-title: Member of the Home Affairs Committee
-        role-dates:
-        - 8 Jul 2015 to 3 May 2017
-    - time-period: 2015
+    title: Roles
+    type: role
+    list-type: ul
+    class-type: list--pipe
+    list-items: []
+- name: block
+  data:
+    klass: block--border__bottom
+    components: []
 - name: footer
   data: footer

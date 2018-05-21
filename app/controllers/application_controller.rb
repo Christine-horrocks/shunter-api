@@ -18,16 +18,6 @@ class ApplicationController < ActionController::API
   # Used to turn Pugin Features on and off at a controller level
   before_action :reset_bandiera_features, :enable_top_navigation, :enable_global_search, :enable_status_banner, :reset_alternates, :disable_pingdom, :disable_asset_overrides
 
-  # Rescues from a Parliament::ClientError and raises an ActionController::RoutingError
-  rescue_from Parliament::ClientError do |error|
-    raise ActionController::RoutingError, error.message
-  end
-
-  # Rescues from a Parliament::NoContentResponseError and raises an ActionController::RoutingError
-  rescue_from Parliament::NoContentResponseError do |error|
-    raise ActionController::RoutingError, error.message
-  end
-
   def render_page(serializer, response_parameter = response)
     response_parameter.headers['Content-Type'] = 'application/x-shunter+json'
 

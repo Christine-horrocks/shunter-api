@@ -9,9 +9,9 @@ class PeopleController < ApplicationController
   }.freeze
 
   def show
-    @person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'GovernmentIncumbency', 'OppositionIncumbency')
+    @person, @seat_incumbencies, @committee_memberships, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'OppositionIncumbency')
     @person = @person.first
-    render_page(PageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies))
+    render_page(PageSerializer::PersonShowPageSerializer.new(@person, @seat_incumbencies, @committee_memberships, [], @opposition_incumbencies))
   end
 
   def index

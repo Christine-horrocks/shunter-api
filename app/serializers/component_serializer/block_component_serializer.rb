@@ -5,8 +5,6 @@ module ComponentSerializer
     #
     # @param [Array<Hash>] an array of objects, each object is a component or atom.
     # @param [String] contains the class type of the block, with a default of block.
-
-
     def initialize(components, klass = 'block')
       @components = components
       @klass = klass

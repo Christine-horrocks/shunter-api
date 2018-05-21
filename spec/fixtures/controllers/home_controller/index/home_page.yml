@@ -55,9 +55,9 @@ components:
       additional-text:
       - View all current members of the House of Commons.
     - link: "/lords"
-      link-text: MPs
+      link-text: Lords
       additional-text:
-      - View all current members of the House of Commons.
+      - View all current members of the House of Lords.
     - link: "/constituencies"
       link-text: Constituencies
       additional-text:

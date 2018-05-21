@@ -14,9 +14,8 @@ module PageSerializer
       c = []
       c << ComponentSerializer::SectionPrimaryComponentSerializer.new(section_primary_components).to_h
       c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
-      c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h
+      c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h if @person.current_mp? || @person.current_lord?
       c << ComponentSerializer::RolesListComponentSerializer.new(current_roles).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      # c << ComponentSerializer::TimelineComponentSerializer.new(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies).to_h if @person.incumbencies.any? || @committee_memberships.any?
       c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
       c
     end
@@ -97,7 +96,7 @@ module PageSerializer
   def contact_components
     c = []
     c << ComponentSerializer::HeadingComponentSerializer.new(t('.contact_points.contact_caps'), 2).to_h
-    c << ComponentSerializer::DescriptionListComponentSerializer.new(contact_links).to_h
+    c << ComponentSerializer::DescriptionListComponentSerializer.new(contact_links).to_h if @person.current_seat_incumbency.contact_points != []
     c
   end
 
@@ -112,9 +111,9 @@ module PageSerializer
         }
      end
     links = []
-    links << { "medium-name": t('.contact_points.email_caps'), "medium-link": [contact_points.first[:email]] } if contact_points.first[:email] != nil
-    links << { "medium-name": t('contact_points.phone_caps'), "medium-link": [contact_points.first[:phone]] } if contact_points.first[:phone] != nil
-    links << { "medium-name": t('contact_points.address_caps'), "medium-link": contact_points.first[:addresses] } if contact_points.first[:addresses].first != nil
+    links << { "medium-name": t('.contact_points.email_caps'), "medium-link": [contact_points.first[:email]] } if contact_points != [] && contact_points.first[:email] != nil
+    links << { "medium-name": t('contact_points.phone_caps'), "medium-link": [contact_points.first[:phone]] } if contact_points != [] && contact_points.first[:phone] != nil
+    links << { "medium-name": t('contact_points.address_caps'), "medium-link": contact_points.first[:addresses] } if contact_points != [] && contact_points.first[:addresses].first != nil
     links
   end
 

@@ -9,14 +9,6 @@ module HistoryHelper
     @year_separator ||= 10
   end
 
-  # Assigns year_separator variable if not already set (setter method)
-  #
-  # @param number [Integer] Number of years to divide up the timeline by, in order to create time periods
-  # @return [Integer] Number of years used to divide up the timeline into time periods
-  def self.year_separator=(number)
-    @year_separator = number
-  end
-
   # Creates/sets an empty history object
   #
   # @return [Hash] Object with properties of start, current and years
