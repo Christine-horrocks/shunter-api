@@ -26,3 +26,6 @@
 
 # Ignore docs
 /doc
+
+# Ignore yardoc
+/yardoc

@@ -26,7 +26,7 @@ module PageSerializer
 
   def section_primary_components
     c = []
-    c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, 1).to_h
+    c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, size: 1).to_h
     c << ComponentSerializer::ParagraphComponentSerializer.new(mp_constituency_information).to_h
     c << ComponentSerializer::ImageComponentSerializer.new(figure_url, image_srcset1, image_srcset2, image_src, image_alt).to_h if @person.image_id && @person.image_id != 'placeholder'
     c
@@ -69,7 +69,7 @@ module PageSerializer
 
   def related_links_components
     c = []
-    c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.related_links.title'), 2).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder')
+    c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.related_links.title'), size: 2).to_h if @person.weblinks? || (@person.image_id && @person.image_id != 'placeholder')
     c << ComponentSerializer::DescriptionListComponentSerializer.new(related_links).to_h if @person.weblinks?
     c << ComponentSerializer::ParagraphComponentSerializer.new(image_download_link).to_h if @person.image_id && @person.image_id != 'placeholder'
     c
@@ -95,7 +95,7 @@ module PageSerializer
 
   def contact_components
     c = []
-    c << ComponentSerializer::HeadingComponentSerializer.new(t('.contact_points.contact_caps'), 2).to_h
+    c << ComponentSerializer::HeadingComponentSerializer.new(t('.contact_points.contact_caps'), size: 2).to_h
     c << ComponentSerializer::DescriptionListComponentSerializer.new(contact_links).to_h if @person.current_seat_incumbency.contact_points != []
     c
   end
