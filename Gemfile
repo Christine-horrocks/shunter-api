@@ -54,6 +54,8 @@ gem 'redcarpet', '~> 3.0'
 
 gem 'vcard', '~> 0.2'
 
+gem 'sanitize'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rack-test', '0.7.0'

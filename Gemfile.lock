@@ -138,6 +138,8 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    nokogumbo (1.5.0)
+      nokogiri
     parallel (1.12.1)
     parallel_tests (2.21.2)
       parallel
@@ -241,6 +243,10 @@ GEM
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
+    sanitize (4.6.5)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -327,6 +333,7 @@ DEPENDENCIES
   redcarpet (~> 3.0)
   rspec-rails (~> 3.7)
   rubocop
+  sanitize
   simplecov (~> 0.14)
   spring
   spring-watcher-listen (~> 2.0.0)
