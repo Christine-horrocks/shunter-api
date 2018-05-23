@@ -14,8 +14,8 @@
     :components:
     - :name: heading
       :data:
-        :weight: 1
         :heading: Find your constituency
+        :weight: 1
     - :name: flash
       :data: 
     - :name: form

@@ -9,14 +9,11 @@ module PageSerializer
     end
 
     def sub_components
-      [
-          {
-              "name": "heading",
-              "data": {
-                  "weight": 1,
-                  "heading": "Find your constituency"
-              }
-          },
+      sub_components = []
+
+      sub_components << ComponentSerializer::HeadingComponentSerializer.new('Find your constituency', 1).to_h
+
+      sub_components << [
           {
               "name": "flash",
               "data": nil
@@ -85,6 +82,8 @@ module PageSerializer
               }
           }
       ]
+
+      sub_components.flatten
     end
 
     def title
