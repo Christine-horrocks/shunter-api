@@ -16,21 +16,9 @@ module PageSerializer
       sub_components = []
 
       sub_components << ComponentSerializer::HeadingComponentSerializer.new('Find your constituency', 1).to_h
-
       sub_components << ComponentSerializer::FlashComponentSerializer.new(@flash).to_h if @flash
-
       sub_components << ComponentSerializer::FormComponentSerializer.new('postcodeSearch', '/postcodes/lookup', 'post', 'input-group', form_components).to_h
-
-      sub_components << [
-          {
-              "name": "paragraph",
-              "data": {
-                  "text": [
-                      "Don't know your postcode? Find it on the <a href='http://www.royalmail.com/find-a-postcode'>Royal Mail postcode finder</a>."
-                  ]
-              }
-          }
-      ]
+      sub_components << ComponentSerializer::ParagraphComponentSerializer.new(["Don't know your postcode? Find it on the <a href='http://www.royalmail.com/find-a-postcode'>Royal Mail postcode finder</a>."]).to_h
 
       sub_components.flatten
     end
