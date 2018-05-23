@@ -1,5 +1,5 @@
 module ComponentSerializer
-  class SectionPrimaryComponentSerializer < BaseSerializer
+  class SectionPrimaryComponentSerializer < BaseComponentSerializer
 
     # Initialise a section primary component with an array of objects.
     #
@@ -8,13 +8,15 @@ module ComponentSerializer
       @components = components
     end
 
-    def to_h
+    private
+
+    def name
+      'section-primary'
+    end
+
+    def data
       {
-          "name": 'section-primary',
-          "data":
-              {
-                  "components": @components,
-              }
+          components: @components
       }
     end
 
