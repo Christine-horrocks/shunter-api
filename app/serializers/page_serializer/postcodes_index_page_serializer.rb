@@ -1,5 +1,9 @@
 module PageSerializer
   class PostcodesIndexPageSerializer < PageSerializer::BasePageSerializer
+    def initialize(flash = nil)
+      @flash = flash
+    end
+
     def content
       content = []
 
@@ -13,11 +17,9 @@ module PageSerializer
 
       sub_components << ComponentSerializer::HeadingComponentSerializer.new('Find your constituency', 1).to_h
 
+      sub_components << ComponentSerializer::FlashComponentSerializer.new(@flash).to_h if @flash
+
       sub_components << [
-          {
-              "name": "flash",
-              "data": nil
-          },
           {
               "name": "form",
               "data": {

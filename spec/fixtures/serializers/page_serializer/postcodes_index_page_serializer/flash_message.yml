@@ -16,6 +16,8 @@
       :data:
         :heading: Find your constituency
         :weight: 1
+    - :name: flash
+      :data: Invalid postcode
     - :name: form
       :data:
         :id: postcodeSearch
