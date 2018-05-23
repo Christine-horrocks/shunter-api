@@ -9,7 +9,7 @@ class PostcodesController < ApplicationController
   }.freeze
 
   def index
-    render_page(PageSerializer::PostcodesIndexPageSerializer.new())
+    render_page(PageSerializer::PostcodesIndexPageSerializer.new)
   end
 
   def show

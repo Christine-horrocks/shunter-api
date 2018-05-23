@@ -1,0 +1,10 @@
+---
+:name: form
+:data:
+  :id: postcodeSearch
+  :action: "/postcodes/lookup"
+  :method: post
+  :inner-div-class: input-group
+  :components:
+  - 1
+  - 2
