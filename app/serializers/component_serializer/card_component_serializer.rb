@@ -1,6 +1,6 @@
 module ComponentSerializer
   # Creates a hash with a name of card and data contents of an array of atom or components hashs.
-  class CardComponentSerializer < BaseSerializer
+  class CardComponentSerializer < BaseComponentSerializer
     # Initialise a card component with an array of objects.
     #
     # @param [Array<Hash>] an array of objects, each object is a component or atom.
@@ -11,13 +11,13 @@ module ComponentSerializer
 
     private
 
-    def to_h
+    def name
+      'card'
+    end
+
+    def data
       {
-        "name": 'card',
-        "data":
-        {
-          "components": @components,
-        }
+        "components": @components
       }
     end
 

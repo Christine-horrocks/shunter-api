@@ -1,6 +1,6 @@
 module ComponentSerializer
   # Creates a hash with the name block and data which comprises of another hash containing a css class, which can be used to chnage the type of block, and an array of hashes.
-  class BlockComponentSerializer <  BaseSerializer
+  class BlockComponentSerializer <  BaseComponentSerializer
     BLOCK = 'block'.freeze
     # Initialise a block component with an array of objects.
     #
@@ -12,14 +12,16 @@ module ComponentSerializer
       @css_class = css_class
     end
 
-    def to_h
+    private
+
+    def name
+      'block'
+    end
+
+    def data
       {
-        "name": 'block',
-        "data":
-        {
-          "css-class": @css_class,
-          "components": @components
-        }
+        "css-class": @css_class,
+        "components": @components
       }
     end
 
