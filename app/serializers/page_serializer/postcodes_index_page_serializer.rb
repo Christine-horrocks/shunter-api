@@ -19,62 +19,9 @@ module PageSerializer
 
       sub_components << ComponentSerializer::FlashComponentSerializer.new(@flash).to_h if @flash
 
+      sub_components << ComponentSerializer::FormComponentSerializer.new('postcodeSearch', '/postcodes/lookup', 'post', 'input-group', form_components).to_h
+
       sub_components << [
-          {
-              "name": "form",
-              "data": {
-                  "id": "postcodeSearch",
-                  "action": "/postcodes/lookup",
-                  "method": "post",
-                  "inner-div-class": "input-group",
-                  "components": [
-                      {
-                          "name": "input",
-                          "data": {
-                              "type": "hidden",
-                              "name": "previous_controller",
-                              "id": "previous_controller",
-                              "value": "postcodes"
-                          }
-                      },
-                      {
-                          "name": "input",
-                          "data": {
-                              "type": "hidden",
-                              "name": "previous_action",
-                              "id": "previous_action",
-                              "value": "index"
-                          }
-                      },
-                      {
-                          "name": "label",
-                          "data": {
-                              "for": "postcode",
-                              "text": "Enter your full postcode, for example SW1A 0AA."
-                          }
-                      },
-                      {
-                          "name": "input",
-                          "data": {
-                              "type": "text",
-                              "name": "postcode",
-                              "id": "postcode",
-                              "maxlength": "8",
-                              "pattern": "[0-9a-zA-Z ]{5,}"
-                          }
-                      },
-                      {
-                          "name": "button",
-                          "data": {
-                              "class": "btn--primary",
-                              "data-tracking": "postcode",
-                              "type": "submit",
-                              "value": "Find"
-                          }
-                      }
-                  ]
-              }
-          },
           {
               "name": "paragraph",
               "data": {
@@ -86,6 +33,55 @@ module PageSerializer
       ]
 
       sub_components.flatten
+    end
+
+    def form_components
+      [
+          {
+              "name": "input",
+              "data": {
+                  "type": "hidden",
+                  "name": "previous_controller",
+                  "id": "previous_controller",
+                  "value": "postcodes"
+              }
+          },
+          {
+              "name": "input",
+              "data": {
+                  "type": "hidden",
+                  "name": "previous_action",
+                  "id": "previous_action",
+                  "value": "index"
+              }
+          },
+          {
+              "name": "label",
+              "data": {
+                  "for": "postcode",
+                  "text": "Enter your full postcode, for example SW1A 0AA."
+              }
+          },
+          {
+              "name": "input",
+              "data": {
+                  "type": "text",
+                  "name": "postcode",
+                  "id": "postcode",
+                  "maxlength": "8",
+                  "pattern": "[0-9a-zA-Z ]{5,}"
+              }
+          },
+          {
+              "name": "button",
+              "data": {
+                  "class": "btn--primary",
+                  "data-tracking": "postcode",
+                  "type": "submit",
+                  "value": "Find"
+              }
+          }
+      ]
     end
 
     def title
