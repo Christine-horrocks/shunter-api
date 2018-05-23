@@ -3,11 +3,10 @@ module ComponentSerializer
     UL = 'ul'.freeze
     OL = 'ol'.freeze
 
-    def initialize(current_roles, type='role', list_type=ComponentSerializer::RolesListComponentSerializer::UL, class_type = 'list--pipe')
-      @current_roles = current_roles
-      @type = type
+    def initialize(list_items, css_class = '--pipe', list_type=ComponentSerializer::ListComponentSerializer::UL)
+      @list_items = list_items
       @list_type = list_type
-      @class_type = class_type
+      @css_class = css_class
     end
 
     private
@@ -18,11 +17,9 @@ module ComponentSerializer
 
     def data
       {
-        "title": t('.people.roles.roles').capitalize,
-        "type": @type,
         "list-type": @list_type,
-        "class-type": @class_type,
-        "list-items": @current_roles
+        "css-class": @css_class,
+        "list-items": @list_items
       }
     end
 

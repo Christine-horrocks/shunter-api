@@ -14,5 +14,6 @@ module ComponentSerializer
     def data
       raise 'You must implement #data'
     end
+    
   end
 end

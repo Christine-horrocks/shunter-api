@@ -28,7 +28,7 @@ module PageSerializer
       heading = t('.home.index.object_to_a_bill.title')
       list_items = [ ComponentSerializer::ListItemComponentSerializer.new('/petition-a-hybrid-bill/2', t('.home.index.object_to_a_bill.object_to_link'), t('.home.index.object_to_a_bill.additional_text')).to_h ]
 
-      ComponentSerializer::ListComponentSerializer.new(heading, list_items).to_h
+      ComponentSerializer::ListComponentSerializer.new(heading, list_items, 'ol').to_h
     end
 
     def object_to_a_bill_blog_post_text
@@ -39,7 +39,7 @@ module PageSerializer
       heading = t('.home.index.search.title')
       list_items = [ ComponentSerializer::ListItemComponentSerializer.new('/search', t('.home.index.search.title'), t('.home.index.search.additional_text')).to_h ]
 
-      ComponentSerializer::ListComponentSerializer.new(heading, list_items).to_h
+      ComponentSerializer::ListComponentSerializer.new(heading, list_items, 'ol').to_h
     end
 
     def search_blog_post_text
@@ -55,7 +55,7 @@ module PageSerializer
         ComponentSerializer::ListItemComponentSerializer.new('/houses/1AFu55Hs/parties/current', t('.home.index.members_info.parties_and_groups'), t('.home.index.members_info.current_parties')).to_h
       ]
 
-      ComponentSerializer::ListComponentSerializer.new(heading, list_items).to_h
+      ComponentSerializer::ListComponentSerializer.new(heading, list_items, 'ol').to_h
     end
 
     def mps_and_lords_blog_post_text

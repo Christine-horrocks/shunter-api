@@ -2,7 +2,6 @@ module ComponentSerializer
   # Creates a hash with the name block and data which comprises of another hash containing a css class, which can be used to chnage the type of block, and an array of hashes.
   class BlockComponentSerializer <  BaseSerializer
     BLOCK = 'block'.freeze
-
     # Initialise a block component with an array of objects.
     #
     # @param [Array<Hash>] an array of objects, each object is a component or atom.

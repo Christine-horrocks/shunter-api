@@ -1,7 +1,6 @@
 module ComponentSerializer
-
+  # Creates a hash conating the content for a heading and an integer to set the heading size.
   class HeadingComponentSerializer < BaseComponentSerializer
-
     # Initialise a paragraph component with a piece of text and an integer.
     #
     # @param [String] a string of text to be wrapped in <h> tags.
