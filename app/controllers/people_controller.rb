@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
 
-  before_action :set_header, :data_check, :build_request, except: :postcode_lookup
+  before_action :data_check, :build_request, except: :postcode_lookup
 
   ROUTE_MAP = {
     index:   proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_index },
@@ -22,12 +22,6 @@ class PeopleController < ApplicationController
   def letters
     @people, @letters = Parliament::Utils::Helpers::FilterHelper.filter_sort(@request, :sort_name, 'Person', ::Grom::Node::BLANK)
     render_page(PageSerializer::ListPageSerializer.new(@people, ComponentSerializer::PersonComponentSerializer, 'people', @letters, params[:letter]))
-  end
-
-  private
-
-  def set_header
-    response.set_header("Content-Type", "application/x-shunter+json")
   end
 
 end
