@@ -29,15 +29,23 @@ describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
         allow(ComponentSerializer::FormComponentSerializer).to receive(:new)
         allow(ComponentSerializer::ParagraphComponentSerializer).to receive(:new)
 
-        allow(serializer).to receive(:form_components) { [1, 2] }
-
         serializer.to_h
 
         expect(ComponentSerializer::SectionPrimaryComponentSerializer).to have_received(:new)
         expect(ComponentSerializer::HeadingComponentSerializer).to have_received(:new).with('Find your constituency', 1)
         expect(ComponentSerializer::FlashComponentSerializer).not_to have_received(:new)
-        expect(ComponentSerializer::FormComponentSerializer).to have_received(:new).with('postcodeSearch', '/postcodes/lookup', 'post', 'input-group', [1, 2])
+        expect(ComponentSerializer::FormComponentSerializer).to have_received(:new).with('postcodeSearch', '/postcodes/lookup', 'post', 'input-group', serializer.form_components)
         expect(ComponentSerializer::ParagraphComponentSerializer).to have_received(:new).with(["Don't know your postcode? Find it on the <a href='http://www.royalmail.com/find-a-postcode'>Royal Mail postcode finder</a>."])
+      end
+
+      it 'calls all the input serializers' do
+        allow(ComponentSerializer::InputComponentSerializer).to receive(:new)
+
+        serializer.to_h
+
+        expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_controller', id: 'previous_controller', value: 'postcodes')
+        expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_action', id: 'previous_action', value: 'index')
+        expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}')
       end
 
       it 'for the postcodes index page if there is a flash message' do

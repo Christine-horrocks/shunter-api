@@ -24,52 +24,32 @@ module PageSerializer
     end
 
     def form_components
-      [
-          {
-              "name": "input",
-              "data": {
-                  "type": "hidden",
-                  "name": "previous_controller",
-                  "id": "previous_controller",
-                  "value": "postcodes"
-              }
-          },
-          {
-              "name": "input",
-              "data": {
-                  "type": "hidden",
-                  "name": "previous_action",
-                  "id": "previous_action",
-                  "value": "index"
-              }
-          },
-          {
-              "name": "label",
-              "data": {
-                  "for": "postcode",
-                  "text": "Enter your full postcode, for example SW1A 0AA."
-              }
-          },
-          {
-              "name": "input",
-              "data": {
-                  "type": "text",
-                  "name": "postcode",
-                  "id": "postcode",
-                  "maxlength": "8",
-                  "pattern": "[0-9a-zA-Z ]{5,}"
-              }
-          },
-          {
-              "name": "button",
-              "data": {
-                  "class": "btn--primary",
-                  "data-tracking": "postcode",
-                  "type": "submit",
-                  "value": "Find"
-              }
+      form_components = []
+
+      form_components << ComponentSerializer::InputComponentSerializer.new(type: 'hidden', name: 'previous_controller', id: 'previous_controller', value: 'postcodes').to_h
+      form_components << ComponentSerializer::InputComponentSerializer.new(type: 'hidden', name: 'previous_action', id: 'previous_action', value: 'index').to_h
+
+      form_components << {
+          "name": "label",
+          "data": {
+              "for": "postcode",
+              "text": "Enter your full postcode, for example SW1A 0AA."
           }
-      ]
+      }
+
+      form_components << ComponentSerializer::InputComponentSerializer.new(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}').to_h
+
+      form_components << {
+          "name": "button",
+          "data": {
+              "class": "btn--primary",
+              "data-tracking": "postcode",
+              "type": "submit",
+              "value": "Find"
+          }
+      }
+
+      form_components
     end
 
     def title
