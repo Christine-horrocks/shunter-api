@@ -45,7 +45,7 @@ describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
 
         expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_controller', id: 'previous_controller', value: 'postcodes')
         expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_action', id: 'previous_action', value: 'index')
-        expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}')
+        expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}', label_text: 'Enter your full postcode, for example SW1A 0AA.')
       end
 
       it 'for the postcodes index page if there is a flash message' do
