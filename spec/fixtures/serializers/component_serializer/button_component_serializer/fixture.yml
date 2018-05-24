@@ -1,0 +1,7 @@
+---
+:name: label
+:data:
+  :class: btn--primary
+  :data-tracking: postcode
+  :type: submit
+  :value: Find
