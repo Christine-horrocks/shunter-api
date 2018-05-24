@@ -2,7 +2,8 @@ require_relative '../../rails_helper'
 
 describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
 
-  let(:serializer) { described_class.new }
+  let(:params) { { controller: 'postcodes', action: 'index' } }
+  let(:serializer) { described_class.new(params) }
 
   context '#to_h' do
     context 'creating correct hashes' do
@@ -13,7 +14,7 @@ describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
       end
 
       it 'for the postcodes index page if there is a flash message' do
-        serializer_with_flash_message = described_class.new('Invalid postcode')
+        serializer_with_flash_message = described_class.new(params, 'Invalid postcode')
 
         expected = get_fixture('flash_message')
 
@@ -51,7 +52,7 @@ describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
       end
 
       it 'for the postcodes index page if there is a flash message' do
-        serializer_with_flash_message = described_class.new('Invalid postcode')
+        serializer_with_flash_message = described_class.new(params, 'Invalid postcode')
 
         allow(ComponentSerializer::FlashComponentSerializer).to receive(:new)
 
