@@ -1,9 +1,12 @@
 module PageSerializer
+  # Initialises all the components that are required for the Postcodes index page.
   class PostcodesIndexPageSerializer < PageSerializer::BasePageSerializer
-
+    # @param [String] flash message that is optionally passed in that is shown on the page for one request.
     def initialize(flash = nil)
       @flash = flash
     end
+
+    private
 
     def content
       content = []

@@ -1,6 +1,14 @@
 module ComponentSerializer
   class InputComponentSerializer < BaseComponentSerializer
-
+    # Initialise an input component with some optional information.
+    #
+    # @param [String] type the type of input.
+    # @param [String] name the name of the input.
+    # @param [String] id the id of the input.
+    # @param [String] maxlength the maxlength of the input.
+    # @param [String] pattern the pattern of the input.
+    # @param [String] value the value of the input.
+    # @param [String] label_text the label_text of the input.
     def initialize(type: nil, name: nil, id: nil, maxlength: nil, pattern: nil, value: nil, label_text: nil)
       @type = type
       @name = name
@@ -28,6 +36,8 @@ module ComponentSerializer
       ]
     end
 
+    private
+
     def name
       'input'
     end
@@ -42,6 +52,5 @@ module ComponentSerializer
         hash[:value] = @value if @value
       end
     end
-
   end
 end

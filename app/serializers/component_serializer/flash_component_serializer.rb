@@ -1,6 +1,6 @@
 module ComponentSerializer
   class FlashComponentSerializer < BaseComponentSerializer
-    # Initialise a paragraph component with a piece of text and an integer.
+    # Initialise a flash component with a piece of text.
     #
     # @param [String] message string of text to be shown as a flash message.
     def initialize(message)
@@ -16,6 +16,5 @@ module ComponentSerializer
     def data
       @message
     end
-
   end
 end
