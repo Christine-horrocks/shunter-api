@@ -38,14 +38,16 @@ describe PageSerializer::PostcodesIndexPageSerializer, vcr: false do
         expect(ComponentSerializer::ParagraphComponentSerializer).to have_received(:new).with(["Don't know your postcode? Find it on the <a href='http://www.royalmail.com/find-a-postcode'>Royal Mail postcode finder</a>."])
       end
 
-      it 'calls all the input serializers' do
+      it 'calls all the input and button serializers' do
         allow(ComponentSerializer::InputComponentSerializer).to receive(:new)
+        allow(ComponentSerializer::ButtonComponentSerializer).to receive(:new)
 
         serializer.to_h
 
         expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_controller', id: 'previous_controller', value: 'postcodes')
         expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'hidden', name: 'previous_action', id: 'previous_action', value: 'index')
         expect(ComponentSerializer::InputComponentSerializer).to have_received(:new).with(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}', label_text: 'Enter your full postcode, for example SW1A 0AA.')
+        expect(ComponentSerializer::ButtonComponentSerializer).to have_received(:new).with('btn--primary', 'postcode', 'submit', 'Find')
       end
 
       it 'for the postcodes index page if there is a flash message' do

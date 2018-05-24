@@ -1,5 +1,6 @@
 module PageSerializer
   class PostcodesIndexPageSerializer < PageSerializer::BasePageSerializer
+
     def initialize(flash = nil)
       @flash = flash
     end
@@ -30,15 +31,7 @@ module PageSerializer
       form_components << ComponentSerializer::InputComponentSerializer.new(type: 'hidden', name: 'previous_action', id: 'previous_action', value: 'index').to_h
       form_components << ComponentSerializer::InputComponentSerializer.new(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}', label_text: 'Enter your full postcode, for example SW1A 0AA.').to_h
 
-      form_components << {
-          "name": "button",
-          "data": {
-              "class": "btn--primary",
-              "data-tracking": "postcode",
-              "type": "submit",
-              "value": "Find"
-          }
-      }
+      form_components << ComponentSerializer::ButtonComponentSerializer.new('btn--primary', 'postcode', 'submit', 'Find').to_h
 
       form_components.flatten
     end
@@ -46,5 +39,6 @@ module PageSerializer
     def title
       'Find your constituency'
     end
+
   end
 end
