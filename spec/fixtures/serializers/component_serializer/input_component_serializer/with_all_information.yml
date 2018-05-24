@@ -1,0 +1,9 @@
+---
+:name: input
+:data:
+  :type: text
+  :name: postcode
+  :id: postcode1
+  :maxlength: '8'
+  :pattern: 123
+  :value: value

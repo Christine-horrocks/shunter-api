@@ -1,0 +1,8 @@
+---
+:name: input
+:data:
+  :type: text
+  :name: postcode
+  :id: postcode
+  :maxlength: '8'
+  :pattern: "[0-9a-zA-Z ]{5,}"

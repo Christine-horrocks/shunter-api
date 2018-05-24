@@ -1,0 +1,7 @@
+---
+:name: input
+:data:
+  :type: hidden
+  :name: previous_controller
+  :id: previous_controller
+  :value: postcodes
