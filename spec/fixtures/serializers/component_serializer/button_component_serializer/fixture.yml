@@ -1,5 +1,5 @@
 ---
-:name: label
+:name: button
 :data:
   :class: btn--primary
   :data-tracking: postcode
