@@ -43,6 +43,14 @@ describe ComponentSerializer::InputComponentSerializer, vcr: false do
 
         expect(input_serializer.to_yaml).to eq expected
       end
+
+      it 'if a label is requested' do
+        input_serializer = described_class.new(type: 'text', name: 'postcode', id: 'postcode', maxlength: '8', pattern: '[0-9a-zA-Z ]{5,}', label_text: 'some label')
+
+        expected = get_fixture('with_a_label')
+
+        expect(input_serializer.to_yaml).to eq expected
+      end
     end
   end
 
