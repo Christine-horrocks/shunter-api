@@ -27,7 +27,7 @@
     - :name: list
       :data:
         :list-type: ul
-        :css_class: list--block
+        :css-class: "--block"
         :components:
         - :name: card
           :data:
