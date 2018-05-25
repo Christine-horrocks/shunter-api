@@ -16,7 +16,9 @@ module PageSerializer
       c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
       c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h if @person.current_mp? || @person.current_lord?
       c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.roles.roles').capitalize, size: 2).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::ListComponentSerializer.new(current_roles_list_items).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      c << ComponentSerializer::ListComponentSerializer.new(current_roles_list_items(current_roles)).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      c << ComponentSerializer::TrackComponentSerializer.new(ComponentSerializer::ListComponentSerializer.new(timeline_roles).to_h).to_h
+      # c << ComponentSerializer::ListComponentSerializer.new(timeline_roles).to_h
       c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
       c
     end
@@ -69,13 +71,18 @@ module PageSerializer
      @role_helper.organise_roles(history[:current]) if history[:current]
    end
 
-   def current_roles_list_items
-     current_roles.map do |role_hash|
+   def current_roles_list_items(role_array)
+     role_array.map do |role_hash|
        {
          "name": 'role-card',
          "data": role_hash
        }
      end
+   end
+
+   def timeline_roles
+     history = @role_helper.create_role_history(@seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies)
+     @role_helper.build_timeline(history, current_roles_list_items(current_roles))
    end
 
    def related_links_components
