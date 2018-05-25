@@ -1,0 +1,57 @@
+---
+:layout:
+  :template: layout
+:title: Find your constituency
+:components:
+- :name: cookie-banner
+  :data: cookie-banner
+- :name: banner
+  :data: banner
+- :name: header
+  :data: header
+- :name: section-primary
+  :data:
+    :components:
+    - :name: heading
+      :data:
+        :weight: 1
+        :heading: "<span>Results for EH6 5EZ</span>"
+    - :name: block
+      :data:
+        :css_class: block
+        :components:
+        - :name: heading
+          :data:
+            :weight: 2
+            :heading: "<a href='/constituencies/123'>Constituency</a>"
+    - :name: list
+      :data:
+        :list-type: ul
+        :css_class: list--block
+        :components:
+        - :name: card
+          :data:
+            :components:
+            - :name: image
+              :data:
+                :css_class: avatar--round
+                :figure_url: wVI7ebTP
+                :image_src: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+            - :name: card-details
+              :data:
+                :components:
+                - :name: heading
+                  :data:
+                    :weight: 2
+                    :heading: "<a href='/people/321'>Display Name</a>"
+                - :name: paragraph
+                  :data:
+                    :text:
+                    - MP for Constituency
+                    - Labour
+    - :name: paragraph
+      :data:
+        :text:
+        - "<a href='/postcodes'>Check for a different postcode</a>"
+- :name: footer
+  :data: footer

@@ -39,14 +39,14 @@ class PostcodesController < ApplicationController
       return redirect_to(constituency_path(@constituency.graph_id)) if previous_path == find_your_constituency_url
     rescue Parliament::Utils::Helpers::PostcodeHelper::PostcodeError => error
       flash[:error] = error.message
-      flash[:postcode] = @spostcode
+      flash[:postcode] = @postcode
       redirect_to(previous_path)
     end
 
     # Instance variable for single MP pages
     @single_mp = true
 
-    render_page(PageSerializer::PostcodesShowPageSerializer.new(@constituency, @postcode, @person))
+    render_page(PageSerializer::PostcodesShowPageSerializer.new(@constituency, @postcode, @person.first))
   end
 
   def lookup

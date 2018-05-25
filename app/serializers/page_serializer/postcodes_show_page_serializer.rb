@@ -69,15 +69,15 @@ module PageSerializer
                                                   "name": "heading",
                                                   "data": {
                                                       "weight": 2,
-                                                      "heading": "<a href='/people/#{@person.first.graph_id}'>#{@person.first.display_name}</a>"
+                                                      "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>"
                                                   }
                                               },
                                               {
                                                   "name": "paragraph",
                                                   "data": {
                                                       "text": [
-                                                          "MP for #{@person.first.current_seat_incumbency&.constituency&.name}",
-                                                          "#{@person.first.try(:current_party).try(:name)}"
+                                                          "MP for #{@person.current_seat_incumbency&.constituency&.name}",
+                                                          "#{@person.try(:current_party).try(:name)}"
                                                       ]
                                                   }
                                               }
