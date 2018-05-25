@@ -15,10 +15,10 @@
     - :name: heading
       :data:
         :heading: Diane Abbott
-        :weight: 1
+        :size: 1
     - :name: paragraph
       :data:
-        :text:
+        :content:
         - Party Name MP for Constituency Name
     - :name: image
       :data:
@@ -50,27 +50,29 @@
     :contact-postcode: Please include your postcode when contacting your MP.
 - :name: block
   :data:
-    :klass: block
+    :css-class: block
     :components:
     - :name: heading
       :data:
         :heading: Contact
-        :weight: 2
-- :name: roles-list
+        :size: 2
+- :name: heading
   :data:
-    :title: Roles
-    :type: role
-    :list-type: ul
-    :class-type: list--pipe
+    :heading: Roles
+    :size: 2
+- :name: list
+  :data:
     :list-items: []
+    :css-class: "--pipe"
+    :list-type: ul
 - :name: block
   :data:
-    :klass: block--border__bottom
+    :css-class: block--border__bottom
     :components:
     - :name: heading
       :data:
         :heading: Related links
-        :weight: 2
+        :size: 2
     - :name: description-list
       :data:
       - :medium-name: 'Website: '
@@ -84,7 +86,7 @@
         - true
     - :name: paragraph
       :data:
-        :text:
+        :content:
         - - 'Diane Abbott''s official portrait is true '
 - :name: footer
   :data: footer

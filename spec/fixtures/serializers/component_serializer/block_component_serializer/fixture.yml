@@ -1,7 +1,7 @@
 ---
 :name: block
 :data:
-  :klass: block
+  :css-class: block
   :components:
   - :atom1: atom1
   - :atom2: atom2

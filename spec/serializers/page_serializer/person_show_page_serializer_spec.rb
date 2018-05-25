@@ -109,7 +109,6 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
         allow(person).to receive(:weblinks?) { nil }
         allow(person).to receive(:image_id) { 'placeholder' }
         allow(ActionController::Base.helpers).to receive(:link_to) { html }
-        create_fixture(person_show_page_serializer, 'no_weblinks_placeholder_image_id')
         expected = get_fixture('no_weblinks_placeholder_image_id')
 
         expect(person_show_page_serializer.to_yaml).to eq expected
@@ -142,20 +141,20 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       describe 'image component serializer is not initialized' do
         it 'if person does not have image_id' do
           allow(ActionController::Base.helpers).to receive(:link_to) { html }
-          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with(figure_url, image_srcset1, image_srcset2, image_src, image_alt)
+          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with({ figure_url: 'data', image_srcset1: 'data', image_srcset2: 'data', image_src: 'data', image_alt: 'data'})
           allow(person).to receive(:image_id) { nil }
 
           person_show_page_serializer.to_h
-          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with(figure_url, image_srcset1, image_srcset2, image_src, image_alt)
+          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with({ figure_url: 'data', image_srcset1: 'data', image_srcset2: 'data', image_src: 'data', image_alt: 'data'})
         end
 
         it 'if person has image_id that is placeholder' do
-          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with(figure_url, image_srcset1, image_srcset2, image_src, image_alt)
+          allow(ComponentSerializer::ImageComponentSerializer).to receive(:new).with({ figure_url: 'data', image_srcset1: 'data', image_srcset2: 'data', image_src: 'data', image_alt: 'data'})
           allow(person).to receive(:image_id) { 'placeholder' }
           allow(ActionController::Base.helpers).to receive(:link_to) { html }
 
           person_show_page_serializer.to_h
-          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with(figure_url, image_srcset1, image_srcset2, image_src, image_alt)
+          expect(ComponentSerializer::ImageComponentSerializer).not_to have_received(:new).with({ figure_url: 'data', image_srcset1: 'data', image_srcset2: 'data', image_src: 'data', image_alt: 'data'})
         end
       end
 
@@ -183,12 +182,12 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
 
       describe 'roles list component serializer is not initialized' do
         it 'if incumbencies and committee_memberships are empty arrays' do
-          allow(ComponentSerializer::RolesListComponentSerializer).to receive(:new)
+          allow(ComponentSerializer::ListComponentSerializer).to receive(:new)
           allow(person).to receive(:incumbencies) { [] }
           allow(ActionController::Base.helpers).to receive(:link_to) { html }
 
           person_show_page_serializer.to_h
-          expect(ComponentSerializer::RolesListComponentSerializer).not_to have_received(:new).with([], [], [], [])
+          expect(ComponentSerializer::ListComponentSerializer).not_to have_received(:new).with([], [], [], [])
         end
       end
 

@@ -15,10 +15,10 @@ components:
     - name: heading
       data:
         heading: Diane Abbott
-        weight: 1
+        size: 1
     - name: paragraph
       data:
-        text:
+        content:
         - Labour MP for Hackney North and Stoke Newington
     - name: image
       data:
@@ -50,12 +50,12 @@ components:
     contact-postcode: Please include your postcode when contacting your MP.
 - name: block
   data:
-    klass: block
+    css-class: block
     components:
     - name: heading
       data:
         heading: Contact
-        weight: 2
+        size: 2
     - name: description-list
       data:
       - medium-name: 'Email: '
@@ -67,32 +67,38 @@ components:
       - medium-name: 'Address: '
         medium-link:
         - House of Commons, London, SW1A 0AA
-- name: roles-list
+- name: heading
   data:
-    title: Roles
-    type: role
-    list-type: ul
-    class-type: list--pipe
+    heading: Roles
+    size: 2
+- name: list
+  data:
     list-items:
-    - role-type: Opposition role
-      role-title: Shadow Home Secretary
-      role-dates:
-      - 6 Oct 2016 to present
-    - role-type: Parliamentary role
-      role-title: MP for Hackney North and Stoke Newington
-      role-count: Elected 3 times
-      role-dates:
-      - 8 Jun 2017 to present
-      - 7 May 2015 to 3 May 2017
-      - 6 May 2010 to 30 Mar 2015
+    - name: role-card
+      data:
+        role-type: Opposition role
+        role-title: Shadow Home Secretary
+        role-dates:
+        - 6 Oct 2016 to present
+    - name: role-card
+      data:
+        role-type: Parliamentary role
+        role-title: MP for Hackney North and Stoke Newington
+        role-count: Elected 3 times
+        role-dates:
+        - 8 Jun 2017 to present
+        - 7 May 2015 to 3 May 2017
+        - 6 May 2010 to 30 Mar 2015
+    css-class: "--pipe"
+    list-type: ul
 - name: block
   data:
-    klass: block--border__bottom
+    css-class: block--border__bottom
     components:
     - name: heading
       data:
         heading: Related links
-        weight: 2
+        size: 2
     - name: description-list
       data:
       - medium-name: 'Website: '
@@ -103,7 +109,7 @@ components:
         - <a href="https://twitter.com/HackneyAbbott">https://twitter.com/HackneyAbbott</a>
     - name: paragraph
       data:
-        text:
+        content:
         - - 'Diane Abbott''s official portrait is <a href="/media/#{@person.image_id}">available
             to download</a> '
 - name: footer

@@ -1,6 +1,6 @@
 ---
 :name: paragraph
 :data:
-  :text:
+  :content:
   - text1
   - text2

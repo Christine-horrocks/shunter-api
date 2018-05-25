@@ -1,8 +1,8 @@
 ---
 :name: image
 :data:
-  :figure-url: image.com
-  :image-srcset1: imageimage
-  :image-srcset2: picturepicture
-  :image-src: srcsrc
-  :image-alt: alt
+  :figure-url: data
+  :image-srcset1: data
+  :image-srcset2: data
+  :image-src: data
+  :image-alt: data

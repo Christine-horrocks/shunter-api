@@ -15,21 +15,23 @@ components:
     - name: heading
       data:
         heading: James Berry
-        weight: 1
+        size: 1
     - name: paragraph
       data:
-        text:
+        content:
         - Former MP
-- name: roles-list
+- name: heading
   data:
-    title: Roles
-    type: role
-    list-type: ul
-    class-type: list--pipe
+    heading: Roles
+    size: 2
+- name: list
+  data:
     list-items: []
+    css-class: "--pipe"
+    list-type: ul
 - name: block
   data:
-    klass: block--border__bottom
+    css-class: block--border__bottom
     components: []
 - name: footer
   data: footer
