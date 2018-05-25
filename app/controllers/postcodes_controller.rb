@@ -46,7 +46,7 @@ class PostcodesController < ApplicationController
     # Instance variable for single MP pages
     @single_mp = true
 
-      render_page(PageSerializer::PostcodesShowPageSerializer.new(@constituency))
+    render_page(PageSerializer::PostcodesShowPageSerializer.new(@constituency, @postcode, @person))
   end
 
   def lookup

@@ -148,15 +148,16 @@ GEM
       grom (~> 0.5)
     parliament-routes (0.6.1)
     parliament-ruby (0.10.2)
-    parliament-utils (0.7.1)
+    parliament-utils (0.8.5)
       bandiera-client
       coveralls
       haml
       i18n
-      parliament-grom-decorators (~> 0.10)
+      parliament-grom-decorators
       parliament-ntriple
-      parliament-ruby (~> 0.10)
+      parliament-ruby
       pugin
+      redcarpet (~> 3.0)
       simplecov
       vcard
     parser (2.5.0.3)
