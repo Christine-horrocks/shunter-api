@@ -21,21 +21,7 @@ module PageSerializer
     def sub_components
       [
           ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
-          {
-              "name": "block",
-              "data": {
-                  "css_class": "block",
-                  "components": [
-                      {
-                          "name": "heading",
-                          "data": {
-                              "heading": "<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>",
-                              "weight": 2
-                          }
-                      }
-                  ]
-              }
-          },
+          ComponentSerializer::BlockComponentSerializer.new([ComponentSerializer::HeadingComponentSerializer.new("<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>", 2).to_h]).to_h,
           {
               "name": "list",
               "data": {
