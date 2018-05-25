@@ -22,46 +22,39 @@ module PageSerializer
       [
           ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
           ComponentSerializer::BlockComponentSerializer.new([ComponentSerializer::HeadingComponentSerializer.new("<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>", 2).to_h]).to_h,
-          ComponentSerializer::ListComponentSerializer.new(list_items, '--block').to_h,
+          ComponentSerializer::ListComponentSerializer.new([ComponentSerializer::CardComponentSerializer.new(card_components).to_h], '--block').to_h,
           ComponentSerializer::ParagraphComponentSerializer.new(["<a href='/postcodes'>Check for a different postcode</a>"]).to_h
       ]
     end
 
-    def list_items
+    def card_components
       [
           {
-              "name": "card",
+              "name": "image",
+              "data": {
+                  "css_class": "avatar--round",
+                  "figure_url": "wVI7ebTP",
+                  "image_src": "https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png"
+
+              }
+          },
+          {
+              "name": "card-details",
               "data": {
                   "components": [
                       {
-                          "name": "image",
+                          "name": "heading",
                           "data": {
-                              "css_class": "avatar--round",
-                              "figure_url": "wVI7ebTP",
-                              "image_src": "https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png"
-
+                              "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
+                              "weight": 2
                           }
                       },
                       {
-                          "name": "card-details",
+                          "name": "paragraph",
                           "data": {
-                              "components": [
-                                  {
-                                      "name": "heading",
-                                      "data": {
-                                          "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
-                                          "weight": 2
-                                      }
-                                  },
-                                  {
-                                      "name": "paragraph",
-                                      "data": {
-                                          "text": [
-                                              "MP for #{@person.current_seat_incumbency&.constituency&.name}",
-                                              "#{@person.try(:current_party).try(:name)}"
-                                          ]
-                                      }
-                                  }
+                              "text": [
+                                  "MP for #{@person.current_seat_incumbency&.constituency&.name}",
+                                  "#{@person.try(:current_party).try(:name)}"
                               ]
                           }
                       }
