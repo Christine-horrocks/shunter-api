@@ -29,15 +29,7 @@ module PageSerializer
 
     def card_components
       [
-          {
-              "name": "image",
-              "data": {
-                  "css_class": "avatar--round",
-                  "figure_url": "wVI7ebTP",
-                  "image_src": "https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png"
-
-              }
-          },
+          ComponentSerializer::ImageComponentSerializer.new(image_data).to_h,
           {
               "name": "card-details",
               "data": {
@@ -62,6 +54,27 @@ module PageSerializer
               }
           }
       ]
+    end
+
+    def image_data
+      {
+          figure_url: "/people/#{@person.graph_id}",
+          image_srcset1: generate_srcset(@person.image_id, 'CU_5:2', 732, 1464),
+          image_srcset2: generate_srcset(@person.image_id, 'MCU_3:2', 444, 888),
+          image_src: generate_image_src(@person.image_id, 'CU_1:1', '186'),
+          image_alt: "#{@person.display_name}"
+      }
+    end
+
+    def generate_srcset(id, crop, small_width, large_width)
+      small_src = generate_image_src(id, crop, small_width)
+      large_src = generate_image_src(id, crop, large_width)
+
+      "#{small_src}, #{large_src} 2x"
+    end
+
+    def generate_image_src(id, crop, width)
+      "#{ENV['IMAGE_SERVICE_URL']}/#{id}.jpeg?crop=#{crop}&width=#{width}&quality=80"
     end
 
     def title

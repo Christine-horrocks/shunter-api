@@ -5,7 +5,16 @@ describe PageSerializer::PostcodesShowPageSerializer, vcr: false do
   let(:current_party) { double('current_party', name: 'Labour') }
   let(:person_constituency) { double('person_constituency', name: 'Leith') }
   let(:current_seat_incumbency) { double('current_seat_incumbency', constituency: constituency) }
-  let(:person) { double('person', graph_id: 321, display_name: 'Display Name', current_seat_incumbency: current_seat_incumbency, current_party: current_party) }
+  let(:person) {
+    double(
+        'person',
+        graph_id: 321,
+        display_name: 'Display Name',
+        current_seat_incumbency: current_seat_incumbency,
+        current_party: current_party,
+        image_id: 'image_id'
+    )
+  }
   let(:postcode) { 'eh6 5ez' }
   let(:constituency) { double('constituency', graph_id: 123, name: 'Constituency') }
   let(:serializer) { described_class.new(constituency, postcode, person) }

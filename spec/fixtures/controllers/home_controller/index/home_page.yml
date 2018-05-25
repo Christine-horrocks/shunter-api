@@ -21,35 +21,37 @@ components:
 - name: home-page-subheading
   data:
     subheading: What's on beta.parliament.uk
-- name: list-component
+- name: list
   data:
-    heading: Object to a bill
-    list-items:
+    list-type: ul
+    css-class:
     - link: "/petition-a-hybrid-bill/2"
       link-text: Object to the Additional Provision to the High Speed Rail (West Midlands
         to Crew) Bill
       additional-text:
       - The deadline is 1pm on Friday 27th April 2018
+    components: Object to a bill
 - name: highlight-component
   data:
     content: Read the <a href="https://pds.blog.parliament.uk/2018/02/09/building-a-new-online-service-petitioning-a-hybrid-bill/">Object
       to a bill blog post</a>.
-- name: list-component
+- name: list
   data:
-    heading: Search
-    list-items:
+    list-type: ul
+    css-class:
     - link: "/search"
       link-text: Search
       additional-text:
       - Find results from current parliament.uk websites.
+    components: Search
 - name: highlight-component
   data:
     content: Read the <a href="https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/">Search
       blog post</a>.
-- name: list-component
+- name: list
   data:
-    heading: MPs and Lords information
-    list-items:
+    list-type: ul
+    css-class:
     - link: "/mps"
       link-text: MPs
       additional-text:
@@ -66,6 +68,7 @@ components:
       link-text: Parties and Groups
       additional-text:
       - Find current MPs and Lords by their party or group.
+    components: MPs and Lords information
 - name: highlight-component
   data:
     content: Read the <a href="https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/">MPs
