@@ -6,3 +6,4 @@
   :image-srcset2: image_srcset2
   :image-src: image_src
   :image-alt: image_alt
+  :css-class: avatar--round
