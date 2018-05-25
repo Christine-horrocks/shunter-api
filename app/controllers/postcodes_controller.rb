@@ -3,13 +3,14 @@ require 'sanitize'
 
 class PostcodesController < ApplicationController
   before_action :data_check, :build_request, only: :show
+  before_action :handle_postcode_session
 
   ROUTE_MAP = {
       show: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_lookup_by_postcode.set_url_params({ postcode: params[:postcode] }) }
   }.freeze
 
   def index
-    render_page(PageSerializer::PostcodesIndexPageSerializer.new)
+    render_page(PageSerializer::PostcodesIndexPageSerializer.new(params, @postcode_error))
   end
 
   def show
@@ -38,12 +39,14 @@ class PostcodesController < ApplicationController
       return redirect_to(constituency_path(@constituency.graph_id)) if previous_path == find_your_constituency_url
     rescue Parliament::Utils::Helpers::PostcodeHelper::PostcodeError => error
       flash[:error] = error.message
-      flash[:postcode] = @postcode
+      flash[:postcode] = @spostcode
       redirect_to(previous_path)
     end
 
     # Instance variable for single MP pages
     @single_mp = true
+
+      render_page(PageSerializer::PostcodesShowPageSerializer.new(@constituency))
   end
 
   def lookup
@@ -53,10 +56,22 @@ class PostcodesController < ApplicationController
     previous_path = url_for(controller: previous_controller, action: previous_action)
     session[:postcode_previous_path] = previous_path
 
-    return redirect_to previous_path, flash: { error: I18n.t('error.postcode_invalid').capitalize } if raw_postcode.gsub(/\s+/, '').empty?
+    # return redirect_to previous_path, flash: { error: I18n.t('error.postcode_invalid').capitalize } if raw_postcode.gsub(/\s+/, '').empty?
+    if raw_postcode.gsub(/\s+/, '').empty?
+      session[:postcode_error] = I18n.t('error.postcode_invalid').capitalize
+      return redirect_to previous_path
+    end
 
     hyphenated_postcode = Parliament::Utils::Helpers::PostcodeHelper.hyphenate(raw_postcode)
 
     redirect_to postcode_path(hyphenated_postcode)
+  end
+
+  private
+
+  def handle_postcode_session
+    @postcode_error = session[:postcode_error]
+
+    session.delete(:postcode_error)
   end
 end
