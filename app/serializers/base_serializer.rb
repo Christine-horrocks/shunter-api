@@ -21,7 +21,7 @@ class BaseSerializer
   end
 
   def content
-    raise "You must call content through a specific class, you cannot cal lit through BaseSerializer."
+    raise "You must call content through a specific class, you cannot call it through BaseSerializer."
   end
 
 end

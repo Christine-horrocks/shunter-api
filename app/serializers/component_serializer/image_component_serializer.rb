@@ -1,24 +1,38 @@
 module ComponentSerializer
+  # Creates a hash containing all elements needed to produce a reactive image.
   class ImageComponentSerializer < BaseComponentSerializer
-    def initialize(object)
-      @object = object
+    # Initialise an image component with a hash of image data.
+    #
+    # @param [Hash] a hash of image data.
+    # @example { figure_url: 'data', image_srcset1: 'data', image_srcset2: 'data', image_src: 'data', image_alt: 'data'}
+    def initialize(image_data)
+      @image_data = image_data
+      @figure_url = image_data[:figure_url]
+
+      @image_srcset1 = image_data[:image_srcset1]
+      @image_srcset2 = image_data[:image_srcset2]
+
+      @image_src = image_data[:image_src]
+      @image_alt = image_data[:image_alt]
     end
 
     private
-    
+
     def name
       "image"
     end
 
     def data
       {
-        "template": "person-image",
-        "figure-url": "/media/#{@object.graph_id}",
-        "image-srcset1": "#{ENV['IMAGE_SERVICE_URL']}/#{@object.image_id}.jpeg?crop=CU_5:2&width=732&quality=80, #{ENV['IMAGE_SERVICE_URL']}/#{@object.image_id}.jpeg?crop=CU_5:2&width=1464&quality=80 2x",
-        "image-srcset2": "#{ENV['IMAGE_SERVICE_URL']}/#{@object.image_id}.jpeg?crop=MCU_3:2&width=444&quality=80, #{ENV['IMAGE_SERVICE_URL']}/#{@object.image_id}.jpeg?crop=MCU_3:2&width=888&quality=80 2x",
-        "image-src": "#{ENV['IMAGE_SERVICE_URL']}/#{@object.image_id}.jpeg?crop=CU_1:1&width=186&quality=80",
-        "image-alt": "#{@object.display_name}"
+        "figure-url": @figure_url,
+
+        "image-srcset1": @image_srcset1,
+        "image-srcset2": @image_srcset2,
+
+        "image-src": @image_src,
+        "image-alt": @image_alt
       }
     end
+
   end
 end

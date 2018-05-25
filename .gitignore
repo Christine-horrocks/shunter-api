@@ -23,3 +23,9 @@
 
 # Ignore coverage
 /coverage
+
+# Ignore docs
+/doc
+
+# Ignore yardoc
+/yardoc

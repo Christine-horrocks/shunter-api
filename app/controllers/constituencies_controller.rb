@@ -4,13 +4,8 @@ class ConstituenciesController < ApplicationController
   ROUTE_MAP = {
     index:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_index },
     show:            proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_id.set_url_params({ constituency_id: params[:constituency_id] }) },
-    lookup:          proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_lookup.set_url_params({ property: params[:source], value: params[:id] }) },
-    a_to_z_current:  proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_a_to_z },
-    current:         proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current },
     map:             proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_map.set_url_params({ constituency_id: params[:constituency_id] }) },
-    letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_initial.set_url_params({ initial: params[:letter] }) },
-    current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_by_initial.set_url_params({ initial: params[:letter] }) },
-    a_to_z:          proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_a_to_z }
+    letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_initial.set_url_params({ initial: params[:letter] }) }
   }.freeze
 
   def index
@@ -48,23 +43,6 @@ class ConstituenciesController < ApplicationController
     render_page(PageSerializer::ConstituencyShowPageSerializer.new(@constituency, @json_location, @member, @party, @seat_incumbencies))
   end
 
-  # Redirects to a single constituency given an external source and an id that identifies this constituency in that source.
-  # @controller_action_param :source [String] external source.
-  # @controller_action_param :id [String] external id which identifies a constituency.
-  def lookup
-    @constituency = @request.get.first
-
-    redirect_to constituency_path(@constituency.graph_id)
-  end
-
-  # Post method which accepts form parameters from postcode lookup and redirects to constituency_path.
-  # @controller_action_param :postcode [String] postcode entered into postcode lookup form.
-  # @controller_action_param :constituency_id [String] 8 character identifier that identifies constituency in graph database.
-  def postcode_lookup
-    flash[:postcode] = params[:postcode]
-
-    redirect_to constituency_path(params[:constituency_id])
-  end
 
   # Renders a constituency that has a constituency area object on map view given a constituency id.
   # Will respond with GeoJSON data using the geosparql-to-geojson gem if JSON is requested.
@@ -73,11 +51,6 @@ class ConstituenciesController < ApplicationController
   # @return [GeosparqlToGeojson::GeoJson] object containing GeoJSON data if JSON is requested.
   def map
     respond_to do |format|
-      format.html do
-        @constituency = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'ConstituencyGroup').first
-
-        @json_location = constituency_map_path(@constituency.graph_id, format: 'json')
-      end
 
       format.json do
         @constituency = Parliament::Utils::Helpers::RequestHelper.filter_response_data(

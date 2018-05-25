@@ -492,7 +492,7 @@ en:
       title: 'Related links'
       website: 'Website: '
       twitter: 'Twitter: '
-      portrait: "'s official portrait is "
+      portrait: "'s official portrait is %{link} "
       portrait_link: available to download
     constituencies:
       index:

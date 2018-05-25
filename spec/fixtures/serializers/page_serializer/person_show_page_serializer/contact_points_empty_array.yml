@@ -9,22 +9,28 @@
   :data: banner
 - :name: header
   :data: header
-- :name: heading1
-  :data: Diane Abbott
-- :name: subheading
-  :data: Party Name MP for Constituency Name
-- :name: image
+- :name: section-primary
   :data:
-    :template: person-image
-    :figure-url: "/media/321"
-    :image-srcset1: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=732&quality=80,
-      https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=1464&quality=80
-      2x
-    :image-srcset2: https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=444&quality=80,
-      https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=888&quality=80
-      2x
-    :image-src: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_1:1&width=186&quality=80
-    :image-alt: Diane Abbott
+    :components:
+    - :name: heading
+      :data:
+        :heading: Diane Abbott
+        :size: 1
+    - :name: paragraph
+      :data:
+        :content:
+        - Party Name MP for Constituency Name
+    - :name: image
+      :data:
+        :figure-url: "/media/321"
+        :image-srcset1: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=732&quality=80,
+          https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_5:2&width=1464&quality=80
+          2x
+        :image-srcset2: https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=444&quality=80,
+          https://api.parliament.uk/Staging/photo/123.jpeg?crop=MCU_3:2&width=888&quality=80
+          2x
+        :image-src: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_1:1&width=186&quality=80
+        :image-alt: Diane Abbott
 - :name: when-to-contact
   :data:
     :title: When to contact an MP
@@ -42,27 +48,45 @@
     :discuss-with: You may be able to discuss issues with your MP in person or online.
       Contact them for details
     :contact-postcode: Please include your postcode when contacting your MP.
-- :name: roles
+- :name: block
   :data:
-    :template: roles
-    :role-list: []
-- :name: timeline
+    :css-class: block
+    :components:
+    - :name: heading
+      :data:
+        :heading: Contact
+        :size: 2
+- :name: heading
   :data:
-    :timeline-roles:
-    - :time-period: Held currently
-      :roles: []
-- :name: related-links
+    :heading: Roles
+    :size: 2
+- :name: list
   :data:
-    title: Related links
-    website: 'Website: '
-    twitter: 'Twitter: '
-    portrait: "'s official portrait is "
-    portrait-link: available to download
-    name: Diane Abbott
-    website-link:
-    - 1
-    twitter-link:
-    - 1
-    media-url: "/media/123"
+    :list-items: []
+    :css-class: "--pipe"
+    :list-type: ul
+- :name: block
+  :data:
+    :css-class: block--border__bottom
+    :components:
+    - :name: heading
+      :data:
+        :heading: Related links
+        :size: 2
+    - :name: description-list
+      :data:
+      - :medium-name: 'Website: '
+        :medium-link:
+        - true
+      - :medium-name: 'Twitter: '
+        :medium-link:
+        - true
+      - :medium-name: 'translation missing: en.people.related_links.facebook'
+        :medium-link:
+        - true
+    - :name: paragraph
+      :data:
+        :content:
+        - - 'Diane Abbott''s official portrait is true '
 - :name: footer
   :data: footer
