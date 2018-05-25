@@ -23,9 +23,9 @@ module ComponentSerializer
 
     def data
       {
-          'css-class': @css_class,
           'list-type': @list_type,
-          'components': @list_items
+          'css-class': @css_class,
+          'components': @components
       }
     end
 

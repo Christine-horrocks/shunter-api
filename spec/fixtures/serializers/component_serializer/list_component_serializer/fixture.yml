@@ -1,6 +1,9 @@
 ---
 :name: list
 :data:
-  :css-class: "--pipe"
   :list-type: ul
-  :components: 
+  :css-class: "--pipe"
+  :components:
+  - 1
+  - 2
+  - 3
