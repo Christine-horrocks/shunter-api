@@ -20,13 +20,7 @@ module PageSerializer
 
     def sub_components
       [
-          {
-              "name": "heading",
-              "data": {
-                  "weight": 1,
-                  "heading": "<span>Results for #{@postcode.upcase}</span>"
-              }
-          },
+          ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
           {
               "name": "block",
               "data": {
@@ -35,8 +29,8 @@ module PageSerializer
                       {
                           "name": "heading",
                           "data": {
-                              "weight": 2,
-                              "heading": "<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>"
+                              "heading": "<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>",
+                              "weight": 2
                           }
                       }
                   ]
@@ -68,8 +62,8 @@ module PageSerializer
                                               {
                                                   "name": "heading",
                                                   "data": {
-                                                      "weight": 2,
-                                                      "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>"
+                                                      "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
+                                                      "weight": 2
                                                   }
                                               },
                                               {
@@ -90,14 +84,7 @@ module PageSerializer
                   ]
               }
           },
-          {
-              "name": "paragraph",
-              "data": {
-                  "text": [
-                      "<a href='/postcodes'>Check for a different postcode</a>"
-                  ]
-              }
-          }
+          ComponentSerializer::ParagraphComponentSerializer.new(["<a href='/postcodes'>Check for a different postcode</a>"]).to_h
       ]
     end
 

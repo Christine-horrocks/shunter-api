@@ -14,16 +14,16 @@
     :components:
     - :name: heading
       :data:
-        :weight: 1
         :heading: "<span>Results for EH6 5EZ</span>"
+        :weight: 1
     - :name: block
       :data:
         :css_class: block
         :components:
         - :name: heading
           :data:
-            :weight: 2
             :heading: "<a href='/constituencies/123'>Constituency</a>"
+            :weight: 2
     - :name: list
       :data:
         :list-type: ul
@@ -42,8 +42,8 @@
                 :components:
                 - :name: heading
                   :data:
-                    :weight: 2
                     :heading: "<a href='/people/321'>Display Name</a>"
+                    :weight: 2
                 - :name: paragraph
                   :data:
                     :text:
