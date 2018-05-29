@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module IntegrationFixtureHelper
   def get_fixture(controller_method, filename)
     File.open("#{directory_name(caller_locations.first.path, controller_method)}/#{filename}.yml", 'r') { |f| f.read }
