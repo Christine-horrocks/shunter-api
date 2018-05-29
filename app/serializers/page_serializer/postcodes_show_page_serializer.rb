@@ -30,26 +30,25 @@ module PageSerializer
     def card_components
       [
           ComponentSerializer::ImageComponentSerializer.new(image_data).to_h,
+          ComponentSerializer::CardDetailsComponentSerializer.new(card_details_components).to_h
+      ]
+    end
+
+    def card_details_components
+      [
           {
-              "name": "card-details",
+              "name": "heading",
               "data": {
-                  "components": [
-                      {
-                          "name": "heading",
-                          "data": {
-                              "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
-                              "weight": 2
-                          }
-                      },
-                      {
-                          "name": "paragraph",
-                          "data": {
-                              "text": [
-                                  "MP for #{@person.current_seat_incumbency&.constituency&.name}",
-                                  "#{@person.try(:current_party).try(:name)}"
-                              ]
-                          }
-                      }
+                  "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
+                  "weight": 2
+              }
+          },
+          {
+              "name": "paragraph",
+              "data": {
+                  "text": [
+                      "MP for #{@person.current_seat_incumbency&.constituency&.name}",
+                      "#{@person.try(:current_party).try(:name)}"
                   ]
               }
           }
