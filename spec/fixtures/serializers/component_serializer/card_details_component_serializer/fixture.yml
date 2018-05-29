@@ -1,0 +1,6 @@
+---
+:name: card-details
+:data:
+  :components:
+  - :atom1: atom1
+  - :atom2: atom2
