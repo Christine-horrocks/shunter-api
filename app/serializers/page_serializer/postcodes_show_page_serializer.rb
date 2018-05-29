@@ -20,10 +20,10 @@ module PageSerializer
 
     def sub_components
       [
-          ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
-          ComponentSerializer::BlockComponentSerializer.new([ComponentSerializer::HeadingComponentSerializer.new("<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>", 2).to_h]).to_h,
+          ComponentSerializer::HeadingComponentSerializer.new(results_heading, 1).to_h,
+          ComponentSerializer::BlockComponentSerializer.new([ComponentSerializer::HeadingComponentSerializer.new(block_component_heading, 2).to_h]).to_h,
           ComponentSerializer::ListComponentSerializer.new([ComponentSerializer::CardComponentSerializer.new(card_components).to_h], '--block').to_h,
-          ComponentSerializer::ParagraphComponentSerializer.new(["<a href='/postcodes'>Check for a different postcode</a>"]).to_h
+          ComponentSerializer::ParagraphComponentSerializer.new(paragraph_text).to_h
       ]
     end
 
@@ -36,11 +36,31 @@ module PageSerializer
 
     def card_details_components
       [
-          ComponentSerializer::HeadingComponentSerializer.new("<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>", 2).to_h,
-          ComponentSerializer::ParagraphComponentSerializer.new([
-                                                                    "MP for #{@person.current_seat_incumbency&.constituency&.name}",
-                                                                    "#{@person.try(:current_party).try(:name)}"
-                                                                ]).to_h
+          ComponentSerializer::HeadingComponentSerializer.new(card_details_heading, 2).to_h,
+          ComponentSerializer::ParagraphComponentSerializer.new(card_details_paragraph_text).to_h
+      ]
+    end
+
+    def results_heading
+      "<span>Results for #{@postcode.upcase}</span>"
+    end
+
+    def block_component_heading
+      "<a href='/constituencies/#{@constituency.graph_id}'>#{@constituency.name}</a>"
+    end
+
+    def paragraph_text
+      ["<a href='/postcodes'>Check for a different postcode</a>"]
+    end
+
+    def card_details_heading
+      "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>"
+    end
+
+    def card_details_paragraph_text
+      [
+          "MP for #{@person.current_seat_incumbency&.constituency&.name}",
+          "#{@person.try(:current_party).try(:name)}"
       ]
     end
 
