@@ -18,15 +18,6 @@ module PageSerializer
       }
     end
 
-    # def content
-    #   {
-    #       "name": "section-primary",
-    #       "data": {
-    #           "components": sub_components
-    #       }
-    #   }
-    # end
-
     def sub_components
       [
           ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
