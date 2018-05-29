@@ -20,18 +20,64 @@ components:
       data:
         content:
         - Former MP
-- name: heading
+- name: container
   data:
-    heading: Roles
-    size: 2
-- name: list
-  data:
-    list-items: []
-    css-class: "--pipe"
-    list-type: ul
-- name: block
-  data:
-    css-class: block--border__bottom
     components: []
+- name: container
+  data:
+    components:
+    - name: heading
+      data:
+        heading: Roles
+        size: 2
+    - name: list
+      data:
+        list-items: []
+        css-class: "--pipe"
+        list-type: ul
+    - name: track
+      data:
+        components:
+        - name: heading
+          data:
+            heading: Held currently
+            size: 2
+        - name: list
+          data:
+            list-items: []
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 10 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Kingston and Surbiton
+                role-dates:
+                - 7 May 2015 to 3 May 2017
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Home Affairs Committee
+                role-dates:
+                - 8 Jul 2015 to 3 May 2017
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: 2015
+            size: 2
+- name: container
+  data:
+    components:
+    - name: block
+      data:
+        css-class: block--border__bottom
+        components: []
 - name: footer
   data: footer

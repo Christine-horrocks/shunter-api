@@ -7,7 +7,7 @@ module ComponentSerializer
     # @param [Array<Hash>] an array of objects, each object is a component or atom.
     # @example [{"title": 'Here is my title', "text": 'Here is my text'}, {"title": 'Here is my title', "text": 'Here is my text'}].
     # @param [String] contains the class type of the block, with a default of block.
-    def initialize(components, css_class = list_type=ComponentSerializer::BlockComponentSerializer::BLOCK)
+    def initialize(components, css_class = ComponentSerializer::BlockComponentSerializer::BLOCK)
       @components = components
       @css_class = css_class
     end

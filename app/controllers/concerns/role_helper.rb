@@ -47,7 +47,8 @@ module RoleHelper
 
   def self.build_timeline(history_hash, current_roles)
   timeline_roles = []
-  timeline_roles << ComponentSerializer::ListComponentSerializer.new(current_roles, I18n.t('.people.roles.held_currently'), '--block').to_h
+  timeline_roles << ComponentSerializer::HeadingComponentSerializer.new(I18n.t('.people.roles.held_currently'), size: 2).to_h
+  timeline_roles << ComponentSerializer::ListComponentSerializer.new(current_roles, '--block').to_h
 
   history_hash[:years].keys.sort.each do |year|
 
@@ -57,8 +58,8 @@ module RoleHelper
         "data": role_hash
       }
     end
-
-    timeline_roles << ComponentSerializer::ListComponentSerializer.new(list_items, "#{I18n.t('.people.previous_roles.held_in')}#{year}#{I18n.t('.people.previous_roles.year_s')}", '--block').to_h
+    timeline_roles << ComponentSerializer::HeadingComponentSerializer.new("#{I18n.t('.people.previous_roles.held_in')}#{year}#{I18n.t('.people.previous_roles.year_s')}", size: 2).to_h
+    timeline_roles << ComponentSerializer::ListComponentSerializer.new(list_items, '--block').to_h
   end
 
   timeline_roles << ComponentSerializer::HeadingComponentSerializer.new(history_hash[:start].year, size: 2).to_h

@@ -1,9 +1,9 @@
 ---
 :name: list
 :data:
-  :list-items:
+  list-items:
   - 1
   - 2
   - 3
-  :css-class: "--pipe"
-  :list-type: ul
+  css-class: "--pipe"
+  list-type: ul

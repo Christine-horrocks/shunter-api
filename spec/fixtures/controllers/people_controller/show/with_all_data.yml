@@ -31,86 +31,218 @@ components:
           2x
         image-src: https://api.parliament.uk/Staging/photo/S3bGSTqn.jpeg?crop=CU_1:1&width=186&quality=80
         image-alt: Ms Diane Abbott
-- name: when-to-contact
+- name: container
   data:
-    title: When to contact an MP
-    mps-can-help-with: 'MPs can help with issues that are the responsibility of UK
-      Parliament. They represent their constituents and can help with issues such
-      as:'
-    list:
-    - hospitals and the NHS
-    - problems with benefits, pensions and national insurance
-    - immigration
-    - school closures and funding
-    - transport facilities
-    who-else-can-help: Who else can help with my issue?
-    link: "/who-should-i-contact-with-my-issue"
-    discuss-with: You may be able to discuss issues with your MP in person or online.
-      Contact them for details
-    contact-postcode: Please include your postcode when contacting your MP.
-- name: block
+    components:
+    - name: when-to-contact
+      data:
+        title: When to contact an MP
+        mps-can-help-with: 'MPs can help with issues that are the responsibility of
+          UK Parliament. They represent their constituents and can help with issues
+          such as:'
+        list:
+        - hospitals and the NHS
+        - problems with benefits, pensions and national insurance
+        - immigration
+        - school closures and funding
+        - transport facilities
+        who-else-can-help: Who else can help with my issue?
+        link: "/who-should-i-contact-with-my-issue"
+        discuss-with: You may be able to discuss issues with your MP in person or
+          online. Contact them for details
+        contact-postcode: Please include your postcode when contacting your MP.
+    - name: block
+      data:
+        css-class: block
+        components:
+        - name: heading
+          data:
+            heading: Contact
+            size: 2
+        - name: description-list
+          data:
+          - medium-name: 'Email: '
+            medium-link:
+            - diane.abbott.office@parliament.uk
+          - medium-name: 'Phone: '
+            medium-link:
+            - 020 7219 4426
+          - medium-name: 'Address: '
+            medium-link:
+            - House of Commons, London, SW1A 0AA
+- name: container
   data:
-    css-class: block
     components:
     - name: heading
       data:
-        heading: Contact
+        heading: Roles
         size: 2
-    - name: description-list
+    - name: list
       data:
-      - medium-name: 'Email: '
-        medium-link:
-        - diane.abbott.office@parliament.uk
-      - medium-name: 'Phone: '
-        medium-link:
-        - 020 7219 4426
-      - medium-name: 'Address: '
-        medium-link:
-        - House of Commons, London, SW1A 0AA
-- name: heading
-  data:
-    heading: Roles
-    size: 2
-- name: list
-  data:
-    list-items:
-    - name: role-card
+        list-items:
+        - name: role-card
+          data:
+            role-type: Opposition role
+            role-title: Shadow Home Secretary
+            role-dates:
+            - 6 Oct 2016 to present
+        - name: role-card
+          data:
+            role-type: Parliamentary role
+            role-title: MP for Hackney North and Stoke Newington
+            role-count: Elected 3 times
+            role-dates:
+            - 8 Jun 2017 to present
+            - 7 May 2015 to 3 May 2017
+            - 6 May 2010 to 30 Mar 2015
+        css-class: "--pipe"
+        list-type: ul
+    - name: track
       data:
-        role-type: Opposition role
-        role-title: Shadow Home Secretary
-        role-dates:
-        - 6 Oct 2016 to present
-    - name: role-card
-      data:
-        role-type: Parliamentary role
-        role-title: MP for Hackney North and Stoke Newington
-        role-count: Elected 3 times
-        role-dates:
-        - 8 Jun 2017 to present
-        - 7 May 2015 to 3 May 2017
-        - 6 May 2010 to 30 Mar 2015
-    css-class: "--pipe"
-    list-type: ul
-- name: block
+        components:
+        - name: heading
+          data:
+            heading: Held currently
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Opposition role
+                role-title: Shadow Home Secretary
+                role-dates:
+                - 6 Oct 2016 to present
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Hackney North and Stoke Newington
+                role-count: Elected 3 times
+                role-dates:
+                - 8 Jun 2017 to present
+                - 7 May 2015 to 3 May 2017
+                - 6 May 2010 to 30 Mar 2015
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 10 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Opposition role
+                role-title: Shadow Minister (Public Health)
+                role-dates:
+                - 8 Oct 2010 to 7 Oct 2013
+            - name: role-card
+              data:
+                role-type: Opposition role
+                role-title: Shadow Secretary of State for International Development
+                role-dates:
+                - 14 Sep 2015 to 27 Jun 2016
+            - name: role-card
+              data:
+                role-type: Opposition role
+                role-title: Shadow Secretary of State for Health
+                role-dates:
+                - 27 Jun 2016 to 6 Oct 2016
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Hackney North and Stoke Newington
+                role-count: Elected 3 times
+                role-dates:
+                - 5 May 2005 to 6 May 2010
+                - 7 Jun 2001 to 5 May 2005
+                - 1 May 1997 to 7 Jun 2001
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 20 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: 'Member of the Foreign Affairs: Entry Clearance Sub-Committee'
+                role-dates:
+                - 25 Nov 1997 to 19 Nov 1998
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Foreign Affairs Committee
+                role-dates:
+                - 16 Jul 1997 to 11 May 2001
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 30 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Hackney North and Stoke Newington
+                role-count: Elected 2 times
+                role-dates:
+                - 9 Apr 1992 to 1 May 1997
+                - 11 Jun 1987 to 9 Apr 1992
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Treasury & Civil Service
+                role-dates:
+                - 15 May 1989 to 8 Nov 1995
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Treasury & Civil Service Sub-Committee
+                role-dates:
+                - 17 May 1989 to 8 Nov 1995
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Treasury Committee
+                role-dates:
+                - 15 Nov 1995 to 21 Mar 1997
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: 1987
+            size: 2
+- name: container
   data:
-    css-class: block--border__bottom
     components:
-    - name: heading
+    - name: block
       data:
-        heading: Related links
-        size: 2
-    - name: description-list
-      data:
-      - medium-name: 'Website: '
-        medium-link:
-        - <a href="http://www.dianeabbott.org.uk/">http://www.dianeabbott.org.uk/</a>
-      - medium-name: 'Twitter: '
-        medium-link:
-        - <a href="https://twitter.com/HackneyAbbott">https://twitter.com/HackneyAbbott</a>
-    - name: paragraph
-      data:
-        content:
-        - - 'Diane Abbott''s official portrait is <a href="/media/#{@person.image_id}">available
-            to download</a> '
+        css-class: block--border__bottom
+        components:
+        - name: heading
+          data:
+            heading: Related links
+            size: 2
+        - name: description-list
+          data:
+          - medium-name: 'Website: '
+            medium-link:
+            - <a href="http://www.dianeabbott.org.uk/">http://www.dianeabbott.org.uk/</a>
+          - medium-name: 'Twitter: '
+            medium-link:
+            - <a href="https://twitter.com/HackneyAbbott">https://twitter.com/HackneyAbbott</a>
+        - name: paragraph
+          data:
+            content:
+            - - 'Diane Abbott''s official portrait is <a href="/media/#{@person.image_id}">available
+                to download</a> '
 - name: footer
   data: footer

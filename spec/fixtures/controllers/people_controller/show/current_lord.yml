@@ -31,52 +31,188 @@ components:
           2x
         image-src: https://api.parliament.uk/Staging/photo/XfWPiiTY.jpeg?crop=CU_1:1&width=186&quality=80
         image-alt: Lord Baker of Dorking
-- name: block
+- name: container
   data:
-    css-class: block
+    components:
+    - name: block
+      data:
+        css-class: block
+        components:
+        - name: heading
+          data:
+            heading: Contact
+            size: 2
+        - name: description-list
+          data:
+          - medium-name: 'Email: '
+            medium-link:
+            - contactholmember@parliament.uk
+          - medium-name: 'Phone: '
+            medium-link:
+            - 020 7219 5353
+          - medium-name: 'Address: '
+            medium-link:
+            - House of Lords, London, SW1A 0PW
+- name: container
+  data:
     components:
     - name: heading
       data:
-        heading: Contact
+        heading: Roles
         size: 2
-    - name: description-list
+    - name: list
       data:
-      - medium-name: 'Email: '
-        medium-link:
-        - contactholmember@parliament.uk
-      - medium-name: 'Phone: '
-        medium-link:
-        - 020 7219 5353
-      - medium-name: 'Address: '
-        medium-link:
-        - House of Lords, London, SW1A 0PW
-- name: heading
-  data:
-    heading: Roles
-    size: 2
-- name: list
-  data:
-    list-items:
-    - name: role-card
+        list-items:
+        - name: role-card
+          data:
+            role-type: Parliamentary role
+            role-title: Member of the House of Lords
+            role-dates:
+            - 16 Jun 1997 to present
+        css-class: "--pipe"
+        list-type: ul
+    - name: track
       data:
-        role-type: Parliamentary role
-        role-title: Member of the House of Lords
-        role-dates:
-        - 16 Jun 1997 to present
-    css-class: "--pipe"
-    list-type: ul
-- name: block
+        components:
+        - name: heading
+          data:
+            heading: Held currently
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: Member of the House of Lords
+                role-dates:
+                - 16 Jun 1997 to present
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 10 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the House Committee (Lords)
+                role-dates:
+                - 16 Apr 2007 to 21 May 2012
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 20 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Information Committee (Lords)
+                role-dates:
+                - 25 Nov 2002 to 8 Nov 2006
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 30 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Mole Valley
+                role-count: Elected 3 times
+                role-dates:
+                - 9 Apr 1992 to 1 May 1997
+                - 11 Jun 1987 to 9 Apr 1992
+                - 9 Jun 1983 to 11 Jun 1987
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 40 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for St Marylebone
+                role-count: Elected 3 times
+                role-dates:
+                - 3 May 1979 to 9 Jun 1983
+                - 10 Oct 1974 to 3 May 1979
+                - 28 Feb 1974 to 10 Oct 1974
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Treasury & Civil Service Sub-Committee
+                role-dates:
+                - 3 May 1979 to 3 Mar 1980
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Treasury & Civil Service
+                role-dates:
+                - 3 May 1979 to 30 Jan 1981
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Procedure Committee
+                role-dates:
+                - 1 Nov 1978 to 9 Jun 1983
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 50 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for Acton
+                role-dates:
+                - 28 Mar 1968 to 18 Jun 1970
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: MP for St Marylebone
+                role-dates:
+                - 22 Oct 1970 to 28 Feb 1974
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: 1968
+            size: 2
+- name: container
   data:
-    css-class: block--border__bottom
     components:
-    - name: heading
+    - name: block
       data:
-        heading: Related links
-        size: 2
-    - name: paragraph
-      data:
-        content:
-        - - 'Kenneth Baker''s official portrait is <a href="/media/#{@person.image_id}">available
-            to download</a> '
+        css-class: block--border__bottom
+        components:
+        - name: heading
+          data:
+            heading: Related links
+            size: 2
+        - name: paragraph
+          data:
+            content:
+            - - 'Kenneth Baker''s official portrait is <a href="/media/#{@person.image_id}">available
+                to download</a> '
 - name: footer
   data: footer

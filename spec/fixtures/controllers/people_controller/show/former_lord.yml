@@ -20,18 +20,85 @@ components:
       data:
         content:
         - Former Member of the House of Lords
-- name: heading
+- name: container
   data:
-    heading: Roles
-    size: 2
-- name: list
-  data:
-    list-items: []
-    css-class: "--pipe"
-    list-type: ul
-- name: block
-  data:
-    css-class: block--border__bottom
     components: []
+- name: container
+  data:
+    components:
+    - name: heading
+      data:
+        heading: Roles
+        size: 2
+    - name: list
+      data:
+        list-items: []
+        css-class: "--pipe"
+        list-type: ul
+    - name: track
+      data:
+        components:
+        - name: heading
+          data:
+            heading: Held currently
+            size: 2
+        - name: list
+          data:
+            list-items: []
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 10 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Parliamentary role
+                role-title: Member of the House of Lords
+                role-dates:
+                - 4 Feb 1980 to 24 Oct 2017
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Works of Art Committee (Lords)
+                role-dates:
+                - 29 Jun 1983 to 8 Apr 2010
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: Held in the last 40 years
+            size: 2
+        - name: list
+          data:
+            list-items:
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the Refreshment Sub Committee
+                role-dates:
+                - 18 Nov 1982 to 13 May 1983
+            - name: role-card
+              data:
+                role-type: Committee role
+                role-title: Member of the House of Lords Offices Committee
+                role-dates:
+                - 18 Nov 1982 to 6 Nov 1986
+            css-class: "--block"
+            list-type: ul
+        - name: heading
+          data:
+            heading: 1980
+            size: 2
+- name: container
+  data:
+    components:
+    - name: block
+      data:
+        css-class: block--border__bottom
+        components: []
 - name: footer
   data: footer

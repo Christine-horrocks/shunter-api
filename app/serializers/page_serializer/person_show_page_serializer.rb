@@ -13,13 +13,9 @@ module PageSerializer
     def content
       c = []
       c << ComponentSerializer::SectionPrimaryComponentSerializer.new(section_primary_components).to_h
-      c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
-      c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h if @person.current_mp? || @person.current_lord?
-      c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.roles.roles').capitalize, size: 2).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::ListComponentSerializer.new(current_roles_list_items(current_roles)).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::TrackComponentSerializer.new(ComponentSerializer::ListComponentSerializer.new(timeline_roles).to_h).to_h
-      # c << ComponentSerializer::ListComponentSerializer.new(timeline_roles).to_h
-      c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
+      c << ComponentSerializer::ContainerComponentSerializer.new(when_to_contact_and_contact).to_h
+      c << ComponentSerializer::ContainerComponentSerializer.new(role_timeline_components).to_h
+      c << ComponentSerializer::ContainerComponentSerializer.new(related_links_block).to_h
       c
     end
 
@@ -32,6 +28,27 @@ module PageSerializer
       c << ComponentSerializer::HeadingComponentSerializer.new(@person.full_name, size: 1).to_h
       c << ComponentSerializer::ParagraphComponentSerializer.new(mp_constituency_information).to_h
       c << ComponentSerializer::ImageComponentSerializer.new(image_data).to_h if @person.image_id && @person.image_id != 'placeholder'
+      c
+    end
+
+    def when_to_contact_and_contact
+      c = []
+      c << ComponentSerializer::WhenToContactComponentSerializer.new.to_h if @person.current_mp?
+      c << ComponentSerializer::BlockComponentSerializer.new(contact_components).to_h if @person.current_mp? || @person.current_lord?
+      c
+    end
+
+    def role_timeline_components
+      c = []
+      c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.roles.roles').capitalize, size: 2).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      c << ComponentSerializer::ListComponentSerializer.new(current_roles_list_items(current_roles)).to_h if @person.incumbencies.any? || @committee_memberships.any?
+      c << ComponentSerializer::TrackComponentSerializer.new(timeline_roles).to_h
+      c
+    end
+
+    def related_links_block
+      c =[]
+      c << ComponentSerializer::BlockComponentSerializer.new(related_links_components, 'block--border__bottom').to_h
       c
     end
 

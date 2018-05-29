@@ -27,7 +27,7 @@
     :size: 3
 - :name: list
   :data:
-    :list-items:
+    list-items:
     - :name: card
       :data:
         :components:
@@ -40,8 +40,8 @@
           :data:
             :content:
             - The deadline is 1pm on Friday 27th April 2018
-    :css-class: "--block"
-    :list-type: ul
+    css-class: "--block"
+    list-type: ul
 - :name: highlight-component
   :data:
     :content: Read the <a href="https://pds.blog.parliament.uk/2018/02/09/building-a-new-online-service-petitioning-a-hybrid-bill/">Object
@@ -52,7 +52,7 @@
     :size: 3
 - :name: list
   :data:
-    :list-items:
+    list-items:
     - :name: card
       :data:
         :components:
@@ -64,8 +64,8 @@
           :data:
             :content:
             - Find results from current parliament.uk websites.
-    :css-class: "--block"
-    :list-type: ul
+    css-class: "--block"
+    list-type: ul
 - :name: highlight-component
   :data:
     :content: Read the <a href="https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/">Search
@@ -76,7 +76,7 @@
     :size: 3
 - :name: list
   :data:
-    :list-items:
+    list-items:
     - :name: card
       :data:
         :components:
@@ -121,8 +121,8 @@
           :data:
             :content:
             - Find current MPs and Lords by their party or group.
-    :css-class: "--block"
-    :list-type: ul
+    css-class: "--block"
+    list-type: ul
 - :name: highlight-component
   :data:
     :content: Read the <a href="https://pds.blog.parliament.uk/2017/09/06/launching-the-new-search-service-on-parliament-uk/">MPs
