@@ -18,6 +18,15 @@ module PageSerializer
       }
     end
 
+    # def content
+    #   {
+    #       "name": "section-primary",
+    #       "data": {
+    #           "components": sub_components
+    #       }
+    #   }
+    # end
+
     def sub_components
       [
           ComponentSerializer::HeadingComponentSerializer.new("<span>Results for #{@postcode.upcase}</span>", 1).to_h,
@@ -40,7 +49,7 @@ module PageSerializer
           ComponentSerializer::ParagraphComponentSerializer.new([
                                                                     "MP for #{@person.current_seat_incumbency&.constituency&.name}",
                                                                     "#{@person.try(:current_party).try(:name)}"
-                                                                ])
+                                                                ]).to_h
       ]
     end
 
