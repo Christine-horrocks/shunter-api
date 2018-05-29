@@ -1,0 +1,60 @@
+---
+layout:
+  template: layout
+title: Find your constituency
+components:
+- name: cookie-banner
+  data: cookie-banner
+- name: banner
+  data: banner
+- name: header
+  data: header
+- name: section-primary
+  data:
+    components:
+    - name: heading
+      data:
+        heading: "<span>Results for EH11 2RQ</span>"
+        weight: 1
+    - name: block
+      data:
+        css-class: block
+        components:
+        - name: heading
+          data:
+            heading: "<a href='/constituencies/UGMAlxoh'>Edinburgh South West</a>"
+            weight: 2
+    - name: list
+      data:
+        list-type: ul
+        css-class: "--block"
+        components:
+        - name: card
+          data:
+            components:
+            - name: image
+              data:
+                figure-url: "/people/wVI7ebTP"
+                image-srcset1: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                image-srcset2: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                image-src: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                image-alt: Joanna Cherry
+                css-class: avatar--round
+            - name: card-details
+              data:
+                components:
+                - name: heading
+                  data:
+                    heading: "<a href='/people/wVI7ebTP'>Joanna Cherry</a>"
+                    weight: 2
+                - name: paragraph
+                  data:
+                    text:
+                    - MP for Edinburgh South West
+                    - Scottish National Party
+    - name: paragraph
+      data:
+        text:
+        - "<a href='/postcodes'>Check for a different postcode</a>"
+- name: footer
+  data: footer
