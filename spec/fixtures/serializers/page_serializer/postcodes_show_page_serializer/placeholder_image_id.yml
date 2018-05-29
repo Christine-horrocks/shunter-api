@@ -1,0 +1,60 @@
+---
+:layout:
+  :template: layout
+:title: Find your constituency
+:components:
+- :name: cookie-banner
+  :data: cookie-banner
+- :name: banner
+  :data: banner
+- :name: header
+  :data: header
+- :name: section-primary
+  :data:
+    :components:
+    - :name: heading
+      :data:
+        :heading: "<span>Results for EH6 5EZ</span>"
+        :weight: 1
+    - :name: block
+      :data:
+        :css-class: block
+        :components:
+        - :name: heading
+          :data:
+            :heading: "<a href='/constituencies/123'>Constituency</a>"
+            :weight: 2
+    - :name: list
+      :data:
+        :list-type: ul
+        :css-class: "--block"
+        :components:
+        - :name: card
+          :data:
+            :components:
+            - :name: image
+              :data:
+                :figure-url: "/people/321"
+                :image-srcset1: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                :image-srcset2: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                :image-src: https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png
+                :image-alt: Display Name
+                :css-class: avatar--round
+            - :name: card-details
+              :data:
+                :components:
+                - :name: heading
+                  :data:
+                    :heading: "<a href='/people/321'>Display Name</a>"
+                    :weight: 2
+                - :name: paragraph
+                  :data:
+                    :text:
+                    - MP for Constituency
+                    - Labour
+    - :name: paragraph
+      :data:
+        :text:
+        - "<a href='/postcodes'>Check for a different postcode</a>"
+- :name: footer
+  :data: footer

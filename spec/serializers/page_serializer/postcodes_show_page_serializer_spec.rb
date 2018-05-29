@@ -26,6 +26,14 @@ describe PageSerializer::PostcodesShowPageSerializer, vcr: false do
 
         expect(serializer.to_yaml).to eq expected
       end
+
+      it 'person has image_id that is placeholder' do
+        allow(person).to receive(:image_id) { 'placeholder' }
+
+        expected = get_fixture('placeholder_image_id')
+
+        expect(serializer.to_yaml).to eq expected
+      end
     end
   end
 end

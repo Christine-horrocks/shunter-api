@@ -67,6 +67,8 @@ module PageSerializer
     end
 
     def generate_srcset(id, crop, small_width, large_width)
+      return placeholder_image if @person.image_id == 'placeholder'
+
       small_src = generate_image_src(id, crop, small_width)
       large_src = generate_image_src(id, crop, large_width)
 
@@ -74,7 +76,13 @@ module PageSerializer
     end
 
     def generate_image_src(id, crop, width)
+      return placeholder_image if @person.image_id == 'placeholder'
+
       "#{ENV['IMAGE_SERVICE_URL']}/#{id}.jpeg?crop=#{crop}&width=#{width}&quality=80"
+    end
+
+    def placeholder_image
+      'https://static.parliament.uk/pugin/1.9.3/images/placeholder_members_image.png'
     end
 
     def title
