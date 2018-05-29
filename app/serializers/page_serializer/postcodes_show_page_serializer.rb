@@ -36,22 +36,11 @@ module PageSerializer
 
     def card_details_components
       [
-          {
-              "name": "heading",
-              "data": {
-                  "heading": "<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>",
-                  "weight": 2
-              }
-          },
-          {
-              "name": "paragraph",
-              "data": {
-                  "text": [
-                      "MP for #{@person.current_seat_incumbency&.constituency&.name}",
-                      "#{@person.try(:current_party).try(:name)}"
-                  ]
-              }
-          }
+          ComponentSerializer::HeadingComponentSerializer.new("<a href='/people/#{@person.graph_id}'>#{@person.display_name}</a>", 2).to_h,
+          ComponentSerializer::ParagraphComponentSerializer.new([
+                                                                    "MP for #{@person.current_seat_incumbency&.constituency&.name}",
+                                                                    "#{@person.try(:current_party).try(:name)}"
+                                                                ])
       ]
     end
 
