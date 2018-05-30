@@ -1,14 +1,8 @@
 require_relative '../../rails_helper'
 
 RSpec.describe PageSerializer::PersonShowPageSerializer do
-  let(:year) { 1865 }
-  let(:start) { double('start', year: 'year') }
-  let(:history_hash) { double('history_hash', start: 'start') }
-  let(:section_primary_components) { double('section_primary_components') }
-  let(:contact_components) { ['Heading', %w[contact1 contact2]] }
+  let(:timeline_roles) { [1, 1, 1] }
   let(:contact_links) { ['Heading', %w[contact1 contact2]] }
-  let(:current_roles) { %w[role1 role2 role3] }
-  let(:related_links_components) { %w[component component2] }
   let(:related_links) { %w[component component2] }
   let(:image_download_link) { 'link.com' }
   let(:postal_address) { double('postal_address', full_address: 'Full Address') }
@@ -50,6 +44,11 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
   subject(:person_show_page_serializer) { described_class.new(person) }
 
   context '#to_h' do
+
+    before(:each) do
+      allow(person_show_page_serializer).to receive(:timeline_roles) { [1, 2, 3] }
+    end
+
     describe 'correct hashes' do
       it 'when all person information is available' do
         allow(ActionController::Base.helpers).to receive(:link_to) { html }
@@ -118,27 +117,118 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
       # end
 
       describe 'serializer initializations' do
-        # describe 'when all person information is available' do
-        #   it 'initializes serializers' do
-        #     allow(ActionController::Base.helpers).to receive(:link_to) { html }
-        #
-        #     allow(ComponentSerializer::SectionPrimaryComponentSerializer).to receive(:new).with(:section_primary_components)
-        #     allow(ComponentSerializer::WhenToContactComponentSerializer).to receive(:new)
-        #     allow(ComponentSerializer::BlockComponentSerializer).to receive(:new).with(:contact_components)
-        #     allow(ComponentSerializer::RolesListComponentSerializer).to receive(:new).with(:current_roles)
-        #     # allow(ComponentSerializer::TimelineComponentSerializer).to receive(:new).with([], [], [], [])
-        #     allow(ComponentSerializer::BlockComponentSerializer).to receive(:new).with(:related_links_components, 'block--border__bottom')
-        #
-        #     person_show_page_serializer.to_h
-        #
-        #     expect(ComponentSerializer::SectionPrimaryComponentSerializer).to have_receive(:new).with(:section_primary_components)
-        #     expect(ComponentSerializer::WhenToContactComponentSerializer).to have_received(:new)
-        #     expect(ComponentSerializer::BlockComponentSerializer).to have_receive(:new).with(:contact_components)
-        #     expect(ComponentSerializer::RolesListComponentSerializer).to have_receive(:new).with(:current_roles)
-        #     # expect(ComponentSerializer::TimelineComponentSerializer).to have_received(:new).with([], [], [], [])
-        #     expect(ComponentSerializer::BlockComponentSerializer).to have_receive(:new).with(:related_links_components, 'block--border__bottom')
-        #   end
-        # end
+        describe 'when all person information is available' do
+
+          it 'contents' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:section_primary_components) { 'section_primary_components' }
+            allow(person_show_page_serializer).to receive(:when_to_contact_and_contact) { 'when_to_contact_and_contact' }
+            allow(person_show_page_serializer).to receive(:role_timeline_components) { 'role_timeline_components' }
+            allow(person_show_page_serializer).to receive(:related_links_block) { 'related_links_block' }
+
+            allow(ComponentSerializer::SectionPrimaryComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ContainerComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ContainerComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ContainerComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::SectionPrimaryComponentSerializer).to have_received(:new).with('section_primary_components')
+            expect(ComponentSerializer::ContainerComponentSerializer).to have_received(:new).with('when_to_contact_and_contact')
+            expect(ComponentSerializer::ContainerComponentSerializer).to have_received(:new).with('role_timeline_components')
+            expect(ComponentSerializer::ContainerComponentSerializer).to have_received(:new).with('related_links_block')
+          end
+
+          it 'section_primary_components' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:mp_constituency_information) { 'mp_constituency_information' }
+            allow(person_show_page_serializer).to receive(:image_data) { 'image_data' }
+
+            allow(ComponentSerializer::HeadingComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ParagraphComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ImageComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::HeadingComponentSerializer).to have_received(:new).with(person.full_name, size: 1)
+            expect(ComponentSerializer::ParagraphComponentSerializer).to have_received(:new).with('mp_constituency_information')
+            expect(ComponentSerializer::ImageComponentSerializer).to have_received(:new).with('image_data')
+          end
+
+          it 'when_to_contact_and_contact' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:contact_components) { 'contact_components' }
+
+            allow(ComponentSerializer::WhenToContactComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::BlockComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::WhenToContactComponentSerializer).to have_received(:new)
+            expect(ComponentSerializer::BlockComponentSerializer).to have_received(:new).with('contact_components')
+
+          end
+
+          it 'role_timeline_components'do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:current_roles_list_items) { 'current_roles_list_items' }
+            allow(person_show_page_serializer).to receive(:timeline_roles) { 'timeline_roles' }
+
+            allow(ComponentSerializer::HeadingComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ListComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::TrackComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::HeadingComponentSerializer).to have_received(:new).with('Roles', size: 2)
+            expect(ComponentSerializer::ListComponentSerializer).to have_received(:new).with('current_roles_list_items')
+            expect(ComponentSerializer::TrackComponentSerializer).to have_received(:new).with('timeline_roles')
+          end
+
+          it 'related_links_block' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:related_links_components) { 'related_links_components' }
+
+            allow(ComponentSerializer::BlockComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::BlockComponentSerializer).to have_received(:new).with('related_links_components', 'block--border__bottom')
+          end
+
+          it 'related_links_components' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:related_links) { 'related_links' }
+            allow(person_show_page_serializer).to receive(:image_download_link) { 'image_download_link' }
+            # allow(person_show_page_serializer).to receive() { 'image_download_link' }
+
+
+            allow(ComponentSerializer::HeadingComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::DescriptionListComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::ParagraphComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::HeadingComponentSerializer).to have_received(:new).with('Related links', size: 2)
+            expect(ComponentSerializer::DescriptionListComponentSerializer).to have_received(:new).with('related_links')
+            expect(ComponentSerializer::ParagraphComponentSerializer).to have_received(:new).with('image_download_link')
+
+          end
+
+          it 'contact_components' do
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+            allow(person_show_page_serializer).to receive(:contact_links) { 'contact_links' }
+
+            allow(ComponentSerializer::HeadingComponentSerializer).to receive(:new)
+            allow(ComponentSerializer::DescriptionListComponentSerializer).to receive(:new)
+
+            person_show_page_serializer.to_h
+
+            expect(ComponentSerializer::HeadingComponentSerializer).to have_received(:new).with('Contact', size: 2)
+            expect(ComponentSerializer::DescriptionListComponentSerializer).to have_received(:new).with('contact_links')
+          end
+        end
+
 
         describe 'image component serializer is not initialized' do
           it 'if person does not have image_id' do
@@ -193,15 +283,16 @@ RSpec.describe PageSerializer::PersonShowPageSerializer do
           end
         end
 
-        # describe 'timeline component serializer is not initialized' do
-        #   it 'if incumbencies and committee memberships are empty arrays' do
-        #     allow(ComponentSerializer::TimelineComponentSerializer).to receive(:new).with([], [], [], [])
-        #     allow(person_double).to receive(:incumbencies) { [] }
-        #
-        #     person_show_page_serializer.to_h
-        #     expect(ComponentSerializer::TimelineComponentSerializer).not_to have_received(:new).with([], [], [], [])
-        #   end
-        # end
+        describe 'timeline component serializer is not initialized' do
+          it 'if incumbencies and committee memberships are empty arrays' do
+            allow(ComponentSerializer::TrackComponentSerializer).to receive(:new)
+            allow(person).to receive(:incumbencies) { [] }
+            allow(ActionController::Base.helpers).to receive(:link_to) { html }
+
+            person_show_page_serializer.to_h
+            expect(ComponentSerializer::TrackComponentSerializer).not_to have_received(:new).with(timeline_roles)
+          end
+        end
 
         describe 'block component serializer for related links is not initialized' do
           it 'if person has no weblinks and they have no image_id' do

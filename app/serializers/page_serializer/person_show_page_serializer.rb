@@ -42,7 +42,7 @@ module PageSerializer
       c = []
       c << ComponentSerializer::HeadingComponentSerializer.new(t('.people.roles.roles').capitalize, size: 2).to_h if @person.incumbencies.any? || @committee_memberships.any?
       c << ComponentSerializer::ListComponentSerializer.new(current_roles_list_items(current_roles)).to_h if @person.incumbencies.any? || @committee_memberships.any?
-      c << ComponentSerializer::TrackComponentSerializer.new(timeline_roles).to_h
+      c << ComponentSerializer::TrackComponentSerializer.new(timeline_roles).to_h if @person.incumbencies.any? || @committee_memberships.any?
       c
     end
 

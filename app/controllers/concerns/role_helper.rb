@@ -46,6 +46,7 @@ module RoleHelper
   end
 
   def self.build_timeline(history_hash, current_roles)
+    p history_hash
   timeline_roles = []
   timeline_roles << ComponentSerializer::HeadingComponentSerializer.new(I18n.t('.people.roles.held_currently'), size: 2).to_h
   timeline_roles << ComponentSerializer::ListComponentSerializer.new(current_roles, '--block').to_h

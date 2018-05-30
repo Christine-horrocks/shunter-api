@@ -31,64 +31,73 @@
           2x
         :image-src: https://api.parliament.uk/Staging/photo/123.jpeg?crop=CU_1:1&width=186&quality=80
         :image-alt: Diane Abbott
-- :name: when-to-contact
+- :name: container
   :data:
-    :title: When to contact an MP
-    :mps-can-help-with: 'MPs can help with issues that are the responsibility of UK
-      Parliament. They represent their constituents and can help with issues such
-      as:'
-    :list:
-    - hospitals and the NHS
-    - problems with benefits, pensions and national insurance
-    - immigration
-    - school closures and funding
-    - transport facilities
-    :who-else-can-help: Who else can help with my issue?
-    :link: "/who-should-i-contact-with-my-issue"
-    :discuss-with: You may be able to discuss issues with your MP in person or online.
-      Contact them for details
-    :contact-postcode: Please include your postcode when contacting your MP.
-- :name: block
-  :data:
-    :css-class: block
     :components:
-    - :name: heading
+    - :name: when-to-contact
       :data:
-        :heading: Contact
-        :size: 2
-    - :name: description-list
+        :title: When to contact an MP
+        :mps-can-help-with: 'MPs can help with issues that are the responsibility
+          of UK Parliament. They represent their constituents and can help with issues
+          such as:'
+        :list:
+        - hospitals and the NHS
+        - problems with benefits, pensions and national insurance
+        - immigration
+        - school closures and funding
+        - transport facilities
+        :who-else-can-help: Who else can help with my issue?
+        :link: "/who-should-i-contact-with-my-issue"
+        :discuss-with: You may be able to discuss issues with your MP in person or
+          online. Contact them for details
+        :contact-postcode: Please include your postcode when contacting your MP.
+    - :name: block
       :data:
-      - :medium-name: 'Email: '
-        :medium-link:
-        - email
-      - :medium-name: 'Phone: '
-        :medium-link:
-        - 123
-      - :medium-name: 'Address: '
-        :medium-link:
-        - Full Address
-- :name: block
+        :css-class: block
+        :components:
+        - :name: heading
+          :data:
+            :heading: Contact
+            :size: 2
+        - :name: description-list
+          :data:
+          - :medium-name: 'Email: '
+            :medium-link:
+            - email
+          - :medium-name: 'Phone: '
+            :medium-link:
+            - 123
+          - :medium-name: 'Address: '
+            :medium-link:
+            - Full Address
+- :name: container
   :data:
-    :css-class: block--border__bottom
+    :components: []
+- :name: container
+  :data:
     :components:
-    - :name: heading
+    - :name: block
       :data:
-        :heading: Related links
-        :size: 2
-    - :name: description-list
-      :data:
-      - :medium-name: 'Website: '
-        :medium-link:
-        - true
-      - :medium-name: 'Twitter: '
-        :medium-link:
-        - true
-      - :medium-name: 'translation missing: en.people.related_links.facebook'
-        :medium-link:
-        - true
-    - :name: paragraph
-      :data:
-        :content:
-        - - 'Diane Abbott''s official portrait is true '
+        :css-class: block--border__bottom
+        :components:
+        - :name: heading
+          :data:
+            :heading: Related links
+            :size: 2
+        - :name: description-list
+          :data:
+          - :medium-name: 'Website: '
+            :medium-link:
+            - true
+          - :medium-name: 'Twitter: '
+            :medium-link:
+            - true
+          - :medium-name: 'translation missing: en.people.related_links.facebook'
+            :medium-link:
+            - true
+        - :name: paragraph
+          :data:
+            :content:
+            - - 'Diane Abbott''s official portrait is true '
 - :name: footer
   :data: footer
