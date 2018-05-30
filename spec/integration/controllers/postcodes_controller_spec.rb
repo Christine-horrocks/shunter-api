@@ -9,6 +9,15 @@ RSpec.describe PeopleController, vcr: true do
 
       expect(JSON.parse(response.body).to_yaml).to eq(expected)
     end
+
+    it 'invalid postcode' do
+      post '/postcodes/lookup', params: { postcode: '', previous_controller: 'postcodes', previous_action: 'index' }
+      get '/postcodes'
+
+      expected = get_fixture('index', 'invalid_postcode')
+
+      expect(JSON.parse(response.body).to_yaml).to eq(expected)
+    end
   end
 
   describe 'GET show' do
