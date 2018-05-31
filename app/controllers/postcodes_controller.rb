@@ -29,7 +29,7 @@ class PostcodesController < ApplicationController
 
       # Set our flash message if no MP is found for this postcode
       if @person.empty? && previous_path == mps_url
-        flash[:error] = "#{I18n.t('error.no_mp')} #{@constituency.name}."
+        session[:postcode_error] = "#{I18n.t('error.no_mp')} #{@constituency.name}."
 
         return redirect_to(previous_path)
       end
@@ -38,9 +38,10 @@ class PostcodesController < ApplicationController
       return redirect_to(person_path(@person.first.graph_id)) if previous_path == mps_url
       return redirect_to(constituency_path(@constituency.graph_id)) if previous_path == find_your_constituency_url
     rescue Parliament::Utils::Helpers::PostcodeHelper::PostcodeError => error
-      flash[:error] = error.message
-      flash[:postcode] = @postcode
-      redirect_to(previous_path)
+      session[:postcode_error] = error.message
+      session[:postcode_session] = @postcode
+
+      return redirect_to(previous_path)
     end
 
     # Instance variable for single MP pages
@@ -70,7 +71,9 @@ class PostcodesController < ApplicationController
 
   def handle_postcode_session
     @postcode_error = session[:postcode_error]
+    @postcode_session = session[:postcode_session]
 
     session.delete(:postcode_error)
+    session.delete(:postcode_session)
   end
 end

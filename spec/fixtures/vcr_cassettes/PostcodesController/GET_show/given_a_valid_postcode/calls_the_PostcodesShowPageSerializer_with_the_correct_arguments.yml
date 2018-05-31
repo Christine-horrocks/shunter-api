@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.parliament.uk/Staging/fixed-query/constituency_lookup_by_postcode?postcode=SW1P3JA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/n-triples
+      User-Agent:
+      - Ruby
+      Ocp-Apim-Subscription-Key:
+      - b1b0b90ca64f42668f25678c926df4ce
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '533'
+      Content-Type:
+      - application/n-triples
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:330aa411-57af-491f-b22a-1cab7d08a6a9
+      Strict-Transport-Security:
+      - max-age=31536000
+      Date:
+      - Wed, 30 May 2018 11:01:06 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: "<https://id.parliament.uk/ew2nBXJ7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+        <https://id.parliament.uk/schema/ConstituencyGroup> .\r\n<https://id.parliament.uk/ew2nBXJ7>
+        <https://id.parliament.uk/schema/constituencyGroupName> \"Cities of London
+        and Westminster\" .\r\n<https://id.parliament.uk/ew2nBXJ7> <https://id.parliament.uk/schema/constituencyGroupHasHouseSeat>
+        <https://id.parliament.uk/Qt0BigGT> .\r\n<https://id.parliament.uk/Qt0BigGT>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/HouseSeat>
+        .\r\n<https://id.parliament.uk/Qt0BigGT> <https://id.parliament.uk/schema/houseSeatHasConstituencyGroup>
+        <https://id.parliament.uk/ew2nBXJ7> .\r\n<https://id.parliament.uk/Qt0BigGT>
+        <https://id.parliament.uk/schema/houseSeatHasHouse> <https://id.parliament.uk/1AFu55Hs>
+        .\r\n<https://id.parliament.uk/1AFu55Hs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+        <https://id.parliament.uk/schema/House> .\r\n<https://id.parliament.uk/1AFu55Hs>
+        <https://id.parliament.uk/schema/houseName> \"House of Commons\" .\r\n<https://id.parliament.uk/8FsuRjTr>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/SeatIncumbency>
+        .\r\n<https://id.parliament.uk/8FsuRjTr> <https://id.parliament.uk/schema/parliamentaryIncumbencyStartDate>
+        \"2017-06-08+00:00\"^^<http://www.w3.org/2001/XMLSchema#date> .\r\n<https://id.parliament.uk/8FsuRjTr>
+        <https://id.parliament.uk/schema/seatIncumbencyHasHouseSeat> <https://id.parliament.uk/Qt0BigGT>
+        .\r\n<https://id.parliament.uk/rk95p4uH> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+        <https://id.parliament.uk/schema/Person> .\r\n<https://id.parliament.uk/rk95p4uH>
+        <https://id.parliament.uk/schema/personGivenName> \"Mark\" .\r\n<https://id.parliament.uk/rk95p4uH>
+        <https://id.parliament.uk/schema/personFamilyName> \"Field\" .\r\n<https://id.parliament.uk/rk95p4uH>
+        <http://example.com/F31CBD81AD8343898B49DC65743F0BDF> \"Mark Field\" .\r\n<https://id.parliament.uk/rk95p4uH>
+        <https://id.parliament.uk/schema/memberHasParliamentaryIncumbency> <https://id.parliament.uk/8FsuRjTr>
+        .\r\n<https://id.parliament.uk/rk95p4uH> <https://id.parliament.uk/schema/partyMemberHasPartyMembership>
+        <https://id.parliament.uk/kGfh5eyr> .\r\n<https://id.parliament.uk/kGfh5eyr>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/PartyMembership>
+        .\r\n<https://id.parliament.uk/kGfh5eyr> <https://id.parliament.uk/schema/partyMembershipHasParty>
+        <https://id.parliament.uk/DIifZMjq> .\r\n<https://id.parliament.uk/kGfh5eyr>
+        <https://id.parliament.uk/schema/partyMembershipStartDate> \"2017-06-08+00:00\"^^<http://www.w3.org/2001/XMLSchema#date>
+        .\r\n<https://id.parliament.uk/DIifZMjq> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+        <https://id.parliament.uk/schema/Party> .\r\n<https://id.parliament.uk/DIifZMjq>
+        <https://id.parliament.uk/schema/partyName> \"Conservative\" .\r\n"
+    http_version: 
+  recorded_at: Wed, 30 May 2018 11:01:03 GMT
+recorded_with: VCR 4.0.0

@@ -50,4 +50,188 @@ RSpec.describe PostcodesController, vcr: true do
       end
     end
   end
+
+  describe 'GET show' do
+    context 'given a valid postcode' do
+      before(:each) do
+        session[:postcode_previous_path] = postcodes_path
+
+        allow(PageSerializer::PostcodesShowPageSerializer).to receive(:new)
+
+        get :show, params: { postcode: 'SW1P 3JA' }
+      end
+
+      it 'should have a response with http status ok (200)' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'assigns @postcode and @constituency' do
+        expect(assigns(:postcode)).to eq('SW1P 3JA')
+        expect(assigns(:constituency).name).to eq('Cities of London and Westminster')
+      end
+
+      it 'calls the PostcodesShowPageSerializer with the correct arguments' do
+        expect(PageSerializer::PostcodesShowPageSerializer).to have_received(:new).with(assigns[:constituency], assigns[:postcode], assigns[:person].first)
+      end
+    end
+
+    context 'given an invalid postcode, but in the correct postcode format' do
+      before(:each) do
+        session[:postcode_previous_path] = constituencies_current_path
+
+        get :show, params: { postcode: 'AA99 2AA' }
+      end
+
+      it 'assigns session[:postcode_error]' do
+        expect(session[:postcode_error]).to eq("We couldn't find the postcode you entered.")
+      end
+
+      it 'assigns session[:postcode_error]' do
+        expect(session[:postcode_session]).to eq('AA99 2AA')
+      end
+
+      it 'redirects to constituencies_current' do
+        expect(response).to redirect_to(constituencies_current_path)
+      end
+    end
+
+    context 'given an invalid postcode' do
+      before(:each) do
+        session[:postcode_previous_path] = constituencies_current_path
+
+        get :show, params: { postcode: 'apple' }
+      end
+
+      it 'assigns flash[:error]' do
+        expect(session[:postcode_error]).to eq("We couldn't find the postcode you entered.")
+      end
+
+      it 'assigns flash[:postcode]' do
+        expect(session[:postcode_session]).to eq('apple')
+      end
+
+      it 'redirects to constituencies_current' do
+        expect(response).to redirect_to(constituencies_current_path)
+      end
+    end
+
+    context 'given a xss search' do
+      before(:each) do
+        session[:postcode_previous_path] = constituencies_current_path
+
+        get :show, params: { postcode: '<script>alert(document.cookie)</script>' }
+      end
+
+      it 'assigns xss flash[:error]' do
+        expect(session[:postcode_error]).to eq("We couldn't find the postcode you entered.")
+      end
+
+      it 'assigns xss flash[:postcode]' do
+        expect(session[:postcode_session]).to eq('alert(document.cookie)')
+      end
+
+      it 'redirects xss to constituencies_current' do
+        expect(response).to redirect_to(constituencies_current_path)
+      end
+    end
+  end
+
+  describe 'Previous path' do
+    context 'the previous path is mps' do
+      context 'there is a current MP' do
+        before(:each) do
+          session[:postcode_previous_path] = controller.url_for(action: 'mps', controller: 'home')
+
+          get :show, params: { postcode: 'SW1P 3JA' }
+        end
+
+        it 'should have a response with http status found (302)' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'redirects to the MPs page' do
+          expect(response).to redirect_to(person_path('rk95p4uH'))
+        end
+      end
+
+      context 'there is no current MP' do
+        before(:each) do
+          session[:postcode_previous_path] = controller.url_for(action: 'mps', controller: 'home')
+
+          allow(Parliament::Utils::Helpers::RequestHelper).to receive(:namespace_uri_schema_path).and_call_original
+          allow(Parliament::Utils::Helpers::RequestHelper).to receive(:namespace_uri_schema_path).with('Person') { [] }
+
+          get :show, params: { postcode: 'SW1P 3JA' }
+        end
+
+        it 'assigns session[:postcode_error]' do
+          expect(session[:postcode_error]).to eq("We couldn't find an MP for that postcode.  Your constituency is Cities of London and Westminster.")
+        end
+
+        it 'should have a response with http status found (302)' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'redirects to the previous page' do
+          expect(response).to redirect_to(mps_path)
+        end
+      end
+    end
+
+    context 'the previous path is find_my_constituency' do
+      before(:each) do
+        session[:postcode_previous_path] = controller.url_for(action: 'find_your_constituency', controller: 'home')
+      end
+
+      context 'there is a constituency' do
+        before :each do
+          get :show, params: { postcode: 'SW1P 3JA' }
+        end
+
+        it 'should have a response with http status found (302)' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'redirects to the constituency page' do
+          expect(response).to redirect_to(constituency_path('ew2nBXJ7'))
+        end
+      end
+
+      context 'there is no constituency' do
+        before :each do
+          get :show, params: { postcode: 'AAA0 AAA' }
+        end
+
+        it 'should have a response with http status found (302)' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'redirects to the find_your_constituency page' do
+          expect(response).to redirect_to(find_your_constituency_path)
+        end
+
+        it 'assigns session[:postcode_error]' do
+          expect(session[:postcode_error]).to eq("We couldn't find the postcode you entered.")
+        end
+      end
+    end
+  end
+
+  describe '#data_check' do
+    context 'an available data format is requested' do
+      before(:each) do
+        headers = { 'Accept' => 'application/rdf+xml' }
+        request.headers.merge(headers)
+        get :show, params: { postcode: 'SW1A2AA' }
+      end
+
+      it 'should have a response with http status redirect (302)' do
+        expect(response).to have_http_status(302)
+      end
+
+      it 'redirects to the data service' do
+        expect(response).to redirect_to("#{ENV['PARLIAMENT_BASE_URL']}/constituency_lookup_by_postcode?postcode=SW1A2AA")
+      end
+    end
+  end
 end
